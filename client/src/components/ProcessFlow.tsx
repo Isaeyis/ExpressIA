@@ -67,7 +67,7 @@ const ProcessFlow: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
         <div className="text-center mb-16">
@@ -79,18 +79,18 @@ const ProcessFlow: React.FC = () => {
           </p>
         </div>
 
-        {/* Process Flow Container */}
-        <div className="relative mb-12">
-          {/* Contenedor con 4 cuadritos - Mejor espaciado */}
-          <div className="relative flex items-start justify-between gap-4 md:gap-6 mb-12">
+        {/* Process Flow Container - Diseño más fluido y creativo */}
+        <div className="relative">
+          {/* Contenedor con 4 cuadritos */}
+          <div className="relative flex items-start justify-between gap-3 md:gap-4 mb-16">
             {steps.map((step, index) => (
-              <div className="relative flex-1 flex flex-col items-center min-w-0 max-w-xs">
-                {/* Check verde sobrepuesto - Justo encima de la esquina */}
+              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
+                {/* Check verde sobrepuesto - Animación suave */}
                 {index < activeStep && (
                   <div 
                     className="absolute -top-2 -right-2 z-50"
                     style={{
-                      animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
                     <div className="bg-emerald-500 rounded-full p-0.5 shadow-lg border-2 border-white flex items-center justify-center">
@@ -99,59 +99,79 @@ const ProcessFlow: React.FC = () => {
                   </div>
                 )}
 
-                {/* Card del paso - Más estrecho, sin línea divisora */}
+                {/* Card del paso - Diseño mejorado y fluido */}
                 <div
-                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-3xl flex flex-col items-center justify-center relative`}
+                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '12px 8px',
-                    minHeight: activeStep === index ? 'auto' : '90px',
-                    transform: activeStep === index ? 'scale(1.12) translateY(-8px)' : 'scale(1)',
+                    padding: '14px 10px',
+                    minHeight: activeStep === index ? 'auto' : '85px',
+                    transform: activeStep === index ? 'scale(1.1) translateY(-6px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
-                        ? `0 20px 40px ${step.borderColor}40, inset 0 1px 0 ${step.borderColor}20`
-                        : '0 4px 12px rgba(0,0,0,0.08)',
-                    animation: activeStep === index ? `pulse-${index} 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite` : 'none',
+                        ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
+                        : '0 2px 8px rgba(0,0,0,0.06)',
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Efecto de eco - Solo cuando está activo */}
+                  {/* Efecto de fondo degradado sutil - Solo cuando está activo */}
                   {activeStep === index && (
                     <div
-                      className="absolute inset-0 rounded-3xl pointer-events-none"
+                      className="absolute inset-0 opacity-0 transition-opacity duration-500"
                       style={{
-                        border: `2px solid ${step.borderColor}`,
-                        animation: `echo-${index} 2s ease-out infinite`,
+                        background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
+                        opacity: 1,
                       }}
                     />
                   )}
 
-                  {/* Icono con animación */}
+                  {/* Animación de eco pulsante */}
+                  {activeStep === index && (
+                    <div
+                      className="absolute inset-0 rounded-2xl pointer-events-none"
+                      style={{
+                        border: `2px solid ${step.borderColor}`,
+                        animation: `echo-pulse 2.5s ease-out infinite`,
+                        opacity: 0.5,
+                      }}
+                    />
+                  )}
+
+                  {/* Icono con animación fluida */}
                   <div
-                    className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1 relative z-10`}
+                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1.5 relative z-10`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.2)' : 'scale(1)',
-                      filter: activeStep === index ? 'drop-shadow(0 8px 16px rgba(0,0,0,0.2))' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+                      transform: activeStep === index ? 'scale(1.15) rotate(0deg)' : 'scale(1) rotate(-5deg)',
+                      filter: activeStep === index ? 'drop-shadow(0 6px 12px rgba(0,0,0,0.15))' : 'drop-shadow(0 1px 2px rgba(0,0,0,0.08))',
                     }}
                   >
                     {step.icon}
                   </div>
 
-                  {/* Título */}
-                  <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1">
+                  {/* Título - Tipografía mejorada */}
+                  <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1 transition-all duration-300" style={{
+                    fontSize: activeStep === index ? '0.875rem' : '0.75rem',
+                  }}>
                     {step.title}
                   </h3>
 
                   {/* Subtítulo - Siempre visible */}
-                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1">
+                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1 transition-all duration-300" style={{
+                    opacity: activeStep === index ? 1 : 0.7,
+                    fontSize: activeStep === index ? '0.75rem' : '0.7rem',
+                  }}>
                     {step.subtitle}
                   </p>
 
-                  {/* Viñetas - SOLO cuando está activo, SIN LÍNEA DIVISORA */}
+                  {/* Viñetas - SOLO cuando está activo, con animación suave */}
                   {activeStep === index && (
-                    <div className="space-y-1 mt-2 w-full animate-in fade-in slide-in-from-bottom-2 duration-400 relative z-10 px-1">
+                    <div className="space-y-1 mt-2.5 w-full relative z-10 px-1" style={{
+                      animation: 'slide-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    }}>
                       {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1 text-left">
+                        <div key={i} className="flex items-start gap-1.5 text-left" style={{
+                          animation: `fade-in 0.4s ease-out ${i * 0.1}s both`,
+                        }}>
                           <div className="flex-shrink-0 mt-0.5">
                             <svg
                               className="w-2.5 h-2.5 text-emerald-500"
@@ -174,18 +194,45 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Línea conectora con círculo animado - ENTRE CUADRITOS */}
+                {/* Línea conectora con círculo animado - Fluida */}
                 {index < steps.length - 1 && (
-                  <div className="absolute top-1/4 -right-5 md:-right-7 w-10 md:w-14 h-1 flex items-center">
-                    {/* Línea de conexión */}
-                    <div
-                      className="w-full h-1 rounded-full transition-all duration-500"
-                      style={{
-                        backgroundColor: activeStep > index ? steps[index].borderColor : '#d1d5db',
-                        opacity: activeStep > index ? 1 : 0.3,
-                      }}
-                    />
-                    
+                  <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5">
+                    {/* Línea de conexión con gradiente */}
+                    <svg className="w-full h-full" viewBox="0 0 100 4" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient
+                          id={`gradient-${index}`}
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="0%"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor={steps[index].borderColor}
+                            stopOpacity={activeStep > index ? 1 : 0.2}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor={steps[Math.min(index + 1, steps.length - 1)].borderColor}
+                            stopOpacity={activeStep > index + 1 ? 1 : 0.2}
+                          />
+                        </linearGradient>
+                      </defs>
+                      <line
+                        x1="0"
+                        y1="2"
+                        x2="100"
+                        y2="2"
+                        stroke={`url(#gradient-${index})`}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        style={{
+                          transition: 'stroke 0.5s ease-out',
+                        }}
+                      />
+                    </svg>
+
                     {/* Círculo animado que se rueda - Sincronizado */}
                     {activeStep === index && (
                       <div
@@ -193,8 +240,10 @@ const ProcessFlow: React.FC = () => {
                         style={{
                           backgroundColor: steps[index].borderColor,
                           left: '0',
-                          animation: `roll-circle-sync 4s ease-in-out infinite`,
+                          animation: `roll-circle 4s ease-in-out infinite`,
                           boxShadow: `0 0 8px ${steps[index].borderColor}80`,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
                         }}
                       />
                     )}
@@ -204,14 +253,14 @@ const ProcessFlow: React.FC = () => {
             ))}
           </div>
 
-          {/* Barra de progreso fluida - Debajo de todo */}
-          <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden shadow-sm">
+          {/* Barra de progreso fluida y elegante */}
+          <div className="relative h-1.5 bg-gray-200 rounded-full overflow-hidden shadow-sm">
             <div
               className="h-full transition-all duration-700 ease-out rounded-full"
               style={{
                 width: `${((activeStep + 1) / steps.length) * 100}%`,
-                backgroundColor: steps[activeStep].borderColor,
-                boxShadow: `0 0 20px ${steps[activeStep].borderColor}60`,
+                background: `linear-gradient(90deg, ${steps[activeStep].borderColor}, ${steps[Math.min(activeStep + 1, steps.length - 1)].borderColor})`,
+                boxShadow: `0 0 16px ${steps[activeStep].borderColor}60`,
               }}
             />
           </div>
@@ -219,83 +268,19 @@ const ProcessFlow: React.FC = () => {
       </div>
 
       <style>{`
-        @keyframes pulse-0 {
-          0%, 100% {
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.2);
-          }
-          50% {
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(59, 130, 246, 0.1), 0 0 0 12px rgba(59, 130, 246, 0.1);
-          }
-        }
-        @keyframes pulse-1 {
-          0%, 100% {
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(16, 185, 129, 0.2);
-          }
-          50% {
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(16, 185, 129, 0.1), 0 0 0 12px rgba(16, 185, 129, 0.1);
-          }
-        }
-        @keyframes pulse-2 {
-          0%, 100% {
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(6, 182, 212, 0.2);
-          }
-          50% {
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2), inset 0 1px 0 rgba(6, 182, 212, 0.1), 0 0 0 12px rgba(6, 182, 212, 0.1);
-          }
-        }
-        @keyframes pulse-3 {
-          0%, 100% {
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.4), inset 0 1px 0 rgba(239, 68, 68, 0.2);
-          }
-          50% {
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(239, 68, 68, 0.1), 0 0 0 12px rgba(239, 68, 68, 0.1);
-          }
-        }
-        @keyframes echo-0 {
+        @keyframes echo-pulse {
           0% {
             box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
           }
-          70% {
-            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+          50% {
+            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
           }
           100% {
-            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
           }
         }
-        @keyframes echo-1 {
-          0% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-          }
-          70% {
-            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
-          }
-        }
-        @keyframes echo-2 {
-          0% {
-            box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
-          }
-          70% {
-            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
-          }
-        }
-        @keyframes echo-3 {
-          0% {
-            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-          }
-          70% {
-            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
-          }
-        }
-        @keyframes roll-circle-sync {
+
+        @keyframes roll-circle {
           0% {
             left: 0;
             opacity: 1;
@@ -308,6 +293,7 @@ const ProcessFlow: React.FC = () => {
             opacity: 0;
           }
         }
+
         @keyframes scale-in {
           from {
             transform: scale(0);
@@ -315,6 +301,26 @@ const ProcessFlow: React.FC = () => {
           }
           to {
             transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slide-in-up {
+          from {
+            transform: translateY(8px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
             opacity: 1;
           }
         }

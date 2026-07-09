@@ -264,7 +264,7 @@ export default function Home() {
       <ProcessFlow />
 
       {/* Express IA para tu negocio */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -289,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 md:py-24 bg-gray-50">
+      <section id="faq" className="py-16 md:py-24 bg-gray-50" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
