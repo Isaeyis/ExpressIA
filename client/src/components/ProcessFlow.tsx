@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Zap, ShoppingBag, Truck, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, Zap, ShoppingBag, Truck } from 'lucide-react';
 
 interface ProcessStep {
   id: number;
   title: string;
-  subtitle: string;
   icon: React.ReactNode;
   color: string;
   borderColor: string;
@@ -19,8 +18,7 @@ const ProcessFlow: React.FC = () => {
     {
       id: 1,
       title: 'Cliente',
-      subtitle: 'Cliente manual',
-      icon: <MessageCircle className="w-5 h-5" />,
+      icon: <MessageCircle className="w-6 h-6" />,
       color: 'from-blue-400 to-blue-600',
       borderColor: '#3b82f6',
       bgColor: 'bg-blue-50',
@@ -29,8 +27,7 @@ const ProcessFlow: React.FC = () => {
     {
       id: 2,
       title: 'Express IA',
-      subtitle: 'Procesa automáticamente',
-      icon: <Zap className="w-5 h-5" />,
+      icon: <Zap className="w-6 h-6" />,
       color: 'from-emerald-400 to-emerald-600',
       borderColor: '#10b981',
       bgColor: 'bg-emerald-50',
@@ -39,8 +36,7 @@ const ProcessFlow: React.FC = () => {
     {
       id: 3,
       title: 'Negocio',
-      subtitle: 'Recibe información',
-      icon: <ShoppingBag className="w-5 h-5" />,
+      icon: <ShoppingBag className="w-6 h-6" />,
       color: 'from-cyan-400 to-cyan-600',
       borderColor: '#06b6d4',
       bgColor: 'bg-cyan-50',
@@ -49,8 +45,7 @@ const ProcessFlow: React.FC = () => {
     {
       id: 4,
       title: 'Domicilio',
-      subtitle: 'Se asigna automáticamente',
-      icon: <Truck className="w-5 h-5" />,
+      icon: <Truck className="w-6 h-6" />,
       color: 'from-red-400 to-red-600',
       borderColor: '#ef4444',
       bgColor: 'bg-red-50',
@@ -68,9 +63,9 @@ const ProcessFlow: React.FC = () => {
 
   return (
     <section className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             ¿Qué es Express IA?
           </h2>
@@ -79,67 +74,30 @@ const ProcessFlow: React.FC = () => {
           </p>
         </div>
 
-        {/* Process Flow */}
-        <div className="relative mb-10">
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ top: '60px' }}>
-            {/* Líneas conectoras entre cuadritos */}
-            {steps.map((step, index) => {
-              if (index < steps.length - 1) {
-                const isActive = activeStep >= index;
-                const isCurrentOrPast = activeStep > index;
-                return (
-                  <g key={`line-${index}`}>
-                    {/* Línea base */}
-                    <line
-                      x1={`${(index + 0.5) * 25}%`}
-                      y1="0"
-                      x2={`${(index + 1.5) * 25}%`}
-                      y2="0"
-                      stroke={isCurrentOrPast ? steps[index].borderColor : '#d1d5db'}
-                      strokeWidth="2"
-                      style={{
-                        transition: 'stroke 0.5s ease-in-out',
-                        opacity: isCurrentOrPast ? 1 : 0.3,
-                      }}
-                    />
-                    {/* Círculo animado en la línea */}
-                    {isActive && (
-                      <circle
-                        cx={`${(index + 0.5 + (activeStep === index ? 0.5 : 1)) * 25}%`}
-                        cy="0"
-                        r="5"
-                        fill={steps[index].borderColor}
-                        style={{
-                          animation: activeStep === index ? `roll-${index} 4s ease-in-out infinite` : 'none',
-                        }}
-                      />
-                    )}
-                  </g>
-                );
-              }
-              return null;
-            })}
-          </svg>
-
-          <div className="flex justify-between items-center gap-1 md:gap-2 relative z-10">
+        {/* Process Flow - Distribución exacta del PDF */}
+        <div className="relative">
+          {/* Contenedor principal con 4 cuadritos */}
+          <div className="flex items-center justify-center gap-4 md:gap-6 mb-8">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex-1 max-w-xs flex flex-col items-center">
-                {/* Card del paso */}
+              <React.Fragment key={step.id}>
+                {/* Card del paso - Compacto */}
                 <div
-                  className={`w-full rounded-2xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden relative`}
+                  className={`relative transition-all duration-500 ${step.bgColor} border-2 rounded-2xl overflow-hidden`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    transform: activeStep === index ? 'scale(1.08)' : 'scale(1)',
-                    padding: activeStep === index ? '14px' : '12px',
+                    width: '100%',
+                    maxWidth: '140px',
+                    padding: activeStep === index ? '16px' : '12px',
+                    transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
-                        ? `0 8px 24px ${step.borderColor}40`
+                        ? `0 0 0 12px ${step.borderColor}20, 0 8px 24px ${step.borderColor}40`
                         : 'none',
                     animation: activeStep === index ? `echo-${index} 2s ease-out infinite` : 'none',
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Icono verde sobrepuesto en esquina superior derecha */}
+                  {/* Check verde sobrepuesto */}
                   {index < activeStep && (
                     <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg z-30 border-2 border-white flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -150,29 +108,24 @@ const ProcessFlow: React.FC = () => {
 
                   {/* Icono */}
                   <div
-                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-2 mx-auto transition-all duration-500`}
+                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mx-auto mb-2 transition-all duration-500`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
+                      transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
                     }}
                   >
                     {step.icon}
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0.5">
+                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0">
                     {step.title}
                   </h3>
 
-                  {/* Subtítulo */}
-                  <p className="text-xs text-center text-gray-600 mb-0">
-                    {step.subtitle}
-                  </p>
-
-                  {/* Viñetas - Solo se muestran cuando está activo */}
+                  {/* Viñetas - Solo cuando está activo */}
                   {activeStep === index && (
                     <div className="space-y-2 mt-3 animate-in fade-in duration-300">
                       {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1.5">
+                        <div key={i} className="flex items-start gap-1">
                           <div className="flex-shrink-0 mt-0.5">
                             <svg
                               className="w-3 h-3 text-emerald-500"
@@ -194,12 +147,36 @@ const ProcessFlow: React.FC = () => {
                     </div>
                   )}
                 </div>
-              </div>
+
+                {/* Flecha entre cuadritos */}
+                {index < steps.length - 1 && (
+                  <div className="flex-shrink-0 flex items-center justify-center">
+                    <svg
+                      className="w-6 h-6 md:w-8 md:h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      style={{
+                        color: activeStep > index ? steps[index].borderColor : '#d1d5db',
+                        transition: 'color 0.5s ease-in-out',
+                        opacity: activeStep > index ? 1 : 0.3,
+                      }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
 
-          {/* Barra de progreso animada */}
-          <div className="relative h-1 bg-gray-200 rounded-full overflow-hidden mt-12">
+          {/* Barra de progreso */}
+          <div className="relative h-1.5 bg-gray-200 rounded-full overflow-hidden">
             <div
               className="h-full transition-all duration-500 rounded-full"
               style={{
@@ -214,47 +191,35 @@ const ProcessFlow: React.FC = () => {
       <style>{`
         @keyframes echo-0 {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7), 0 8px 24px rgba(59, 130, 246, 0.25);
           }
           50% {
-            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0), 0 8px 24px rgba(59, 130, 246, 0.25);
           }
         }
         @keyframes echo-1 {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7), 0 8px 24px rgba(16, 185, 129, 0.25);
           }
           50% {
-            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0), 0 8px 24px rgba(16, 185, 129, 0.25);
           }
         }
         @keyframes echo-2 {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+            box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7), 0 8px 24px rgba(6, 182, 212, 0.25);
           }
           50% {
-            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
+            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0), 0 8px 24px rgba(6, 182, 212, 0.25);
           }
         }
         @keyframes echo-3 {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7), 0 8px 24px rgba(239, 68, 68, 0.25);
           }
           50% {
-            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0), 0 8px 24px rgba(239, 68, 68, 0.25);
           }
-        }
-        @keyframes roll-0 {
-          0% { cx: 12.5%; }
-          100% { cx: 37.5%; }
-        }
-        @keyframes roll-1 {
-          0% { cx: 37.5%; }
-          100% { cx: 62.5%; }
-        }
-        @keyframes roll-2 {
-          0% { cx: 62.5%; }
-          100% { cx: 87.5%; }
         }
       `}</style>
     </section>
