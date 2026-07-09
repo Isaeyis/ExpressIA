@@ -82,12 +82,26 @@ const ProcessFlow: React.FC = () => {
         {/* Process Flow */}
         <div className="relative">
           {/* Contenedor con 4 cuadritos */}
-          <div className="flex items-stretch justify-center gap-3 md:gap-4 mb-10">
+          <div className="flex items-stretch justify-center gap-3 md:gap-4 mb-10 relative">
             {steps.map((step, index) => (
-              <React.Fragment key={step.id}>
+              <div key={step.id} className="relative flex-1 max-w-sm">
+                {/* Check verde sobrepuesto - FUERA del cuadro */}
+                {index < activeStep && (
+                  <div 
+                    className="absolute -top-3 -right-3 z-40 animate-in fade-in scale-in duration-300"
+                    style={{
+                      animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    }}
+                  >
+                    <div className="bg-emerald-500 rounded-full p-1.5 shadow-lg border-3 border-white flex items-center justify-center">
+                      <Check className="w-5 h-5 text-white stroke-[3]" />
+                    </div>
+                  </div>
+                )}
+
                 {/* Card del paso */}
                 <div
-                  className={`relative flex-1 max-w-sm transition-all duration-500 ${step.bgColor} border-2 rounded-3xl overflow-hidden flex flex-col`}
+                  className={`relative transition-all duration-500 ${step.bgColor} border-2 rounded-3xl overflow-visible flex flex-col h-full`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
                     padding: '20px 16px',
@@ -100,20 +114,6 @@ const ProcessFlow: React.FC = () => {
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Check verde sobrepuesto - Completo y estético */}
-                  {index < activeStep && (
-                    <div 
-                      className="absolute -top-3 -right-3 z-30 animate-in fade-in scale-in duration-300"
-                      style={{
-                        animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      }}
-                    >
-                      <div className="bg-emerald-500 rounded-full p-1.5 shadow-lg border-3 border-white flex items-center justify-center">
-                        <Check className="w-5 h-5 text-white stroke-[3]" />
-                      </div>
-                    </div>
-                  )}
-
                   {/* Icono con animación */}
                   <div
                     className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white mx-auto mb-3 transition-all duration-500 flex-shrink-0`}
@@ -131,13 +131,13 @@ const ProcessFlow: React.FC = () => {
                   </h3>
 
                   {/* Subtítulo - Siempre visible */}
-                  <p className="text-xs text-center text-gray-600 mb-3 leading-snug">
+                  <p className="text-xs text-center text-gray-600 leading-snug mb-0">
                     {step.subtitle}
                   </p>
 
-                  {/* Viñetas - Solo cuando está activo */}
+                  {/* Viñetas - Solo cuando está activo, sin espacio vacío */}
                   {activeStep === index && (
-                    <div className="space-y-2.5 mt-2 pt-3 border-t border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-400">
+                    <div className="space-y-2.5 mt-3 pt-3 border-t border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-400">
                       {step.bullets.map((bullet, i) => (
                         <div key={i} className="flex items-start gap-2">
                           <div className="flex-shrink-0 mt-1">
@@ -164,7 +164,7 @@ const ProcessFlow: React.FC = () => {
 
                 {/* Flecha conectora con animación fluida */}
                 {index < steps.length - 1 && (
-                  <div className="flex-shrink-0 flex items-center justify-center px-1 md:px-2">
+                  <div className="absolute top-1/2 -right-5 md:-right-6 transform -translate-y-1/2 flex items-center justify-center z-20">
                     <svg
                       className="w-5 h-5 md:w-6 md:h-6 transition-all duration-500"
                       fill="none"
@@ -184,7 +184,7 @@ const ProcessFlow: React.FC = () => {
                     </svg>
                   </div>
                 )}
-              </React.Fragment>
+              </div>
             ))}
           </div>
 
