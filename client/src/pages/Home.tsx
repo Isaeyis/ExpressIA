@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import DynamicWhatsAppChat from "@/components/DynamicWhatsAppChat";
+import ProcessFlow from "@/components/ProcessFlow";
 import {
   MessageCircle,
   Users,
@@ -260,51 +261,7 @@ export default function Home() {
       </section>
 
       {/* Redesigned What is Express IA - Flow Diagram */}
-      <section id="features" className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              ¿Qué es Express IA?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Un nuevo empleado digital, una plataforma de inteligencia artificial diseñada para consultantes, comercios y empresas de domicilios que quieren automatizar su atención y operación.
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 relative">
-            {/* Express IA Card */}
-            <Card className="p-6 text-center shadow-md border-0 bg-white w-full md:w-1/3">
-              <Lightbulb className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Express IA</h3>
-              <p className="text-gray-700 text-sm">Procesa automáticamente</p>
-            </Card>
-
-            {/* Arrow 1 */}
-            <div className="hidden md:block text-gray-400">
-              <ArrowRight size={32} />
-            </div>
-
-            {/* Negocio Card */}
-            <Card className="p-6 text-center shadow-md border-0 bg-white w-full md:w-1/3">
-              <Store className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Tu Negocio</h3>
-              <p className="text-gray-700 text-sm">Automatiza procesos</p>
-            </Card>
-
-            {/* Arrow 2 */}
-            <div className="hidden md:block text-gray-400">
-              <ArrowRight size={32} />
-            </div>
-
-            {/* Cliente Card */}
-            <Card className="p-6 text-center shadow-md border-0 bg-white w-full md:w-1/3">
-              <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Cliente</h3>
-              <p className="text-gray-700 text-sm">Recibe atención 24/7</p>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <ProcessFlow />
 
       {/* Express IA para tu negocio */}
       <section className="py-16 md:py-24 bg-white">
