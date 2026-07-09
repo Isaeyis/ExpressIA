@@ -81,14 +81,14 @@ const ProcessFlow: React.FC = () => {
 
         {/* Process Flow Container */}
         <div className="relative mb-12">
-          {/* Contenedor con 4 cuadritos - Flex con gap adecuado */}
-          <div className="relative flex items-center justify-between gap-2 md:gap-3 mb-8">
+          {/* Contenedor con 4 cuadritos - Mejor espaciado */}
+          <div className="relative flex items-start justify-between gap-6 md:gap-8 mb-12">
             {steps.map((step, index) => (
               <div key={step.id} className="relative flex-1 flex flex-col items-center">
                 {/* Check verde sobrepuesto - COMPLETAMENTE FUERA */}
                 {index < activeStep && (
                   <div 
-                    className="absolute -top-4 -right-4 z-50 animate-in fade-in scale-in duration-300"
+                    className="absolute -top-5 -right-5 z-50 animate-in fade-in scale-in duration-300"
                     style={{
                       animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
@@ -99,27 +99,38 @@ const ProcessFlow: React.FC = () => {
                   </div>
                 )}
 
-                {/* Card del paso - SIN PADDING EXTRA */}
+                {/* Card del paso - Compacto, sin padding extra */}
                 <div
-                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-3xl flex flex-col items-center justify-center`}
+                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-3xl flex flex-col items-center justify-center relative`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '16px 12px',
-                    minHeight: activeStep === index ? 'auto' : '120px',
-                    transform: activeStep === index ? 'scale(1.12) translateY(-10px)' : 'scale(1)',
+                    padding: '14px 10px',
+                    minHeight: activeStep === index ? 'auto' : '100px',
+                    transform: activeStep === index ? 'scale(1.12) translateY(-8px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
-                        ? `0 20px 40px ${step.borderColor}40, inset 0 1px 0 ${step.borderColor}20, 0 0 0 8px ${step.borderColor}15`
+                        ? `0 20px 40px ${step.borderColor}40, inset 0 1px 0 ${step.borderColor}20`
                         : '0 4px 12px rgba(0,0,0,0.08)',
                     animation: activeStep === index ? `pulse-${index} 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite` : 'none',
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
+                  {/* Efecto de eco - Solo cuando está activo */}
+                  {activeStep === index && (
+                    <div
+                      className="absolute inset-0 rounded-3xl pointer-events-none"
+                      style={{
+                        border: `2px solid ${step.borderColor}`,
+                        animation: `echo-${index} 2s ease-out infinite`,
+                      }}
+                    />
+                  )}
+
                   {/* Icono con animación */}
                   <div
-                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-2`}
+                    className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1.5 relative z-10`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.2) rotate(0deg)' : 'scale(1)',
+                      transform: activeStep === index ? 'scale(1.2)' : 'scale(1)',
                       filter: activeStep === index ? 'drop-shadow(0 8px 16px rgba(0,0,0,0.2))' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
                     }}
                   >
@@ -127,18 +138,18 @@ const ProcessFlow: React.FC = () => {
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-sm font-bold text-center text-gray-900 leading-tight">
+                  <h3 className="text-sm font-bold text-center text-gray-900 leading-tight relative z-10">
                     {step.title}
                   </h3>
 
                   {/* Subtítulo - Siempre visible */}
-                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5">
+                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10">
                     {step.subtitle}
                   </p>
 
                   {/* Viñetas - SOLO cuando está activo, SIN ESPACIO VACÍO */}
                   {activeStep === index && (
-                    <div className="space-y-2 mt-3 pt-3 border-t border-gray-300 w-full animate-in fade-in slide-in-from-bottom-2 duration-400">
+                    <div className="space-y-1.5 mt-2.5 pt-2.5 border-t border-gray-300 w-full animate-in fade-in slide-in-from-bottom-2 duration-400 relative z-10">
                       {step.bullets.map((bullet, i) => (
                         <div key={i} className="flex items-start gap-1.5 px-1">
                           <div className="flex-shrink-0 mt-0.5">
@@ -163,26 +174,30 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Flecha conectora - ENTRE CUADRITOS */}
+                {/* Línea conectora con círculo animado - ENTRE CUADRITOS */}
                 {index < steps.length - 1 && (
-                  <div className="absolute top-1/3 -right-4 md:-right-5 transform -translate-y-1/2 z-20 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 md:w-6 md:h-6 transition-all duration-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  <div className="absolute top-1/4 -right-8 md:-right-10 w-16 md:w-20 h-1 flex items-center">
+                    {/* Línea de conexión */}
+                    <div
+                      className="w-full h-1 rounded-full transition-all duration-500"
                       style={{
-                        color: activeStep > index ? steps[index].borderColor : '#d1d5db',
+                        backgroundColor: activeStep > index ? steps[index].borderColor : '#d1d5db',
                         opacity: activeStep > index ? 1 : 0.3,
-                        strokeWidth: activeStep > index ? 2.5 : 2,
                       }}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                    
+                    {/* Círculo animado que se rueda */}
+                    {activeStep === index && (
+                      <div
+                        className="absolute w-3 h-3 rounded-full"
+                        style={{
+                          backgroundColor: steps[index].borderColor,
+                          left: '0',
+                          animation: `roll-circle 1.5s ease-in-out infinite`,
+                          boxShadow: `0 0 8px ${steps[index].borderColor}80`,
+                        }}
                       />
-                    </svg>
+                    )}
                   </div>
                 )}
               </div>
@@ -206,34 +221,91 @@ const ProcessFlow: React.FC = () => {
       <style>{`
         @keyframes pulse-0 {
           0%, 100% {
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.2), 0 0 0 8px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.2);
           }
           50% {
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(59, 130, 246, 0.1), 0 0 0 12px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(59, 130, 246, 0.1), 0 0 0 12px rgba(59, 130, 246, 0.1);
           }
         }
         @keyframes pulse-1 {
           0%, 100% {
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(16, 185, 129, 0.2), 0 0 0 8px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(16, 185, 129, 0.2);
           }
           50% {
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(16, 185, 129, 0.1), 0 0 0 12px rgba(16, 185, 129, 0.08);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(16, 185, 129, 0.1), 0 0 0 12px rgba(16, 185, 129, 0.1);
           }
         }
         @keyframes pulse-2 {
           0%, 100% {
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(6, 182, 212, 0.2), 0 0 0 8px rgba(6, 182, 212, 0.15);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(6, 182, 212, 0.2);
           }
           50% {
-            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2), inset 0 1px 0 rgba(6, 182, 212, 0.1), 0 0 0 12px rgba(6, 182, 212, 0.08);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2), inset 0 1px 0 rgba(6, 182, 212, 0.1), 0 0 0 12px rgba(6, 182, 212, 0.1);
           }
         }
         @keyframes pulse-3 {
           0%, 100% {
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.4), inset 0 1px 0 rgba(239, 68, 68, 0.2), 0 0 0 8px rgba(239, 68, 68, 0.15);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.4), inset 0 1px 0 rgba(239, 68, 68, 0.2);
           }
           50% {
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(239, 68, 68, 0.1), 0 0 0 12px rgba(239, 68, 68, 0.08);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(239, 68, 68, 0.1), 0 0 0 12px rgba(239, 68, 68, 0.1);
+          }
+        }
+        @keyframes echo-0 {
+          0% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+          }
+        }
+        @keyframes echo-1 {
+          0% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+          }
+        }
+        @keyframes echo-2 {
+          0% {
+            box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
+          }
+        }
+        @keyframes echo-3 {
+          0% {
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+          }
+        }
+        @keyframes roll-circle {
+          0% {
+            left: 0;
+            opacity: 1;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            left: 100%;
+            opacity: 0;
           }
         }
         @keyframes scale-in {
