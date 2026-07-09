@@ -67,7 +67,7 @@ const ProcessFlow: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
+    <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
         <div className="text-center mb-16">

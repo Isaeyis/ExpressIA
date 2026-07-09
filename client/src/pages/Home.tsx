@@ -120,7 +120,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -164,7 +164,7 @@ export default function Home() {
       </div>
 
       {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
-      <section className="py-16 md:py-24 bg-gray-100" style={{backgroundColor: '#fafafa'}}>
+      <section className="py-16 md:py-24 bg-gray-100" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{fontSize: '60px'}}>
