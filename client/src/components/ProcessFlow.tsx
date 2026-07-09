@@ -93,20 +93,20 @@ const ProcessFlow: React.FC = () => {
                       animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
-                    <div className="bg-emerald-500 rounded-full p-0.5 shadow-lg border-2 border-white flex items-center justify-center">
-                      <Check className="w-3 h-3 text-white stroke-[3]" />
+                    <div className="bg-emerald-500 rounded-full p-1 shadow-lg border-2 border-white flex items-center justify-center">
+                      <Check className="w-4 h-4 text-white stroke-[3]" />
                     </div>
                   </div>
                 )}
 
                 {/* Card del paso - Diseño mejorado y fluido */}
                 <div
-                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden`}
+                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-xs`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '14px 10px',
+                    padding: '14px 8px',
                     minHeight: activeStep === index ? 'auto' : '85px',
-                    transform: activeStep === index ? 'scale(1.1) translateY(-6px)' : 'scale(1)',
+                    transform: activeStep === index ? 'scaleX(1.05) scaleY(1.15) translateY(-6px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
                         ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
@@ -185,7 +185,7 @@ const ProcessFlow: React.FC = () => {
                               />
                             </svg>
                           </div>
-                          <p className="text-xs text-gray-700 leading-tight">
+                          <p className="text-xs text-gray-700 leading-tight line-clamp-2">
                             {bullet}
                           </p>
                         </div>
