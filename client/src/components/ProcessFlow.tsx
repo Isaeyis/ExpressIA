@@ -121,9 +121,9 @@ const ProcessFlow: React.FC = () => {
             })}
           </svg>
 
-          <div className="flex justify-between items-center gap-2 md:gap-4 relative z-10">
+          <div className="flex justify-between items-center gap-1 md:gap-2 relative z-10">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex-1 flex flex-col items-center">
+              <div key={step.id} className="flex-1 max-w-xs flex flex-col items-center">
                 {/* Card del paso */}
                 <div
                   className={`w-full rounded-2xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden relative`}
@@ -139,10 +139,12 @@ const ProcessFlow: React.FC = () => {
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Check sobrepuesto en esquina superior derecha */}
+                  {/* Icono verde sobrepuesto en esquina superior derecha */}
                   {index < activeStep && (
-                    <div className="absolute -top-3 -right-3 bg-emerald-500 rounded-full p-1 shadow-lg z-30 border-2 border-white">
-                      <CheckCircle2 className="w-5 h-5 text-white" />
+                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg z-30 border-2 border-white flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
                     </div>
                   )}
 
