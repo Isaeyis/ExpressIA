@@ -278,9 +278,15 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Contenido izquierdo */}
             <div style={{height: '738px', width: '674px'}}>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Obtén Express IA y <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">te regalamos una Vitrina Digital</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-2 leading-tight">
+                <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Obtén Express IA</span>
               </h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                y te regalamos una Vitrina Digital
+              </h3>
+              <p className="text-sm text-gray-600 mb-2 leading-relaxed">
+                Soluciones integrables adaptadas a tu negocio
+              </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
                 Cuando adquieras Express IA recibirás acceso completo a tu vitrina digital personalizada. Exhibe tus productos 100% con tus colores y logo, gestión de inventario en tiempo real y sincronización automática sin depender de plataformas externas.
               </p>
@@ -288,58 +294,46 @@ export default function Home() {
               {/* Grid de 4 elementos - 2x2 Dinámico */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Elemento 1 - Tienda Digital */}
-                <div className="group relative bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-md rounded-2xl border-2 border-emerald-300 p-6 overflow-hidden hover:border-emerald-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-300/10 rounded-full blur-3xl"></div>
-                  
+                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Store className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="font-black text-gray-900 mb-1 text-sm">Tienda Digital</h3>
-                    <p className="text-xs text-gray-700 font-semibold">100% Personalizada</p>
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Tienda Digital</h3>
+                    <p className="text-xs text-gray-600 font-medium">100% Personalizada</p>
                   </div>
                 </div>
 
                 {/* Elemento 2 - Sincronización */}
-                <div className="group relative bg-gradient-to-br from-cyan-50 to-cyan-100/50 backdrop-blur-md rounded-2xl border-2 border-cyan-300 p-6 overflow-hidden hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-300/10 rounded-full blur-3xl"></div>
-                  
+                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Zap className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="font-black text-gray-900 mb-1 text-sm">Sincronización</h3>
-                    <p className="text-xs text-gray-700 font-semibold">Automática</p>
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Sincronización</h3>
+                    <p className="text-xs text-gray-600 font-medium">Automática</p>
                   </div>
                 </div>
 
                 {/* Elemento 3 - Inventario */}
-                <div className="group relative bg-gradient-to-br from-teal-50 to-teal-100/50 backdrop-blur-md rounded-2xl border-2 border-teal-300 p-6 overflow-hidden hover:border-teal-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-300/10 rounded-full blur-3xl"></div>
-                  
+                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Users className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="font-black text-gray-900 mb-1 text-sm">Gestión de Inventario</h3>
-                    <p className="text-xs text-gray-700 font-semibold">En tiempo real</p>
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Gestión de Inventario</h3>
+                    <p className="text-xs text-gray-600 font-medium">En tiempo real</p>
                   </div>
                 </div>
 
                 {/* Elemento 4 - Carga Masiva */}
-                <div className="group relative bg-gradient-to-br from-rose-50 to-rose-100/50 backdrop-blur-md rounded-2xl border-2 border-rose-300 p-6 overflow-hidden hover:border-rose-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-rose-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-rose-300/10 rounded-full blur-3xl"></div>
-                  
+                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Zap className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="font-black text-gray-900 mb-1 text-sm">Carga Masiva</h3>
-                    <p className="text-xs text-gray-700 font-semibold">Por ERP</p>
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Carga Masiva</h3>
+                    <p className="text-xs text-gray-600 font-medium">Por ERP</p>
                   </div>
                 </div>
               </div>
@@ -428,123 +422,114 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Tarjeta Restaurantes */}
-            <div className="group relative bg-gradient-to-br from-red-50 to-red-100/40 rounded-3xl border-2 border-red-300 p-8 overflow-hidden hover:border-red-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-red-300/10 rounded-full blur-3xl"></div>
-              
+            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <ShoppingCart className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Restaurantes</h3>
-                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Restaurantes</h3>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
                   Convierte WhatsApp en un nuevo canal de ventas
                 </p>
-                <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span>
+                <ul className="space-y-3 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Consultar el menú</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Preguntar por productos</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Realizar pedidos</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Recibir confirmaciones</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Consultar estados de entrega</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
                   Tengo un restaurante
                 </Button>
               </div>
             </div>
 
             {/* Tarjeta Domicilios */}
-            <div className="group relative bg-gradient-to-br from-orange-50 to-orange-100/40 rounded-3xl border-2 border-orange-300 p-8 overflow-hidden hover:border-orange-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-300/10 rounded-full blur-3xl"></div>
-              
+            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Smartphone className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Domicilios</h3>
-                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Domicilios</h3>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
                   Gestiona todo tu servicio de entregas automáticamente
                 </p>
-                <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 font-bold">•</span>
+                <ul className="space-y-3 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Solicitud de domicilios</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Cálculo de tarifas</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Notificación a domiciliarios</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Aceptación de servicios</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-orange-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Seguimiento del pedido</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
                   Tengo una empresa de domicilios
                 </Button>
               </div>
             </div>
 
             {/* Tarjeta Comercio */}
-            <div className="group relative bg-gradient-to-br from-purple-50 to-purple-100/40 rounded-3xl border-2 border-purple-300 p-8 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-300/10 rounded-full blur-3xl"></div>
-              
+            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
                   <Store className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Comercio</h3>
-                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Comercio</h3>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
                   Ideal para negocios que venden productos
                 </p>
-                <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">•</span>
+                <ul className="space-y-3 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Control de inventario</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Disponibilidad de productos</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Gestión de catálogo</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Recepción de pedidos</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">•</span>
+                  <li className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     <span>Atención automática</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
                   Tengo un comercio
                 </Button>
               </div>
