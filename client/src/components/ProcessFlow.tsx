@@ -81,54 +81,58 @@ const ProcessFlow: React.FC = () => {
 
         {/* Process Flow */}
         <div className="relative">
-          {/* Contenedor de pasos */}
-          <div className="flex justify-between items-stretch gap-3 mb-8">
+          {/* Contenedor de pasos con gap para flechas */}
+          <div className="flex justify-center items-start gap-8 mb-8 px-8">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex-1 relative flex flex-col">
-                {/* Card del paso */}
+              <div key={step.id} className="relative flex flex-col items-center">
+                {/* Card del paso - ESTRECHO */}
                 <div
-                  className={`rounded-xl p-4 transition-all duration-500 flex-1 flex flex-col ${step.bgColor} border-2`}
+                  className={`rounded-3xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    transform: activeStep === index ? 'scale(1.05)' : 'scale(1)',
+                    transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
+                    padding: activeStep === index ? '14px 10px' : '10px 8px',
+                    width: '90px',
+                    minHeight: activeStep === index ? 'auto' : '100px',
                     boxShadow:
                       activeStep === index
-                        ? `0 0 20px ${step.borderColor}40, inset 0 0 0 2px ${step.borderColor}`
+                        ? `0 0 25px ${step.borderColor}50, inset 0 0 0 2px ${step.borderColor}`
                         : 'none',
+                    zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
                   {/* Check en esquina superior derecha para pasos completados */}
                   {index < activeStep && (
-                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg">
+                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg z-20">
                       <CheckCircle2 className="w-4 h-4 text-white" />
                     </div>
                   )}
 
                   {/* Icono */}
                   <div
-                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-2 mx-auto transition-all duration-500`}
+                    className={`w-9 h-9 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-1.5 mx-auto transition-all duration-500`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
+                      transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
                     }}
                   >
                     {step.icon}
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0.5">
+                  <h3 className="text-xs font-bold text-center text-gray-900 mb-0.5 whitespace-nowrap leading-tight">
                     {step.title}
                   </h3>
 
                   {/* Subtítulo */}
-                  <p className="text-xs text-center text-gray-600 mb-2">
+                  <p className="text-xs text-center text-gray-600 mb-0 whitespace-nowrap leading-tight">
                     {step.subtitle}
                   </p>
 
                   {/* Viñetas - Solo se muestran cuando está activo */}
                   {activeStep === index && (
-                    <div className="space-y-1.5 mt-2 pt-2 border-t border-gray-300 animate-in fade-in duration-300">
+                    <div className="space-y-1 mt-2 pt-2 border-t border-gray-300 animate-in fade-in duration-300 w-full">
                       {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1.5">
+                        <div key={i} className="flex items-start gap-1">
                           <div className="flex-shrink-0 mt-0.5">
                             <svg
                               className="w-3 h-3 text-emerald-500"
@@ -151,9 +155,9 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Flecha dinámica (solo cuando está activo y no es el último) */}
+                {/* Flecha dinámica - Posicionada debajo del cuadro */}
                 {activeStep === index && index < steps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden md:flex z-10">
+                  <div className="mt-4 hidden md:flex">
                     <div className="animate-bounce">
                       <svg
                         className="w-5 h-5"
@@ -163,7 +167,7 @@ const ProcessFlow: React.FC = () => {
                       >
                         <path
                           fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                           clipRule="evenodd"
                         />
                       </svg>
