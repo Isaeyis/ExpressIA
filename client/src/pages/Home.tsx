@@ -119,7 +119,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -134,12 +134,13 @@ export default function Home() {
                 Mientras tú atiendes tu negocio Express IA responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8 py-6">
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8" style={{borderRadius: '8px', paddingBottom: '10px', paddingTop: '10px'}}>
                   Adquiere Express IA
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8 py-6"
+                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8"
+                  style={{borderRadius: '8px', paddingBottom: '10px', paddingTop: '10px'}}
                 >
                   Ver como funciona
                 </Button>
@@ -162,15 +163,15 @@ export default function Home() {
       </div>
 
       {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
-      <section className="py-16 md:py-24 bg-gray-100">
+      <section className="py-16 md:py-24 bg-gray-100" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              ¿Cuántas ventas estás perdiendo ahora mismo?
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{fontSize: '60px'}}>
+              ¿Cuántas ventas estás <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">perdiendo</span> ahora mismo?
             </h2>
-            <div className="inline-flex items-center gap-3 bg-red-100 text-red-700 px-8 py-4 rounded-full mb-6">
-              <span className="text-3xl font-bold" id="counter">$50</span>
-              <span className="text-lg font-semibold">en ventas perdidas esta sesión</span>
+            <div className="inline-flex items-center gap-3 px-8 py-4 mb-6" style={{backgroundColor: '#d4f2eb', borderRadius: '8px', border: '2px solid #00bca5'}}>
+              <span className="text-3xl font-bold" id="counter" style={{color: '#ef2a30'}}>$50</span>
+              <span className="text-lg font-semibold" style={{color: '#4d4d4d'}}>en ventas perdidas esta sesión</span>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Cada segundo que tu cliente espera una respuesta en WhatsApp es una oportunidad de venta que se va a la competencia.
@@ -231,7 +232,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Respuestas Inmediatas</p>
-                    <p className="text-sm text-teal-600 mt-0.5">Express IA responde al cliente en segundos, 24/7</p>
+                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5565'}}>Express IA responde al cliente en segundos, 24/7</p>
                   </div>
                 </div>
                 <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
@@ -240,7 +241,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Automatización Total</p>
-                    <p className="text-sm text-teal-600 mt-0.5">Procesa pedidos, agendas y consultas sin intervención humana</p>
+                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5565'}}>Procesa pedidos, agendas y consultas sin intervención humana</p>
                   </div>
                 </div>
                 <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
@@ -249,7 +250,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Operación Optimizada</p>
-                    <p className="text-sm text-teal-600 mt-0.5">Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
+                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5578'}}>Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
                   </div>
                 </div>
               </div>
