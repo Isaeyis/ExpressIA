@@ -141,55 +141,43 @@ export default function Home() {
       </div>
 
       {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              ¿Cuántas ventas estás perdiendo mientras tus clientes esperan una respuesta?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              Cada segundo que tu cliente espera una respuesta en WhatsApp, se convierte en una oportunidad de venta que se ve a la competencia.
-            </p>
-            <div className="inline-block bg-red-100 text-red-700 text-2xl font-bold px-8 py-4 rounded-full">
-              $313 en ventas perdidas esta sesión
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16">
+      <section className="py-16 md:py-24 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Sin Express IA - Left Column */}
             <div>
-              <div className="flex items-center gap-4 mb-10">
-                <div className="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span className="text-white text-3xl font-bold">✗</span>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900">Sin Express IA</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Sin Express IA</h3>
               </div>
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <User className="w-7 h-7 text-red-600" />
+              <div className="space-y-4">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">Cliente esperando</p>
-                    <p className="text-sm text-gray-600 mt-1">Sin respuesta automática</p>
+                    <p className="font-bold text-gray-900">Cliente esperando</p>
+                    <p className="text-sm text-gray-600 mt-0.5">El cliente escribe y nadie responde - Busca en otro lugar</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <MessageCircle className="w-7 h-7 text-red-600" />
+                <div className="bg-orange-50 border border-orange-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">WhatsApp saturado</p>
-                    <p className="text-sm text-gray-600 mt-1">Atención manual lenta</p>
+                    <p className="font-bold text-gray-900">WhatsApp saturado</p>
+                    <p className="text-sm text-gray-600 mt-0.5">Tu equipo dedica horas respondiendo las mismas preguntas</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <TrendingUp className="w-7 h-7 text-red-600" />
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">Ventas perdidas</p>
-                    <p className="text-sm text-gray-600 mt-1">Clientes van a la competencia</p>
+                    <p className="font-bold text-gray-900">Operación manual</p>
+                    <p className="text-sm text-gray-600 mt-0.5">La coordinación manual genera retrasos y es fácil cometer errores</p>
                   </div>
                 </div>
               </div>
@@ -197,38 +185,38 @@ export default function Home() {
 
             {/* Con Express IA - Right Column */}
             <div>
-              <div className="flex items-center gap-4 mb-10">
-                <div className="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span className="text-white text-3xl font-bold">✓</span>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-900">Con Express IA</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Con Express IA</h3>
               </div>
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <Zap className="w-7 h-7 text-emerald-600" />
+              <div className="space-y-4">
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">Respuesta inmediata</p>
-                    <p className="text-sm text-gray-600 mt-1">IA responde en segundos</p>
+                    <p className="font-bold text-teal-700">Respuestas Inmediatas</p>
+                    <p className="text-sm text-teal-600 mt-0.5">Express IA responde al cliente en segundos, 24/7</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <CheckCircle2 className="w-7 h-7 text-emerald-600" />
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">Automatización total</p>
-                    <p className="text-sm text-gray-600 mt-1">Procesos sin intervención</p>
+                    <p className="font-bold text-teal-700">Automatización Total</p>
+                    <p className="text-sm text-teal-600 mt-0.5">Procesa pedidos, agendas y consultas sin intervención humana</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <DollarSign className="w-7 h-7 text-emerald-600" />
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">Ventas aumentadas</p>
-                    <p className="text-sm text-gray-600 mt-1">Clientes satisfechos y leales</p>
+                    <p className="font-bold text-teal-700">Operación Optimizada</p>
+                    <p className="text-sm text-teal-600 mt-0.5">Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
                   </div>
                 </div>
               </div>
