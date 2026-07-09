@@ -84,17 +84,17 @@ const ProcessFlow: React.FC = () => {
           {/* Contenedor con 4 cuadritos - Mejor espaciado */}
           <div className="relative flex items-start justify-between gap-4 md:gap-6 mb-12">
             {steps.map((step, index) => (
-              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
+              <div className="relative flex-1 flex flex-col items-center min-w-0 max-w-xs">
                 {/* Check verde sobrepuesto - Justo encima de la esquina */}
                 {index < activeStep && (
                   <div 
-                    className="absolute -top-3 -right-3 z-50"
+                    className="absolute -top-2 -right-2 z-50"
                     style={{
                       animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
-                    <div className="bg-emerald-500 rounded-full p-1 shadow-lg border-2 border-white flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
+                    <div className="bg-emerald-500 rounded-full p-0.5 shadow-lg border-2 border-white flex items-center justify-center">
+                      <Check className="w-3 h-3 text-white stroke-[3]" />
                     </div>
                   </div>
                 )}
