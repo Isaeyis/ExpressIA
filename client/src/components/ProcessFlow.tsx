@@ -79,28 +79,69 @@ const ProcessFlow: React.FC = () => {
           </p>
         </div>
 
-        {/* Process Flow - Flex con mejor espaciado */}
+        {/* Process Flow */}
         <div className="relative mb-10">
-          <div className="flex justify-between items-center gap-4 md:gap-6">
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ top: '60px' }}>
+            {/* Líneas conectoras entre cuadritos */}
+            {steps.map((step, index) => {
+              if (index < steps.length - 1) {
+                const isActive = activeStep >= index;
+                const isCurrentOrPast = activeStep > index;
+                return (
+                  <g key={`line-${index}`}>
+                    {/* Línea base */}
+                    <line
+                      x1={`${(index + 0.5) * 25}%`}
+                      y1="0"
+                      x2={`${(index + 1.5) * 25}%`}
+                      y2="0"
+                      stroke={isCurrentOrPast ? steps[index].borderColor : '#d1d5db'}
+                      strokeWidth="2"
+                      style={{
+                        transition: 'stroke 0.5s ease-in-out',
+                        opacity: isCurrentOrPast ? 1 : 0.3,
+                      }}
+                    />
+                    {/* Círculo animado en la línea */}
+                    {isActive && (
+                      <circle
+                        cx={`${(index + 0.5 + (activeStep === index ? 0.5 : 1)) * 25}%`}
+                        cy="0"
+                        r="5"
+                        fill={steps[index].borderColor}
+                        style={{
+                          animation: activeStep === index ? `roll-${index} 4s ease-in-out infinite` : 'none',
+                        }}
+                      />
+                    )}
+                  </g>
+                );
+              }
+              return null;
+            })}
+          </svg>
+
+          <div className="flex justify-between items-center gap-2 md:gap-4 relative z-10">
             {steps.map((step, index) => (
-              <React.Fragment key={step.id}>
+              <div key={step.id} className="flex-1 flex flex-col items-center">
                 {/* Card del paso */}
                 <div
-                  className={`flex-1 rounded-2xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden relative`}
+                  className={`w-full rounded-2xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden relative`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
                     transform: activeStep === index ? 'scale(1.08)' : 'scale(1)',
-                    padding: activeStep === index ? '16px' : '12px',
+                    padding: activeStep === index ? '14px' : '12px',
                     boxShadow:
                       activeStep === index
                         ? `0 8px 24px ${step.borderColor}40`
                         : 'none',
+                    animation: activeStep === index ? `echo-${index} 2s ease-out infinite` : 'none',
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
                   {/* Check sobrepuesto en esquina superior derecha */}
                   {index < activeStep && (
-                    <div className="absolute -top-3 -right-3 bg-emerald-500 rounded-full p-1 shadow-lg z-20 border-2 border-white">
+                    <div className="absolute -top-3 -right-3 bg-emerald-500 rounded-full p-1 shadow-lg z-30 border-2 border-white">
                       <CheckCircle2 className="w-5 h-5 text-white" />
                     </div>
                   )}
@@ -127,7 +168,7 @@ const ProcessFlow: React.FC = () => {
 
                   {/* Viñetas - Solo se muestran cuando está activo */}
                   {activeStep === index && (
-                    <div className="space-y-2 mt-3 pt-3 border-t border-gray-300 animate-in fade-in duration-300">
+                    <div className="space-y-2 mt-3 animate-in fade-in duration-300">
                       {step.bullets.map((bullet, i) => (
                         <div key={i} className="flex items-start gap-1.5">
                           <div className="flex-shrink-0 mt-0.5">
@@ -151,37 +192,12 @@ const ProcessFlow: React.FC = () => {
                     </div>
                   )}
                 </div>
-
-                {/* Flecha horizontal entre cuadritos */}
-                {index < steps.length - 1 && (
-                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
-                    <div
-                      className="animate-pulse"
-                      style={{
-                        color: activeStep === index ? steps[index].borderColor : '#d1d5db',
-                        transition: 'color 0.5s ease-in-out',
-                      }}
-                    >
-                      <svg
-                        className="w-6 h-6 md:w-8 md:h-8"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
+              </div>
             ))}
           </div>
 
           {/* Barra de progreso animada */}
-          <div className="relative h-1 bg-gray-200 rounded-full overflow-hidden mt-8">
+          <div className="relative h-1 bg-gray-200 rounded-full overflow-hidden mt-12">
             <div
               className="h-full transition-all duration-500 rounded-full"
               style={{
@@ -192,6 +208,53 @@ const ProcessFlow: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes echo-0 {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+          }
+        }
+        @keyframes echo-1 {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
+          }
+        }
+        @keyframes echo-2 {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
+          }
+        }
+        @keyframes echo-3 {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+          }
+        }
+        @keyframes roll-0 {
+          0% { cx: 12.5%; }
+          100% { cx: 37.5%; }
+        }
+        @keyframes roll-1 {
+          0% { cx: 37.5%; }
+          100% { cx: 62.5%; }
+        }
+        @keyframes roll-2 {
+          0% { cx: 62.5%; }
+          100% { cx: 87.5%; }
+        }
+      `}</style>
     </section>
   );
 };
