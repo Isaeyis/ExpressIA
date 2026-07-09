@@ -69,18 +69,18 @@ export default function DynamicWhatsAppChat() {
 
     const timeouts: NodeJS.Timeout[] = [];
 
-    // Mostrar cada mensaje con delay progresivo
+    // Mostrar cada mensaje con delay progresivo (1200ms entre mensajes)
     CHAT_FLOW.forEach((msg, index) => {
       const timeout = setTimeout(() => {
         setVisibleMessages((prev) => [...prev, msg.id]);
-      }, index * 800); // 800ms entre mensajes
+      }, index * 1200); // 1200ms entre mensajes (más lento)
       timeouts.push(timeout);
     });
 
-    // Resetear después de que todos los mensajes se muestren
+    // Resetear después de que todos los mensajes se muestren (sin pausa, loop inmediato)
     const resetTimeout = setTimeout(() => {
       setVisibleMessages([]);
-    }, CHAT_FLOW.length * 800 + 3000);
+    }, CHAT_FLOW.length * 1200); // Loop inmediato sin pausa
     timeouts.push(resetTimeout);
 
     return () => {
@@ -128,7 +128,7 @@ export default function DynamicWhatsAppChat() {
             />
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-xs">Tiffanys Shop</h3>
+              <h3 className="font-bold text-gray-900 text-xs">ExpressIA</h3>
               <p className="text-xs text-gray-500">online</p>
             </div>
             <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">⋮</button>
