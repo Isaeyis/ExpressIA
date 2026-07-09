@@ -263,6 +263,151 @@ export default function Home() {
       {/* Redesigned What is Express IA - Flow Diagram */}
       <ProcessFlow />
 
+      {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
+      <section className="py-20 md:py-40 relative overflow-hidden" style={{
+        background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #0891b2 100%)',
+        position: 'relative',
+        minHeight: '600px'
+      }}>
+        {/* Elementos decorativos de fondo animados */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/15 rounded-full blur-3xl" style={{
+            animation: 'float 6s ease-in-out infinite'
+          }}></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/15 rounded-full blur-3xl" style={{
+            animation: 'float 8s ease-in-out infinite reverse'
+          }}></div>
+          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-yellow-300/10 rounded-full blur-3xl" style={{
+            animation: 'pulse 4s ease-in-out infinite'
+          }}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Contenedor principal */}
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left: Text and CTA */}
+            <div className="text-white">
+              <div className="inline-block mb-8 animate-bounce">
+                <span className="bg-white/25 backdrop-blur-md px-6 py-3 rounded-full text-sm font-bold text-white border border-white/40 shadow-lg">🎁 OFERTA LIMITADA</span>
+              </div>
+              <h2 className="text-6xl md:text-7xl font-black mb-8 leading-tight" style={{
+                textShadow: '0 4px 20px rgba(0,0,0,0.2)'
+              }}>
+                Obtén Express IA y <span className="bg-gradient-to-r from-yellow-200 via-yellow-100 to-orange-200 bg-clip-text text-transparent">te regalamos un Marketplace</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-white/95 mb-10 leading-relaxed font-medium">
+                Automatiza tu WhatsApp + Acceso a nuestro marketplace de integraciones premium. Todo en uno para potenciar tu negocio.
+              </p>
+              
+              {/* Beneficios rápidos */}
+              <div className="space-y-3 mb-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-yellow-300 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <span className="text-white font-semibold">+50 integraciones premium</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-yellow-300 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <span className="text-white font-semibold">Soporte prioritario 24/7</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-yellow-300 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <span className="text-white font-semibold">Actualizaciones gratis por 1 año</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button className="bg-white text-emerald-600 hover:bg-yellow-100 text-lg px-10 py-5 font-black shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '14px'}}>
+                  🚀 Reclamar Oferta Ahora
+                </Button>
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white/20 text-lg px-10 py-5 font-bold" style={{borderRadius: '14px'}}>
+                  Ver Detalles →
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: Visual showcase con cards flotantes */}
+            <div className="relative h-96 md:h-full flex items-center justify-center">
+              <div className="relative w-full">
+                {/* Marketplace card showcase */}
+                <div className="space-y-5">
+                  {/* Card 1 - Integraciones */}
+                  <div className="bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl p-7 transform hover:scale-110 transition-all duration-300 cursor-pointer shadow-2xl" style={{
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.2)',
+                    animation: 'slideInRight 0.8s ease-out'
+                  }}>
+                    <div className="flex items-center gap-5">
+                      <div className="w-16 h-16 bg-gradient-to-br from-purple-300 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <Store className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-black text-white text-xl">Integraciones Premium</p>
+                        <p className="text-white/80 text-sm font-semibold">+50 herramientas disponibles</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 2 - Automatizaciones */}
+                  <div className="bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl p-7 transform hover:scale-110 transition-all duration-300 cursor-pointer shadow-2xl ml-8" style={{
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.2)',
+                    animation: 'slideInRight 1s ease-out'
+                  }}>
+                    <div className="flex items-center gap-5">
+                      <div className="w-16 h-16 bg-gradient-to-br from-pink-300 to-pink-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <Zap className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-black text-white text-xl">Automatizaciones</p>
+                        <p className="text-white/80 text-sm font-semibold">Flujos listos para usar</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 3 - Soporte */}
+                  <div className="bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl p-7 transform hover:scale-110 transition-all duration-300 cursor-pointer shadow-2xl" style={{
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.2)',
+                    animation: 'slideInRight 1.2s ease-out'
+                  }}>
+                    <div className="flex items-center gap-5">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <CheckCircle2 className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-black text-white text-xl">Soporte Prioritario</p>
+                        <p className="text-white/80 text-sm font-semibold">Equipo dedicado 24/7</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Estilos de animación */}
+        <style>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+          }
+          @keyframes slideInRight {
+            from {
+              opacity: 0;
+              transform: translateX(50px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+        `}</style>
+      </section>
+
       {/* Express IA para tu negocio */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
