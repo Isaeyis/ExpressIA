@@ -22,6 +22,7 @@ import {
   User,
 } from "lucide-react";
 import { useState } from "react";
+import React from "react";
 
 function Button({ children, className = "", variant = "default", ...props }: { children: React.ReactNode; className?: string; variant?: "default" | "outline"; [key: string]: any }) {
   const baseStyles = "font-medium rounded-lg transition-colors px-6 py-3";
@@ -38,6 +39,23 @@ function Button({ children, className = "", variant = "default", ...props }: { c
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [counter, setCounter] = useState(50);
+
+  // Efecto para incrementar el contador
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter(prev => prev + Math.floor(Math.random() * 5) + 1);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Actualizar el DOM del contador
+  React.useEffect(() => {
+    const counterEl = document.getElementById('counter');
+    if (counterEl) {
+      counterEl.textContent = `$${counter}`;
+    }
+  }, [counter]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -109,18 +127,21 @@ export default function Home() {
                 Tu empleado digital que atiende, vende y opera{" "}
                 <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">24/7</span>
               </h1>
+              <p className="text-lg font-semibold text-emerald-600 mb-4">
+                Nunca vuelvas a perder una venta por no responder un WhatsApp.
+              </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Inteligencia artificial para negocios que crecen más rápido y automatizan su operación en WhatsApp
+                Mientras tú atiendes tu negocio Express IA responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8 py-6">
-                  Adquirir Express IA
+                  Adquiere Express IA
                 </Button>
                 <Button
                   variant="outline"
                   className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8 py-6"
                 >
-                  Ver Demo
+                  Ver como funciona
                 </Button>
               </div>
             </div>
@@ -143,6 +164,18 @@ export default function Home() {
       {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
       <section className="py-16 md:py-24 bg-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              ¿Cuántas ventas estás perdiendo ahora mismo?
+            </h2>
+            <div className="inline-flex items-center gap-3 bg-red-100 text-red-700 px-8 py-4 rounded-full mb-6">
+              <span className="text-3xl font-bold" id="counter">$50</span>
+              <span className="text-lg font-semibold">en ventas perdidas esta sesión</span>
+            </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Cada segundo que tu cliente espera una respuesta en WhatsApp es una oportunidad de venta que se va a la competencia.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {/* Sin Express IA - Left Column */}
             <div>
