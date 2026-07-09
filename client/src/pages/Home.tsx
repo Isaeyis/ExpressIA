@@ -264,7 +264,7 @@ export default function Home() {
       <ProcessFlow />
 
       {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
-      <section className="py-16 md:py-20 relative overflow-hidden" style={{
+      <section className="py-12 md:py-16 relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 50%, #fafafa 100%)'
       }}>
         {/* Elementos decorativos sutiles */}
@@ -273,76 +273,140 @@ export default function Home() {
           <div className="absolute -bottom-40 left-1/3 w-72 h-72 bg-emerald-100/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Título compacto */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
-              Obtén Express IA y <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">te regalamos un Marketplace</span>
-            </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              +50 integraciones, automatizaciones y soporte prioritario
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Layout: Contenido a la izquierda, imagen 3D a la derecha */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Contenido izquierdo */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Obtén Express IA y <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">te regalamos un Marketplace</span>
+              </h2>
+              <p className="text-lg text-gray-700 mb-8">
+                +50 integraciones, automatizaciones y soporte prioritario
+              </p>
 
-          {/* Grid de 3 elementos - Compacto y eficiente */}
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {/* Elemento 1 */}
-            <div className="group relative bg-white/40 backdrop-blur-md rounded-2xl border border-emerald-200/30 p-8 overflow-hidden hover:border-emerald-300/60 transition-all duration-300 hover:bg-white/60">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-300/5 rounded-full blur-2xl"></div>
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Store className="w-6 h-6 text-white" />
+              {/* Grid de 3 elementos - Compacto */}
+              <div className="space-y-4 mb-8">
+                {/* Elemento 1 */}
+                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-emerald-200/30 p-4 overflow-hidden hover:border-emerald-300/60 transition-all duration-300 hover:bg-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-emerald-300/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10 flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
+                      <Store className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">+50 Integraciones</h3>
+                      <p className="text-sm text-gray-700">CRM, pagos, redes sociales, email y más</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">+50 Integraciones</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Conecta todas tus herramientas favoritas: CRM, pagos, redes sociales, email y más.
-                </p>
+
+                {/* Elemento 2 */}
+                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-cyan-200/30 p-4 overflow-hidden hover:border-cyan-300/60 transition-all duration-300 hover:bg-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-cyan-300/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10 flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Automatizaciones Listas</h3>
+                      <p className="text-sm text-gray-700">Implementa en minutos sin programación</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Elemento 3 */}
+                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-teal-200/30 p-4 overflow-hidden hover:border-teal-300/60 transition-all duration-300 hover:bg-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-teal-300/5 rounded-full blur-2xl"></div>
+                  
+                  <div className="relative z-10 flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
+                      <Users className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 mb-1">Soporte 24/7</h3>
+                      <p className="text-sm text-gray-700">Equipo experto disponible siempre</p>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              {/* CTA */}
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+                Reclamar Marketplace
+              </Button>
             </div>
 
-            {/* Elemento 2 */}
-            <div className="group relative bg-white/40 backdrop-blur-md rounded-2xl border border-cyan-200/30 p-8 overflow-hidden hover:border-cyan-300/60 transition-all duration-300 hover:bg-white/60">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-300/5 rounded-full blur-2xl"></div>
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-6 h-6 text-white" />
+            {/* Imagen 3D a la derecha - Marketplace en celular */}
+            <div className="hidden md:flex justify-center items-center relative h-96">
+              <div className="relative w-full max-w-sm" style={{
+                perspective: '1200px',
+                animation: 'float-3d 4s ease-in-out infinite'
+              }}>
+                {/* Celular con marketplace */}
+                <div className="relative mx-auto w-64 bg-black rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900" style={{
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
+                }}>
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-50"></div>
+                  
+                  {/* Pantalla */}
+                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 pt-8">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-sm font-bold text-gray-900">Marketplace</h3>
+                      <div className="w-6 h-6 bg-emerald-500 rounded-full"></div>
+                    </div>
+                    
+                    {/* Cards en el marketplace */}
+                    <div className="space-y-3">
+                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="flex gap-2 mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg"></div>
+                          <div className="flex-1">
+                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
+                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="flex gap-2 mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg"></div>
+                          <div className="flex-1">
+                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
+                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="flex gap-2 mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg"></div>
+                          <div className="flex-1">
+                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
+                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Automatizaciones Listas</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Flujos pre-configurados que implementas en minutos sin programación.
-                </p>
               </div>
             </div>
-
-            {/* Elemento 3 */}
-            <div className="group relative bg-white/40 backdrop-blur-md rounded-2xl border border-teal-200/30 p-8 overflow-hidden hover:border-teal-300/60 transition-all duration-300 hover:bg-white/60">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-300/5 rounded-full blur-2xl"></div>
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Soporte 24/7</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Equipo experto disponible en todo momento para ayudarte.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA - Compacto y directo */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
-              Reclamar Marketplace
-            </Button>
-            <p className="text-sm text-gray-600">Sin tarjeta de crédito • Acceso instantáneo</p>
           </div>
         </div>
+
+        {/* Estilos de animación */}
+        <style>{`
+          @keyframes float-3d {
+            0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
+            50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
+          }
+        `}</style>
       </section>
 
       {/* Express IA para tu negocio */}
