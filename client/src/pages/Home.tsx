@@ -265,133 +265,106 @@ export default function Home() {
 
       {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
       <section className="py-20 md:py-32 bg-white relative overflow-hidden" style={{backgroundColor: '#fafafa'}}>
-        {/* Elementos decorativos de fondo */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-100/30 rounded-full blur-3xl"></div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Contenedor principal con layout asimétrico */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            {/* Left: Contenido principal */}
-            <div>
-              <div className="inline-flex items-center gap-2 mb-6 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-200">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-emerald-700">OFERTA EXCLUSIVA</span>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
-                Obtén Express IA y <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">te regalamos un Marketplace</span>
-              </h2>
-              <p className="text-xl text-gray-700 mb-8 leading-relaxed font-medium">
-                Acceso instantáneo a +50 integraciones premium, automatizaciones listas para usar y soporte prioritario 24/7. Todo lo que necesitas para escalar tu negocio.
-              </p>
-              
-              {/* Beneficios con iconos */}
-              <div className="space-y-4 mb-10">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle2 className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900">+50 Integraciones Premium</p>
-                    <p className="text-gray-600 text-sm">Conecta con todas tus herramientas favoritas</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900">Automatizaciones Listas</p>
-                    <p className="text-gray-600 text-sm">Implementa en minutos sin configuración compleja</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900">Soporte 24/7 Prioritario</p>
-                    <p className="text-gray-600 text-sm">Equipo experto siempre disponible para ayudarte</p>
-                  </div>
-                </div>
-              </div>
-
-              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-lg px-10 py-4 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all" style={{borderRadius: '12px'}}>
-                Reclamar Oferta Ahora
-              </Button>
-              <p className="text-gray-600 text-sm mt-4">Sin tarjeta de crédito. Acceso instantáneo.</p>
+          {/* Título principal centrado */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-6 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-200">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-emerald-700">OFERTA EXCLUSIVA</span>
             </div>
+            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight max-w-3xl mx-auto">
+              Obtén Express IA y <span className="text-emerald-600">te regalamos un Marketplace</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Acceso instantáneo a +50 integraciones premium, automatizaciones y soporte prioritario
+            </p>
+          </div>
 
-            {/* Right: Elementos visuales gráficos */}
-            <div className="relative h-96 flex items-center justify-center">
-              {/* Card flotante principal */}
-              <div className="absolute w-full max-w-sm" style={{
-                animation: 'float-main 4s ease-in-out infinite'
+          {/* Contenedor con layout en cascada */}
+          <div className="relative">
+            {/* Fila 1 - 2 cards */}
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* Card 1 - Grande */}
+              <div className="md:col-span-1 group relative bg-white rounded-3xl border-2 border-gray-200 p-10 hover:border-emerald-300 transition-all duration-500 overflow-hidden" style={{
+                boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                animation: 'slide-up 0.8s ease-out'
               }}>
-                <div className="bg-white rounded-3xl border-2 border-emerald-200 p-8 shadow-2xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100/50 rounded-full -mr-16 -mt-16"></div>
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-100/50 rounded-full -ml-12 -mb-12"></div>
-                  
-                  <div className="relative z-10 space-y-6">
-                    <div className="flex items-center gap-4 bg-emerald-50 p-4 rounded-2xl">
-                      <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Store className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900 text-sm">Integraciones</p>
-                        <p className="text-gray-600 text-xs">+50 herramientas</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 bg-cyan-50 p-4 rounded-2xl">
-                      <div className="w-12 h-12 bg-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Zap className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900 text-sm">Automatizaciones</p>
-                        <p className="text-gray-600 text-xs">Listos para usar</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 bg-teal-50 p-4 rounded-2xl">
-                      <div className="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900 text-sm">Soporte 24/7</p>
-                        <p className="text-gray-600 text-xs">Prioritario</p>
-                      </div>
-                    </div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-100/20 rounded-full -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Store className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">+50 Integraciones</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">Conecta con todas tus herramientas favoritas. Desde CRM hasta sistemas de pago, todo integrado en un solo lugar.</p>
+                  <div className="flex items-center text-emerald-600 font-bold group-hover:gap-3 gap-2 transition-all duration-300">
+                    <span>Explorar</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
               </div>
 
-              {/* Elementos decorativos flotantes */}
-              <div className="absolute top-10 right-10 w-20 h-20 bg-emerald-200/40 rounded-2xl" style={{
-                animation: 'rotate-slow 8s linear infinite'
-              }}></div>
-              <div className="absolute bottom-20 left-10 w-16 h-16 bg-cyan-200/40 rounded-full" style={{
-                animation: 'pulse-slow 3s ease-in-out infinite'
-              }}></div>
+              {/* Card 2 - Grande */}
+              <div className="md:col-span-1 group relative bg-white rounded-3xl border-2 border-gray-200 p-10 hover:border-cyan-300 transition-all duration-500 overflow-hidden" style={{
+                boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                animation: 'slide-up 0.8s ease-out 0.1s both'
+              }}>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-100/20 rounded-full -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Automatizaciones Listas</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">Flujos pre-configurados para implementar en minutos. Sin necesidad de programación, solo configura y listo.</p>
+                  <div className="flex items-center text-cyan-600 font-bold group-hover:gap-3 gap-2 transition-all duration-300">
+                    <span>Descubrir</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </div>
             </div>
+
+            {/* Fila 2 - 1 card centrada */}
+            <div className="flex justify-center">
+              <div className="md:max-w-md w-full group relative bg-white rounded-3xl border-2 border-gray-200 p-10 hover:border-teal-300 transition-all duration-500 overflow-hidden" style={{
+                boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                animation: 'slide-up 0.8s ease-out 0.2s both'
+              }}>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-teal-100/20 rounded-full -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-500"></div>
+                <div className="relative z-10 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Soporte 24/7 Prioritario</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">Equipo experto disponible en todo momento para resolver tus dudas y optimizar tu experiencia.</p>
+                  <div className="flex items-center justify-center text-teal-600 font-bold group-hover:gap-3 gap-2 transition-all duration-300">
+                    <span>Contactar</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Principal */}
+          <div className="text-center mt-16">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-lg px-14 py-5 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all" style={{borderRadius: '14px'}}>
+              Reclamar Oferta Ahora
+            </Button>
+            <p className="text-gray-600 text-sm mt-4">Sin tarjeta de crédito. Acceso instantáneo.</p>
           </div>
         </div>
 
         {/* Estilos de animación */}
         <style>{`
-          @keyframes float-main {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-          }
-          @keyframes rotate-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+          @keyframes slide-up {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         `}</style>
       </section>
