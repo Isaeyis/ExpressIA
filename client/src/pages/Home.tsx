@@ -95,14 +95,14 @@ export default function Home() {
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Tu empleado digital que atiende, vende y opera{" "}
-                <span className="text-emerald-500">24/7</span>
+                <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">24/7</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Inteligencia artificial para negocios que crecen más rápido y automatizan su operación en WhatsApp
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8 py-6">
-                  Agendar Llamada
+                  Adquirir Express IA
                 </Button>
                 <Button
                   variant="outline"
@@ -122,8 +122,8 @@ export default function Home() {
       {/* Transition Band */}
       <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Automatiza tu WhatsApp
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white" style={{fontSize: '23px', fontWeight: '600'}}>
+            ⚡︎ Automatización 24/7 · WhatsApp Business · Automatiza tu WhatsApp · Inteligencia Artificial ⚡︎
           </h2>
         </div>
       </div>

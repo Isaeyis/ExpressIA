@@ -107,7 +107,7 @@ export default function DynamicWhatsAppChat() {
           style={{ inset: "10px" }}
         >
           {/* Status Bar - WhatsApp style */}
-          <div className="bg-white px-3 py-1.5 flex justify-between items-center text-xs font-medium text-gray-900 border-b border-gray-100">
+          <div className="bg-white px-3 py-1.5 flex justify-between items-center text-xs font-medium text-gray-900 border-b border-gray-100" style={{backgroundColor: '#6e6e6e'}}>
             <span className="text-xs">11:19</span>
             <div className="flex gap-0.5 text-xs">
               <span>📶</span>
@@ -117,19 +117,19 @@ export default function DynamicWhatsAppChat() {
           </div>
 
           {/* Chat Header - WhatsApp style */}
-          <div className="bg-white px-3 py-2.5 flex items-center gap-2.5 border-b border-gray-100 flex-shrink-0">
+          <div className="bg-white px-3 py-2.5 flex items-center gap-2.5 border-b border-gray-100 flex-shrink-0" style={{backgroundColor: '#171717'}}>
             <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">←</button>
             
             {/* Logo de Express IA */}
             <img 
               src="/assets/logo.png" 
               alt="Express IA" 
-              className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+              className="w-8 h-8 rounded-full object-cover flex-shrink-0" style={{backgroundColor: '#fcfcfc'}}
             />
             
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-xs">ExpressIA</h3>
-              <p className="text-xs text-gray-500">online</p>
+              <h3 className="font-bold text-gray-900 text-xs" style={{color: '#ffffff'}}>ExpressIA</h3>
+              <p className="text-xs text-gray-500" style={{color: '#b0b0b0'}}>En linea</p>
             </div>
             <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">⋮</button>
           </div>
