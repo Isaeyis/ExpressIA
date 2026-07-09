@@ -89,53 +89,59 @@ export default function DynamicWhatsAppChat() {
   }, [isLooping]);
 
   return (
-    <div className="w-full max-w-sm mx-auto">
-      {/* iPhone Frame */}
+    <div className="w-full max-w-xs mx-auto">
+      {/* iPhone Frame - Más pequeño */}
       <div
-        className="relative bg-black rounded-[3rem] overflow-hidden shadow-2xl"
+        className="relative bg-black rounded-[2.5rem] overflow-hidden shadow-xl"
         style={{
           aspectRatio: "9/19.5",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
+          boxShadow: "0 15px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
         }}
       >
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-20" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
 
         {/* Screen Container */}
         <div
-          className="absolute inset-0 bg-white rounded-[3rem] overflow-hidden flex flex-col"
-          style={{ inset: "12px" }}
+          className="absolute inset-0 bg-white rounded-[2.5rem] overflow-hidden flex flex-col"
+          style={{ inset: "10px" }}
         >
-          {/* Status Bar */}
-          <div className="bg-white px-4 py-2 flex justify-between items-center text-xs font-semibold text-gray-900 border-b border-gray-200">
-            <span>11:19</span>
-            <div className="flex gap-0.5 text-sm">
+          {/* Status Bar - WhatsApp style */}
+          <div className="bg-white px-3 py-1.5 flex justify-between items-center text-xs font-medium text-gray-900 border-b border-gray-100">
+            <span className="text-xs">11:19</span>
+            <div className="flex gap-0.5 text-xs">
               <span>📶</span>
               <span>📡</span>
               <span>🔋</span>
             </div>
           </div>
 
-          {/* Chat Header */}
-          <div className="bg-white px-4 py-3 flex items-center gap-3 border-b border-gray-200 flex-shrink-0">
-            <button className="text-gray-600 text-lg hover:bg-gray-100 p-1 rounded">←</button>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-lg">
-              ⚡
-            </div>
+          {/* Chat Header - WhatsApp style */}
+          <div className="bg-white px-3 py-2.5 flex items-center gap-2.5 border-b border-gray-100 flex-shrink-0">
+            <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">←</button>
+            
+            {/* Logo de Express IA */}
+            <img 
+              src="/assets/logo.png" 
+              alt="Express IA" 
+              className="w-8 h-8 rounded-full object-cover flex-shrink-0"
+            />
+            
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-sm">Tiffanys Shop</h3>
+              <h3 className="font-bold text-gray-900 text-xs">Tiffanys Shop</h3>
               <p className="text-xs text-gray-500">online</p>
             </div>
-            <button className="text-gray-600 text-lg hover:bg-gray-100 p-1 rounded">⋮</button>
+            <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">⋮</button>
           </div>
 
-          {/* Chat Messages Area with Scroll */}
+          {/* Chat Messages Area with Scroll - WhatsApp style */}
           <div
             ref={scrollContainerRef}
-            className="flex-1 overflow-y-auto bg-gray-50 px-3 py-4 space-y-3 scroll-smooth"
+            className="flex-1 overflow-y-auto bg-white px-2.5 py-3 space-y-2 scroll-smooth"
             style={{
               scrollBehavior: "smooth",
               WebkitOverflowScrolling: "touch",
+              backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"><defs><pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"%23ffffff\" /><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\" /></svg>')",
             }}
           >
             {visibleMessages.map((msgId) => {
@@ -147,23 +153,23 @@ export default function DynamicWhatsAppChat() {
               return (
                 <div
                   key={msgId}
-                  className={`flex ${isReceived ? "justify-start" : "justify-end"} animate-in fade-in slide-in-from-bottom-2 duration-300`}
+                  className={`flex ${isReceived ? "justify-start" : "justify-end"} animate-in fade-in slide-in-from-bottom-1 duration-300`}
                 >
                   <div
-                    className={`max-w-xs px-3 py-2.5 rounded-2xl text-sm leading-relaxed break-words ${
+                    className={`max-w-xs px-2.5 py-1.5 rounded-lg text-xs leading-relaxed break-words ${
                       isReceived
-                        ? "bg-white text-gray-900 border border-gray-200 rounded-bl-none shadow-sm"
-                        : "bg-green-500 text-white rounded-br-none shadow-sm"
+                        ? "bg-gray-200 text-gray-900 rounded-bl-none"
+                        : "bg-green-500 text-white rounded-br-none"
                     }`}
                   >
                     <div className="whitespace-pre-wrap">{msg.text}</div>
                     <div
-                      className={`text-xs mt-1.5 flex items-center gap-1 ${
-                        isReceived ? "text-gray-500" : "text-green-100"
+                      className={`text-xs mt-1 flex items-center gap-0.5 justify-end ${
+                        isReceived ? "text-gray-600" : "text-green-100"
                       }`}
                     >
-                      {msg.timestamp}
-                      {!isReceived && <span>✓✓</span>}
+                      <span className="text-xs">{msg.timestamp}</span>
+                      {!isReceived && <span className="text-xs">✓✓</span>}
                     </div>
                   </div>
                 </div>
@@ -171,33 +177,33 @@ export default function DynamicWhatsAppChat() {
             })}
           </div>
 
-          {/* Input Bar */}
-          <div className="bg-white px-3 py-3 flex items-center gap-2 border-t border-gray-200 flex-shrink-0">
-            <button className="text-teal-600 text-xl hover:bg-gray-100 p-1 rounded">+</button>
+          {/* Input Bar - WhatsApp style */}
+          <div className="bg-white px-2.5 py-2 flex items-center gap-1.5 border-t border-gray-100 flex-shrink-0">
+            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">+</button>
             <input
               type="text"
               placeholder="Mensaje"
-              className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-xs outline-none"
+              className="flex-1 bg-gray-100 rounded-full px-3 py-1.5 text-xs outline-none"
               disabled
             />
-            <button className="text-teal-600 text-lg hover:bg-gray-100 p-1 rounded">📎</button>
-            <button className="text-teal-600 text-lg hover:bg-gray-100 p-1 rounded">📷</button>
-            <button className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white text-lg hover:bg-teal-700">
+            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">📎</button>
+            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">📷</button>
+            <button className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs hover:bg-green-600">
               🎤
             </button>
           </div>
         </div>
 
         {/* Side Bezels */}
-        <div className="absolute left-0 top-12 bottom-12 w-1.5 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
-        <div className="absolute right-0 top-12 bottom-12 w-1.5 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
+        <div className="absolute left-0 top-10 bottom-10 w-1 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
+        <div className="absolute right-0 top-10 bottom-10 w-1 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
 
         {/* Volume Buttons */}
-        <div className="absolute -left-0.5 top-28 w-1 h-10 bg-gray-700 rounded-l" />
-        <div className="absolute -left-0.5 top-44 w-1 h-10 bg-gray-700 rounded-l" />
+        <div className="absolute -left-0.5 top-24 w-0.5 h-8 bg-gray-700 rounded-l" />
+        <div className="absolute -left-0.5 top-36 w-0.5 h-8 bg-gray-700 rounded-l" />
 
         {/* Power Button */}
-        <div className="absolute -right-0.5 top-36 w-1 h-14 bg-gray-600 rounded-r" />
+        <div className="absolute -right-0.5 top-32 w-0.5 h-10 bg-gray-600 rounded-r" />
       </div>
     </div>
   );
