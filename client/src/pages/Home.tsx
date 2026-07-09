@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import WhatsAppChat from "@/components/WhatsAppChat";
 import {
   MessageCircle,
   Users,
@@ -112,11 +113,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex justify-center">
-              <img
-                src="/manus-storage/hero-chat_0d3c9157.gif"
-                alt="Express IA WhatsApp Automation Demo"
-                className="w-full max-w-sm rounded-3xl shadow-2xl border-8 border-gray-900"
-              />
+              <WhatsAppChat />
             </div>
           </div>
         </div>
