@@ -281,20 +281,18 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold mb-2 leading-tight">
                 <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Obtén Express IA</span>
               </h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight" style={{color: '#8a8a8a'}}>
                 y te regalamos una Vitrina Digital
               </h3>
               <p className="text-sm text-gray-600 mb-2 leading-relaxed">
                 Soluciones integrables adaptadas a tu negocio
               </p>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Cuando adquieras Express IA recibirás acceso completo a tu vitrina digital personalizada. Exhibe tus productos 100% con tus colores y logo, gestión de inventario en tiempo real y sincronización automática sin depender de plataformas externas.
-              </p>
+
 
               {/* Grid de 4 elementos - 2x2 Dinámico */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Elemento 1 - Tienda Digital */}
-                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Store className="w-6 h-6 text-white" />
@@ -305,7 +303,7 @@ export default function Home() {
                 </div>
 
                 {/* Elemento 2 - Sincronización */}
-                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
                     <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Zap className="w-6 h-6 text-white" />
@@ -316,7 +314,7 @@ export default function Home() {
                 </div>
 
                 {/* Elemento 3 - Inventario */}
-                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
                     <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Users className="w-6 h-6 text-white" />
@@ -327,7 +325,7 @@ export default function Home() {
                 </div>
 
                 {/* Elemento 4 - Carga Masiva */}
-                <div className="group relative bg-white rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
                   <div className="relative z-10">
                     <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
                       <Zap className="w-6 h-6 text-white" />
