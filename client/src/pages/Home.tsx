@@ -265,7 +265,7 @@ export default function Home() {
 
       {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
       <section className="py-12 md:py-16 relative overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 50%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
+        background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 30%, #c6f6d5 50%, #f0fdf4 70%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
       }}>
         {/* Elementos decorativos sutiles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -420,24 +420,135 @@ export default function Home() {
       {/* Express IA para tu negocio */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Express IA para tu negocio
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: ShoppingCart, title: "Restaurantes", desc: "Gestiona pedidos automáticamente" },
-              { icon: Store, title: "Comercios", desc: "Atiende clientes 24/7" },
-              { icon: Smartphone, title: "Domicilios", desc: "Automatiza entregas" },
-            ].map((item, i) => (
-              <Card key={i} className="p-8 text-center shadow-md border-0 bg-gray-50">
-                <item.icon className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </Card>
-            ))}
+            {/* Tarjeta Restaurantes */}
+            <div className="group relative bg-gradient-to-br from-red-50 to-red-100/40 rounded-3xl border-2 border-red-300 p-8 overflow-hidden hover:border-red-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-red-300/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                  <ShoppingCart className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Restaurantes</h3>
+                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                  Convierte WhatsApp en un nuevo canal de ventas
+                </p>
+                <ul className="space-y-2 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 font-bold">•</span>
+                    <span>Consultar el menú</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 font-bold">•</span>
+                    <span>Preguntar por productos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 font-bold">•</span>
+                    <span>Realizar pedidos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 font-bold">•</span>
+                    <span>Recibir confirmaciones</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 font-bold">•</span>
+                    <span>Consultar estados de entrega</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                  Tengo un restaurante
+                </Button>
+              </div>
+            </div>
+
+            {/* Tarjeta Domicilios */}
+            <div className="group relative bg-gradient-to-br from-orange-50 to-orange-100/40 rounded-3xl border-2 border-orange-300 p-8 overflow-hidden hover:border-orange-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-orange-300/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                  <Smartphone className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Domicilios</h3>
+                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                  Gestiona todo tu servicio de entregas automáticamente
+                </p>
+                <ul className="space-y-2 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 font-bold">•</span>
+                    <span>Solicitud de domicilios</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 font-bold">•</span>
+                    <span>Cálculo de tarifas</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 font-bold">•</span>
+                    <span>Notificación a domiciliarios</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 font-bold">•</span>
+                    <span>Aceptación de servicios</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-orange-500 font-bold">•</span>
+                    <span>Seguimiento del pedido</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                  Tengo una empresa de domicilios
+                </Button>
+              </div>
+            </div>
+
+            {/* Tarjeta Comercio */}
+            <div className="group relative bg-gradient-to-br from-purple-50 to-purple-100/40 rounded-3xl border-2 border-purple-300 p-8 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-300/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 mx-auto">
+                  <Store className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-black text-gray-900 mb-4 text-center">Comercio</h3>
+                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+                  Ideal para negocios que venden productos
+                </p>
+                <ul className="space-y-2 mb-6 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-500 font-bold">•</span>
+                    <span>Control de inventario</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-500 font-bold">•</span>
+                    <span>Disponibilidad de productos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-500 font-bold">•</span>
+                    <span>Gestión de catálogo</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-500 font-bold">•</span>
+                    <span>Recepción de pedidos</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-500 font-bold">•</span>
+                    <span>Atención automática</span>
+                  </li>
+                </ul>
+                <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 shadow-lg hover:shadow-xl transition-all" style={{borderRadius: '10px'}}>
+                  Tengo un comercio
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
