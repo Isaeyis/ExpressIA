@@ -119,6 +119,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transition Band */}
+      <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+            Automatiza tu WhatsApp
+          </h2>
+        </div>
+      </div>
+
       {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
