@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Zap, ShoppingBag, Truck, Check, ArrowRight } from 'lucide-react';
+import { MessageCircle, Zap, ShoppingBag, Truck, Check } from 'lucide-react';
 
 interface ProcessStep {
   id: number;
@@ -14,7 +14,6 @@ interface ProcessStep {
 
 const ProcessFlow: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [prevStep, setPrevStep] = useState(0);
 
   const steps: ProcessStep[] = [
     {
@@ -62,11 +61,10 @@ const ProcessFlow: React.FC = () => {
   // Cambiar el paso activo cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setPrevStep(activeStep);
       setActiveStep((prev) => (prev + 1) % steps.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [activeStep]);
+  }, []);
 
   return (
     <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
@@ -87,16 +85,16 @@ const ProcessFlow: React.FC = () => {
           <div className="relative flex items-start justify-between gap-3 md:gap-4 mb-16">
             {steps.map((step, index) => (
               <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
-                {/* Check verde sobrepuesto en esquina superior derecha */}
+                {/* Check verde con fondo - Encima del cuadro tapando la punta */}
                 {index < activeStep && (
                   <div 
-                    className="absolute -top-1 -right-1 z-50"
+                    className="absolute -top-3 -right-2 z-50"
                     style={{
                       animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
-                    <div className="bg-emerald-500 rounded-full p-1.5 shadow-lg border-2 border-white flex items-center justify-center">
-                      <Check className="w-5 h-5 text-white stroke-[3]" />
+                    <div className="bg-emerald-500 rounded-full p-2 shadow-lg border-3 border-white flex items-center justify-center" style={{boxShadow: '0 4px 12px rgba(16, 185, 129, 0.4)'}}>
+                      <Check className="w-6 h-6 text-white stroke-[3]" />
                     </div>
                   </div>
                 )}
@@ -197,7 +195,7 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Conector gráfico creativo - Solo se anima al cambiar de fase */}
+                {/* Línea conectora simple entre cuadritos */}
                 {index < steps.length - 1 && (
                   <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5">
                     {/* Línea de conexión con gradiente */}
@@ -235,31 +233,6 @@ const ProcessFlow: React.FC = () => {
                         }}
                       />
                     </svg>
-
-                    {/* Flecha animada gráfica - Solo se mueve al cambiar de fase */}
-                    {activeStep === index && prevStep !== activeStep && (
-                      <div
-                        className="absolute flex items-center justify-center"
-                        style={{
-                          left: '0',
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          animation: `arrow-slide 0.8s ease-in-out`,
-                        }}
-                      >
-                        <div
-                          className="flex items-center justify-center rounded-full"
-                          style={{
-                            width: '24px',
-                            height: '24px',
-                            background: `linear-gradient(135deg, ${steps[index].borderColor}, ${steps[Math.min(index + 1, steps.length - 1)].borderColor})`,
-                            boxShadow: `0 0 12px ${steps[index].borderColor}80`,
-                          }}
-                        >
-                          <ArrowRight className="w-3 h-3 text-white" />
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
               </div>
@@ -293,20 +266,6 @@ const ProcessFlow: React.FC = () => {
           100% {
             box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
             transform: scale(1);
-          }
-        }
-
-        @keyframes arrow-slide {
-          0% {
-            left: 0;
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            left: 100%;
-            opacity: 0;
           }
         }
 
