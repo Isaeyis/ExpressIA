@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Zap, ShoppingBag, Truck, Check } from 'lucide-react';
+import { MessageCircle, Zap, ShoppingBag, Truck, Check, ArrowRight } from 'lucide-react';
 
 interface ProcessStep {
   id: number;
@@ -14,6 +14,7 @@ interface ProcessStep {
 
 const ProcessFlow: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [prevStep, setPrevStep] = useState(0);
 
   const steps: ProcessStep[] = [
     {
@@ -61,10 +62,11 @@ const ProcessFlow: React.FC = () => {
   // Cambiar el paso activo cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
+      setPrevStep(activeStep);
       setActiveStep((prev) => (prev + 1) % steps.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [activeStep]);
 
   return (
     <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
@@ -85,10 +87,10 @@ const ProcessFlow: React.FC = () => {
           <div className="relative flex items-start justify-between gap-3 md:gap-4 mb-16">
             {steps.map((step, index) => (
               <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
-                {/* Check verde sobrepuesto - Animación suave */}
+                {/* Check verde sobrepuesto en esquina superior derecha */}
                 {index < activeStep && (
                   <div 
-                    className="absolute top-0 right-0 z-50"
+                    className="absolute -top-1 -right-1 z-50"
                     style={{
                       animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
@@ -195,7 +197,7 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Línea conectora con círculo animado - Mejorada */}
+                {/* Conector gráfico creativo - Solo se anima al cambiar de fase */}
                 {index < steps.length - 1 && (
                   <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5">
                     {/* Línea de conexión con gradiente */}
@@ -234,20 +236,29 @@ const ProcessFlow: React.FC = () => {
                       />
                     </svg>
 
-                    {/* Círculo animado que se rueda - Sincronizado y mejorado */}
-                    {activeStep === index && (
+                    {/* Flecha animada gráfica - Solo se mueve al cambiar de fase */}
+                    {activeStep === index && prevStep !== activeStep && (
                       <div
-                        className="absolute w-3 h-3 rounded-full border-2"
+                        className="absolute flex items-center justify-center"
                         style={{
-                          borderColor: steps[index].borderColor,
-                          backgroundColor: 'white',
                           left: '0',
-                          animation: `roll-circle 4s ease-in-out infinite`,
-                          boxShadow: `0 0 10px ${steps[index].borderColor}a0, inset 0 0 4px ${steps[index].borderColor}40`,
                           top: '50%',
                           transform: 'translateY(-50%)',
+                          animation: `arrow-slide 0.8s ease-in-out`,
                         }}
-                      />
+                      >
+                        <div
+                          className="flex items-center justify-center rounded-full"
+                          style={{
+                            width: '24px',
+                            height: '24px',
+                            background: `linear-gradient(135deg, ${steps[index].borderColor}, ${steps[Math.min(index + 1, steps.length - 1)].borderColor})`,
+                            boxShadow: `0 0 12px ${steps[index].borderColor}80`,
+                          }}
+                        >
+                          <ArrowRight className="w-3 h-3 text-white" />
+                        </div>
+                      </div>
                     )}
                   </div>
                 )}
@@ -285,12 +296,12 @@ const ProcessFlow: React.FC = () => {
           }
         }
 
-        @keyframes roll-circle {
+        @keyframes arrow-slide {
           0% {
             left: 0;
-            opacity: 1;
+            opacity: 0;
           }
-          90% {
+          50% {
             opacity: 1;
           }
           100% {
