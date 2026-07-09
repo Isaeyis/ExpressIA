@@ -81,25 +81,33 @@ const ProcessFlow: React.FC = () => {
 
         {/* Process Flow */}
         <div className="relative">
-          {/* Contenedor de pasos */}
-          <div className="flex justify-between items-stretch gap-3 mb-8">
+          {/* Contenedor de pasos con gap dinámico */}
+          <div className="flex justify-between items-start gap-2 mb-8">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex-1 relative flex flex-col">
+              <div
+                key={step.id}
+                className="relative flex-1"
+                style={{
+                  minHeight: activeStep === index ? 'auto' : '140px',
+                }}
+              >
                 {/* Card del paso */}
                 <div
-                  className={`rounded-xl p-4 transition-all duration-500 flex-1 flex flex-col ${step.bgColor} border-2`}
+                  className={`rounded-xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    transform: activeStep === index ? 'scale(1.05)' : 'scale(1)',
+                    transform: activeStep === index ? 'scale(1.2)' : 'scale(1)',
+                    padding: activeStep === index ? '16px' : '12px',
                     boxShadow:
                       activeStep === index
-                        ? `0 0 20px ${step.borderColor}40, inset 0 0 0 2px ${step.borderColor}`
+                        ? `0 0 30px ${step.borderColor}50, inset 0 0 0 2px ${step.borderColor}`
                         : 'none',
+                    zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
                   {/* Check en esquina superior derecha para pasos completados */}
                   {index < activeStep && (
-                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg">
+                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg z-20">
                       <CheckCircle2 className="w-4 h-4 text-white" />
                     </div>
                   )}
@@ -108,25 +116,25 @@ const ProcessFlow: React.FC = () => {
                   <div
                     className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-2 mx-auto transition-all duration-500`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
+                      transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
                     }}
                   >
                     {step.icon}
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0.5">
+                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0.5 whitespace-nowrap">
                     {step.title}
                   </h3>
 
                   {/* Subtítulo */}
-                  <p className="text-xs text-center text-gray-600 mb-2">
+                  <p className="text-xs text-center text-gray-600 mb-0 whitespace-nowrap">
                     {step.subtitle}
                   </p>
 
                   {/* Viñetas - Solo se muestran cuando está activo */}
                   {activeStep === index && (
-                    <div className="space-y-1.5 mt-2 pt-2 border-t border-gray-300 animate-in fade-in duration-300">
+                    <div className="space-y-1.5 mt-3 pt-3 border-t border-gray-300 animate-in fade-in duration-300">
                       {step.bullets.map((bullet, i) => (
                         <div key={i} className="flex items-start gap-1.5">
                           <div className="flex-shrink-0 mt-0.5">
@@ -151,9 +159,14 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Flecha dinámica (solo cuando está activo y no es el último) */}
+                {/* Flecha dinámica - Posicionada absolutamente para no ocupar espacio */}
                 {activeStep === index && index < steps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden md:flex z-10">
+                  <div
+                    className="absolute top-1/2 transform -translate-y-1/2 hidden md:flex z-20"
+                    style={{
+                      right: '-28px',
+                    }}
+                  >
                     <div className="animate-bounce">
                       <svg
                         className="w-5 h-5"
