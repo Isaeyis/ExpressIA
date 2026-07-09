@@ -88,24 +88,25 @@ const ProcessFlow: React.FC = () => {
                 {/* Check verde sobrepuesto - Animación suave */}
                 {index < activeStep && (
                   <div 
-                    className="absolute -top-2 -right-2 z-50"
+                    className="absolute top-0 right-0 z-50"
                     style={{
                       animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
-                    <div className="bg-emerald-500 rounded-full p-1 shadow-lg border-2 border-white flex items-center justify-center">
-                      <Check className="w-4 h-4 text-white stroke-[3]" />
+                    <div className="bg-emerald-500 rounded-full p-1.5 shadow-lg border-2 border-white flex items-center justify-center">
+                      <Check className="w-5 h-5 text-white stroke-[3]" />
                     </div>
                   </div>
                 )}
 
                 {/* Card del paso - Diseño mejorado y fluido */}
                 <div
-                  className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-xs`}
+                  className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
                     padding: '14px 8px',
                     minHeight: activeStep === index ? 'auto' : '85px',
+                    width: activeStep === index ? '200px' : '160px',
                     transform: activeStep === index ? 'scaleX(1.05) scaleY(1.15) translateY(-6px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
@@ -114,25 +115,25 @@ const ProcessFlow: React.FC = () => {
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Efecto de fondo degradado sutil - Solo cuando está activo */}
-                  {activeStep === index && (
-                    <div
-                      className="absolute inset-0 opacity-0 transition-opacity duration-500"
-                      style={{
-                        background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
-                        opacity: 1,
-                      }}
-                    />
-                  )}
-
-                  {/* Animación de eco pulsante */}
+                  {/* Efecto de ola expansiva - Ripple effect */}
                   {activeStep === index && (
                     <div
                       className="absolute inset-0 rounded-2xl pointer-events-none"
                       style={{
                         border: `2px solid ${step.borderColor}`,
-                        animation: `echo-pulse 2.5s ease-out infinite`,
-                        opacity: 0.5,
+                        animation: `wave-ripple 2s ease-out infinite`,
+                        opacity: 0.6,
+                      }}
+                    />
+                  )}
+
+                  {/* Efecto de fondo degradado sutil - Solo cuando está activo */}
+                  {activeStep === index && (
+                    <div
+                      className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl"
+                      style={{
+                        background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
+                        opacity: 1,
                       }}
                     />
                   )}
@@ -194,7 +195,7 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Línea conectora con círculo animado - Fluida */}
+                {/* Línea conectora con círculo animado - Mejorada */}
                 {index < steps.length - 1 && (
                   <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5">
                     {/* Línea de conexión con gradiente */}
@@ -233,15 +234,16 @@ const ProcessFlow: React.FC = () => {
                       />
                     </svg>
 
-                    {/* Círculo animado que se rueda - Sincronizado */}
+                    {/* Círculo animado que se rueda - Sincronizado y mejorado */}
                     {activeStep === index && (
                       <div
-                        className="absolute w-2.5 h-2.5 rounded-full"
+                        className="absolute w-3 h-3 rounded-full border-2"
                         style={{
-                          backgroundColor: steps[index].borderColor,
+                          borderColor: steps[index].borderColor,
+                          backgroundColor: 'white',
                           left: '0',
                           animation: `roll-circle 4s ease-in-out infinite`,
-                          boxShadow: `0 0 8px ${steps[index].borderColor}80`,
+                          boxShadow: `0 0 10px ${steps[index].borderColor}a0, inset 0 0 4px ${steps[index].borderColor}40`,
                           top: '50%',
                           transform: 'translateY(-50%)',
                         }}
@@ -268,15 +270,18 @@ const ProcessFlow: React.FC = () => {
       </div>
 
       <style>{`
-        @keyframes echo-pulse {
+        @keyframes wave-ripple {
           0% {
             box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            transform: scale(1);
           }
           50% {
-            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            transform: scale(1.05);
           }
           100% {
-            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            transform: scale(1);
           }
         }
 
