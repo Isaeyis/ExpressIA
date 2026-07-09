@@ -265,7 +265,7 @@ export default function Home() {
 
       {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
       <section className="py-12 md:py-16 relative overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 50%, #fafafa 100%)'
+        background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 50%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
       }}>
         {/* Elementos decorativos sutiles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -277,73 +277,81 @@ export default function Home() {
           {/* Layout: Contenido a la izquierda, imagen 3D a la derecha */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Contenido izquierdo */}
-            <div>
+            <div style={{height: '738px', width: '674px'}}>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Obtén Express IA y <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">te regalamos un Marketplace</span>
+                Obtén Express IA y <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">te regalamos una Vitrina Digital</span>
               </h2>
-              <p className="text-lg text-gray-700 mb-8">
-                +50 integraciones, automatizaciones y soporte prioritario
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Cuando adquieras Express IA recibirás acceso completo a tu vitrina digital personalizada. Exhibe tus productos 100% con tus colores y logo, gestión de inventario en tiempo real y sincronización automática sin depender de plataformas externas.
               </p>
 
-              {/* Grid de 3 elementos - Compacto */}
-              <div className="space-y-4 mb-8">
-                {/* Elemento 1 */}
-                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-emerald-200/30 p-4 overflow-hidden hover:border-emerald-300/60 transition-all duration-300 hover:bg-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-emerald-300/5 rounded-full blur-2xl"></div>
+              {/* Grid de 4 elementos - 2x2 Dinámico */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {/* Elemento 1 - Tienda Digital */}
+                <div className="group relative bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-md rounded-2xl border-2 border-emerald-300 p-6 overflow-hidden hover:border-emerald-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-300/10 rounded-full blur-3xl"></div>
                   
-                  <div className="relative z-10 flex items-start gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
-                      <Store className="w-5 h-5 text-white" />
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Store className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-1">+50 Integraciones</h3>
-                      <p className="text-sm text-gray-700">CRM, pagos, redes sociales, email y más</p>
-                    </div>
+                    <h3 className="font-black text-gray-900 mb-1 text-sm">Tienda Digital</h3>
+                    <p className="text-xs text-gray-700 font-semibold">100% Personalizada</p>
                   </div>
                 </div>
 
-                {/* Elemento 2 */}
-                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-cyan-200/30 p-4 overflow-hidden hover:border-cyan-300/60 transition-all duration-300 hover:bg-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-cyan-300/5 rounded-full blur-2xl"></div>
+                {/* Elemento 2 - Sincronización */}
+                <div className="group relative bg-gradient-to-br from-cyan-50 to-cyan-100/50 backdrop-blur-md rounded-2xl border-2 border-cyan-300 p-6 overflow-hidden hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-300/10 rounded-full blur-3xl"></div>
                   
-                  <div className="relative z-10 flex items-start gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
-                      <Zap className="w-5 h-5 text-white" />
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Zap className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Automatizaciones Listas</h3>
-                      <p className="text-sm text-gray-700">Implementa en minutos sin programación</p>
-                    </div>
+                    <h3 className="font-black text-gray-900 mb-1 text-sm">Sincronización</h3>
+                    <p className="text-xs text-gray-700 font-semibold">Automática</p>
                   </div>
                 </div>
 
-                {/* Elemento 3 */}
-                <div className="group relative bg-white/40 backdrop-blur-md rounded-xl border border-teal-200/30 p-4 overflow-hidden hover:border-teal-300/60 transition-all duration-300 hover:bg-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-50/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-teal-300/5 rounded-full blur-2xl"></div>
+                {/* Elemento 3 - Inventario */}
+                <div className="group relative bg-gradient-to-br from-teal-50 to-teal-100/50 backdrop-blur-md rounded-2xl border-2 border-teal-300 p-6 overflow-hidden hover:border-teal-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-teal-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-300/10 rounded-full blur-3xl"></div>
                   
-                  <div className="relative z-10 flex items-start gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300 mt-1">
-                      <Users className="w-5 h-5 text-white" />
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Users className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Soporte 24/7</h3>
-                      <p className="text-sm text-gray-700">Equipo experto disponible siempre</p>
+                    <h3 className="font-black text-gray-900 mb-1 text-sm">Gestión de Inventario</h3>
+                    <p className="text-xs text-gray-700 font-semibold">En tiempo real</p>
+                  </div>
+                </div>
+
+                {/* Elemento 4 - Carga Masiva */}
+                <div className="group relative bg-gradient-to-br from-rose-50 to-rose-100/50 backdrop-blur-md rounded-2xl border-2 border-rose-300 p-6 overflow-hidden hover:border-rose-500 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-rose-200/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-rose-300/10 rounded-full blur-3xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Zap className="w-6 h-6 text-white" />
                     </div>
+                    <h3 className="font-black text-gray-900 mb-1 text-sm">Carga Masiva</h3>
+                    <p className="text-xs text-gray-700 font-semibold">Por ERP</p>
                   </div>
                 </div>
               </div>
 
               {/* CTA */}
               <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
-                Reclamar Marketplace
+                ¡Quiero una marketplace!
               </Button>
             </div>
 
             {/* Imagen 3D a la derecha - Marketplace en celular */}
-            <div className="hidden md:flex justify-center items-center relative h-96">
+            <div className="hidden md:flex justify-center items-center relative h-96" style={{height: '492px', width: '494px'}}>
               <div className="relative w-full max-w-sm" style={{
                 perspective: '1200px',
                 animation: 'float-3d 4s ease-in-out infinite'
