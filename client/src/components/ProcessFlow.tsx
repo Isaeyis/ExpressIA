@@ -82,30 +82,30 @@ const ProcessFlow: React.FC = () => {
         {/* Process Flow Container */}
         <div className="relative mb-12">
           {/* Contenedor con 4 cuadritos - Mejor espaciado */}
-          <div className="relative flex items-start justify-between gap-6 md:gap-8 mb-12">
+          <div className="relative flex items-start justify-between gap-4 md:gap-6 mb-12">
             {steps.map((step, index) => (
-              <div key={step.id} className="relative flex-1 flex flex-col items-center">
-                {/* Check verde sobrepuesto - COMPLETAMENTE FUERA */}
+              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
+                {/* Check verde sobrepuesto - Justo encima de la esquina */}
                 {index < activeStep && (
                   <div 
-                    className="absolute -top-5 -right-5 z-50 animate-in fade-in scale-in duration-300"
+                    className="absolute -top-3 -right-3 z-50"
                     style={{
                       animation: 'scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                   >
-                    <div className="bg-emerald-500 rounded-full p-1.5 shadow-lg border-3 border-white flex items-center justify-center">
-                      <Check className="w-4 h-4 text-white stroke-[3]" />
+                    <div className="bg-emerald-500 rounded-full p-1 shadow-lg border-2 border-white flex items-center justify-center">
+                      <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
                     </div>
                   </div>
                 )}
 
-                {/* Card del paso - Compacto, sin padding extra */}
+                {/* Card del paso - Más estrecho, sin línea divisora */}
                 <div
                   className={`w-full transition-all duration-500 ${step.bgColor} border-2 rounded-3xl flex flex-col items-center justify-center relative`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '14px 10px',
-                    minHeight: activeStep === index ? 'auto' : '100px',
+                    padding: '12px 8px',
+                    minHeight: activeStep === index ? 'auto' : '90px',
                     transform: activeStep === index ? 'scale(1.12) translateY(-8px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
@@ -128,7 +128,7 @@ const ProcessFlow: React.FC = () => {
 
                   {/* Icono con animación */}
                   <div
-                    className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1.5 relative z-10`}
+                    className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1 relative z-10`}
                     style={{
                       transform: activeStep === index ? 'scale(1.2)' : 'scale(1)',
                       filter: activeStep === index ? 'drop-shadow(0 8px 16px rgba(0,0,0,0.2))' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
@@ -138,23 +138,23 @@ const ProcessFlow: React.FC = () => {
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-sm font-bold text-center text-gray-900 leading-tight relative z-10">
+                  <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1">
                     {step.title}
                   </h3>
 
                   {/* Subtítulo - Siempre visible */}
-                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10">
+                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1">
                     {step.subtitle}
                   </p>
 
-                  {/* Viñetas - SOLO cuando está activo, SIN ESPACIO VACÍO */}
+                  {/* Viñetas - SOLO cuando está activo, SIN LÍNEA DIVISORA */}
                   {activeStep === index && (
-                    <div className="space-y-1.5 mt-2.5 pt-2.5 border-t border-gray-300 w-full animate-in fade-in slide-in-from-bottom-2 duration-400 relative z-10">
+                    <div className="space-y-1 mt-2 w-full animate-in fade-in slide-in-from-bottom-2 duration-400 relative z-10 px-1">
                       {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1.5 px-1">
+                        <div key={i} className="flex items-start gap-1 text-left">
                           <div className="flex-shrink-0 mt-0.5">
                             <svg
-                              className="w-3 h-3 text-emerald-500"
+                              className="w-2.5 h-2.5 text-emerald-500"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -176,7 +176,7 @@ const ProcessFlow: React.FC = () => {
 
                 {/* Línea conectora con círculo animado - ENTRE CUADRITOS */}
                 {index < steps.length - 1 && (
-                  <div className="absolute top-1/4 -right-8 md:-right-10 w-16 md:w-20 h-1 flex items-center">
+                  <div className="absolute top-1/4 -right-5 md:-right-7 w-10 md:w-14 h-1 flex items-center">
                     {/* Línea de conexión */}
                     <div
                       className="w-full h-1 rounded-full transition-all duration-500"
@@ -186,14 +186,14 @@ const ProcessFlow: React.FC = () => {
                       }}
                     />
                     
-                    {/* Círculo animado que se rueda */}
+                    {/* Círculo animado que se rueda - Sincronizado */}
                     {activeStep === index && (
                       <div
-                        className="absolute w-3 h-3 rounded-full"
+                        className="absolute w-2.5 h-2.5 rounded-full"
                         style={{
                           backgroundColor: steps[index].borderColor,
                           left: '0',
-                          animation: `roll-circle 1.5s ease-in-out infinite`,
+                          animation: `roll-circle-sync 4s ease-in-out infinite`,
                           boxShadow: `0 0 8px ${steps[index].borderColor}80`,
                         }}
                       />
@@ -295,12 +295,12 @@ const ProcessFlow: React.FC = () => {
             box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
           }
         }
-        @keyframes roll-circle {
+        @keyframes roll-circle-sync {
           0% {
             left: 0;
             opacity: 1;
           }
-          50% {
+          90% {
             opacity: 1;
           }
           100% {
