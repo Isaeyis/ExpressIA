@@ -67,10 +67,10 @@ const ProcessFlow: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             ¿Qué es Express IA?
           </h2>
@@ -79,60 +79,57 @@ const ProcessFlow: React.FC = () => {
           </p>
         </div>
 
-        {/* Process Flow */}
-        <div className="relative">
-          {/* Contenedor de pasos con gap para flechas */}
-          <div className="flex justify-center items-start gap-8 mb-8 px-8">
+        {/* Process Flow - Flex con mejor espaciado */}
+        <div className="relative mb-10">
+          <div className="flex justify-between items-center gap-4 md:gap-6">
             {steps.map((step, index) => (
-              <div key={step.id} className="relative flex flex-col items-center">
-                {/* Card del paso - ESTRECHO */}
+              <React.Fragment key={step.id}>
+                {/* Card del paso */}
                 <div
-                  className={`rounded-3xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden`}
+                  className={`flex-1 rounded-2xl transition-all duration-500 ${step.bgColor} border-2 overflow-hidden relative`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
-                    padding: activeStep === index ? '14px 10px' : '10px 8px',
-                    width: '90px',
-                    minHeight: activeStep === index ? 'auto' : '100px',
+                    transform: activeStep === index ? 'scale(1.08)' : 'scale(1)',
+                    padding: activeStep === index ? '16px' : '12px',
                     boxShadow:
                       activeStep === index
-                        ? `0 0 25px ${step.borderColor}50, inset 0 0 0 2px ${step.borderColor}`
+                        ? `0 8px 24px ${step.borderColor}40`
                         : 'none',
                     zIndex: activeStep === index ? 10 : 1,
                   }}
                 >
-                  {/* Check en esquina superior derecha para pasos completados */}
+                  {/* Check sobrepuesto en esquina superior derecha */}
                   {index < activeStep && (
-                    <div className="absolute -top-2 -right-2 bg-emerald-500 rounded-full p-0.5 shadow-lg z-20">
-                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    <div className="absolute -top-3 -right-3 bg-emerald-500 rounded-full p-1 shadow-lg z-20 border-2 border-white">
+                      <CheckCircle2 className="w-5 h-5 text-white" />
                     </div>
                   )}
 
                   {/* Icono */}
                   <div
-                    className={`w-9 h-9 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-1.5 mx-auto transition-all duration-500`}
+                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-2 mx-auto transition-all duration-500`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.15)' : 'scale(1)',
+                      transform: activeStep === index ? 'scale(1.1)' : 'scale(1)',
                     }}
                   >
                     {step.icon}
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-xs font-bold text-center text-gray-900 mb-0.5 whitespace-nowrap leading-tight">
+                  <h3 className="text-sm font-bold text-center text-gray-900 mb-0.5">
                     {step.title}
                   </h3>
 
                   {/* Subtítulo */}
-                  <p className="text-xs text-center text-gray-600 mb-0 whitespace-nowrap leading-tight">
+                  <p className="text-xs text-center text-gray-600 mb-0">
                     {step.subtitle}
                   </p>
 
                   {/* Viñetas - Solo se muestran cuando está activo */}
                   {activeStep === index && (
-                    <div className="space-y-1 mt-2 pt-2 border-t border-gray-300 animate-in fade-in duration-300 w-full">
+                    <div className="space-y-2 mt-3 pt-3 border-t border-gray-300 animate-in fade-in duration-300">
                       {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1">
+                        <div key={i} className="flex items-start gap-1.5">
                           <div className="flex-shrink-0 mt-0.5">
                             <svg
                               className="w-3 h-3 text-emerald-500"
@@ -155,31 +152,36 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Flecha dinámica - Posicionada debajo del cuadro */}
-                {activeStep === index && index < steps.length - 1 && (
-                  <div className="mt-4 hidden md:flex">
-                    <div className="animate-bounce">
+                {/* Flecha horizontal entre cuadritos */}
+                {index < steps.length - 1 && (
+                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                    <div
+                      className="animate-pulse"
+                      style={{
+                        color: activeStep === index ? steps[index].borderColor : '#d1d5db',
+                        transition: 'color 0.5s ease-in-out',
+                      }}
+                    >
                       <svg
-                        className="w-5 h-5"
+                        className="w-6 h-6 md:w-8 md:h-8"
                         fill="currentColor"
                         viewBox="0 0 20 20"
-                        style={{ color: step.borderColor }}
                       >
                         <path
                           fillRule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
                           clipRule="evenodd"
                         />
                       </svg>
                     </div>
                   </div>
                 )}
-              </div>
+              </React.Fragment>
             ))}
           </div>
 
           {/* Barra de progreso animada */}
-          <div className="relative h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="relative h-1 bg-gray-200 rounded-full overflow-hidden mt-8">
             <div
               className="h-full transition-all duration-500 rounded-full"
               style={{
@@ -190,17 +192,6 @@ const ProcessFlow: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes pulse-border {
-          0%, 100% {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-          }
-          50% {
-            box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-          }
-        }
-      `}</style>
     </section>
   );
 };
