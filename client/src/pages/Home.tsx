@@ -540,13 +540,16 @@ export default function Home() {
       {/* Plans Section */}
       <section id="plans" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Planes adaptados a tu negocio
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Planes adaptados para tu negocio
             </h2>
+            <p className="text-lg text-gray-600">
+              Elige el plan que se ajuste a tus necesidades y presupuesto
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
               {
                 name: "Estándar",
@@ -562,19 +565,19 @@ export default function Home() {
                 highlighted: true
               }
             ].map((plan, i) => (
-              <div key={i} className={`rounded-2xl p-8 ${plan.highlighted ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl' : 'bg-white border border-gray-200'}`}>
-                <h3 className={`text-2xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
-                <p className={`text-sm mb-4 ${plan.highlighted ? 'text-emerald-100' : 'text-gray-600'}`}>{plan.description}</p>
-                <p className={`text-4xl font-bold mb-6 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
-                <ul className="space-y-3 mb-8">
+              <div key={i} className={`rounded-2xl p-6 ${plan.highlighted ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl' : 'bg-white border border-gray-200'}`}>
+                <h3 className={`text-xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
+                <p className={`text-sm mb-3 ${plan.highlighted ? 'text-emerald-100' : 'text-gray-600'}`}>{plan.description}</p>
+                <p className={`text-3xl font-bold mb-5 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
+                <ul className="space-y-2 mb-6">
                   {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${plan.highlighted ? 'text-emerald-100' : 'text-emerald-500'}`} />
+                    <li key={j} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.highlighted ? 'text-emerald-100' : 'text-emerald-500'}`} />
                       <span className={plan.highlighted ? 'text-white' : 'text-gray-700'}>{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <Button className={`w-full font-bold py-3 rounded-lg ${plan.highlighted ? 'bg-white text-emerald-600 hover:bg-gray-100' : 'bg-emerald-500 hover:bg-emerald-600 text-white'}`}>
+                <Button className={`w-full font-bold py-2 rounded-lg text-sm ${plan.highlighted ? 'bg-white text-emerald-600 hover:bg-gray-100' : 'bg-emerald-500 hover:bg-emerald-600 text-white'}`}>
                   Elegir plan
                 </Button>
               </div>
