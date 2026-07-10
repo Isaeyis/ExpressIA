@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   MessageCircle,
   Users,
@@ -24,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import DynamicWhatsAppChat from "@/components/DynamicWhatsAppChat";
 import ProcessFlow from "@/components/ProcessFlow";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,33 +48,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900 hidden sm:inline">EXPRESS IA</span>
+              <span className="font-bold text-lg text-gray-900">EXPRESS IA</span>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex gap-8 items-center">
-              <a href="#features" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Características
-              </a>
-              <a href="#plans" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Planes
-              </a>
-              <a href="#faq" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                FAQ
-              </a>
+            <nav className="hidden md:flex items-center gap-8">
+              <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Características</a>
+              <a href="#plans" className="text-gray-600 hover:text-gray-900 transition-colors">Planes</a>
+              <a href="#faq" className="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
             </nav>
 
-            {/* CTA Button */}
             <div className="hidden md:block">
-              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg">
                 Comenzar Ahora
               </Button>
             </div>
@@ -83,27 +75,19 @@ export default function Home() {
             <button
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu"
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-gray-200" id="mobile-menu" role="navigation" aria-label="Menú principal móvil">
-              <a href="#features" className="block py-2 text-gray-700 hover:text-emerald-600">
-                Características
-              </a>
-              <a href="#plans" className="block py-2 text-gray-700 hover:text-emerald-600">
-                Planes
-              </a>
-              <a href="#faq" className="block py-2 text-gray-700 hover:text-emerald-600">
-                FAQ
-              </a>
-              <Button className="w-full mt-4 bg-emerald-500 hover:bg-emerald-600 text-white">
+            <div className="md:hidden pb-4 space-y-3">
+              <a href="#features" className="block text-gray-600 hover:text-gray-900">Características</a>
+              <a href="#plans" className="block text-gray-600 hover:text-gray-900">Planes</a>
+              <a href="#faq" className="block text-gray-600 hover:text-gray-900">FAQ</a>
+              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold">
                 Comenzar Ahora
               </Button>
             </div>
@@ -112,30 +96,25 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+      <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Tu empleado digital que atiende, vende y opera{" "}
-                <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">24/7</span>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Tu empleado digital que atiende, vende y opera <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">24/7</span>
               </h1>
-              <p className="text-lg font-semibold text-emerald-600 mb-4">
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 Nunca vuelvas a perder una venta por no responder un WhatsApp.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Mientras tú atiendes tu negocio Express IA responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8 py-3 rounded-lg" aria-label="Adquiere Express IA ahora">
+              <div className="flex gap-4">
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
                   Adquiere Express IA
                 </Button>
-                <Button
-                  variant="outline"
-                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8 py-3 rounded-lg"
-                  aria-label="Ver como funciona Express IA"
-                >
-                  Ver como funciona
+                <Button className="border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-50 font-bold px-8 py-3 rounded-lg">
+                  Ver cómo funciona
                 </Button>
               </div>
             </div>
@@ -374,17 +353,15 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <style>{`
+            @keyframes float-3d {
+              0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
+              50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
+            }
+          `}</style>
         </div>
-
-        <style>{`
-          @keyframes float-3d {
-            0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
-            50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
-          }
-        `}</style>
       </section>
-
-
 
       {/* Why Choose Section */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
@@ -440,126 +417,119 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" style={{fontSize: '48px'}}>
               Implementación
             </h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mb-4" style={{fontSize: '48px'}}>
               Acompañada
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Nuestro equipo trabaja contigo en cada etapa, desde la configuración inicial hasta la puesta en marcha, asegurándonos de que la plataforma esté completamente adaptada a tu proceso y lista para comenzar a generar resultados desde el primer día.
+              Te acompañamos en cada paso para que Express IA esté perfectamente configurado en tu negocio
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-6 gap-4">
             {[
-              { num: "01", title: "Análisis y Configuración", desc: "Entendemos tu negocio y configuramos Express IA según tus necesidades", color: "blue" },
-              { num: "02", title: "Carga de datos", desc: "Importamos tu catálogo, precios y configuraciones automáticamente", color: "purple" },
-              { num: "03", title: "Pruebas de IA", desc: "Probamos y ajustamos las respuestas automáticas para tu negocio", color: "emerald" },
-              { num: "04", title: "Integración WhatsApp", desc: "Conectamos tu WhatsApp Business de forma segura", color: "red" },
-              { num: "05", title: "Pruebas y Ajustes", desc: "Realizamos pruebas exhaustivas y ajustes finales", color: "blue" },
-              { num: "06", title: "Lanzamiento en Vivo", desc: "Express IA comienza a trabajar para ti, generando resultados desde el primer día", color: "orange" },
-            ].map((step, i) => {
-              const colorMap: Record<string, string> = {
-                blue: "bg-blue-500",
-                purple: "bg-purple-500",
-                emerald: "bg-emerald-500",
-                red: "bg-red-500",
-                orange: "bg-orange-500",
-              };
-              return (
-                <div key={i} className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:shadow-md transition-shadow">
-                  <div className={`w-16 h-16 ${colorMap[step.color]} rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl`}>
-                    {step.num}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm">{step.desc}</p>
+              { number: "1", title: "Consultoría", desc: "Analizamos tu negocio" },
+              { number: "2", title: "Configuración", desc: "Configuramos Express IA" },
+              { number: "3", title: "Integración", desc: "Conectamos tus sistemas" },
+              { number: "4", title: "Capacitación", desc: "Entrenamos tu equipo" },
+              { number: "5", title: "Pruebas", desc: "Validamos todo funcione" },
+              { number: "6", title: "Lanzamiento", desc: "¡Comienza a vender!" },
+            ].map((step, i) => (
+              <div key={i} className="text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-white font-bold">{step.number}</span>
                 </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-lg">
-              Comenzar Implementación
-            </Button>
+                <h4 className="font-bold text-gray-900 mb-1 text-sm">{step.title}</h4>
+                <p className="text-xs text-gray-600">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Business Types Section */}
-      <section id="features" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section id="features" className="py-20 md:py-24 bg-white" style={{backgroundColor: '#FFFFFF'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Express IA para tu negocio
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-8">
             {[
               {
                 title: "Restaurantes",
                 icon: ShoppingCart,
-                color: "red",
-                buttonClass: "bg-red-500 hover:bg-red-600",
+                gradientClass: "from-blue-400 to-cyan-500",
+                buttonGradient: "from-blue-400 to-cyan-500",
                 desc: "Convierte WhatsApp en un nuevo canal de ventas",
                 features: ["Consultar el menú", "Preguntar por productos", "Realizar pedidos", "Recibir confirmaciones", "Consultar estados de entrega"]
               },
               {
                 title: "Domicilios",
                 icon: Smartphone,
-                color: "orange",
-                buttonClass: "bg-orange-500 hover:bg-orange-600",
+                gradientClass: "from-green-400 to-teal-500",
+                buttonGradient: "from-green-400 to-teal-500",
                 desc: "Gestiona todo tu servicio de entregas automáticamente",
                 features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido"]
               },
               {
                 title: "Comercio",
                 icon: Store,
-                color: "purple",
-                buttonClass: "bg-purple-500 hover:bg-purple-600",
+                gradientClass: "from-purple-400 to-pink-500",
+                buttonGradient: "from-purple-400 to-pink-500",
                 desc: "Ideal para negocios que venden productos",
                 features: ["Control de inventario", "Disponibilidad de productos", "Gestión de catálogo", "Recepción de pedidos", "Atención automática"]
               },
             ].map((business, i) => {
-              const colorMap: Record<string, string> = {
-                red: "from-red-400 to-red-600",
-                orange: "from-orange-400 to-orange-600",
-                purple: "from-purple-400 to-purple-600",
-              };
-              const textColorMap: Record<string, string> = {
-                red: "text-red-500",
-                orange: "text-orange-500",
-                purple: "text-purple-500",
-              };
-              const cta: Record<string, string> = {
-                Restaurantes: "Tengo un restaurante",
-                Domicilios: "Tengo una empresa de domicilios",
-                Comercio: "Tengo un comercio",
-              };
               return (
-                <div key={i} className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
-                  <div className="relative z-10">
-                    <div className={`w-14 h-14 bg-gradient-to-br ${colorMap[business.color]} rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <business.icon className="w-7 h-7 text-white" />
+                <div key={i} className="flex flex-col bg-white rounded-3xl p-10" style={{
+                  boxShadow: '0 8px 30px rgba(0,0,0,.05)',
+                  minHeight: '700px'
+                }}>
+                  <div>
+                    <div className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-2xl flex items-center justify-center mb-12 flex-shrink-0`} style={{
+                      width: '72px',
+                      height: '72px',
+                      borderRadius: '18px'
+                    }}>
+                      <business.icon className="w-9 h-9 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">{business.title}</h3>
-                    <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
+                    <h3 className="text-5xl font-bold text-gray-900 mb-9 leading-tight" style={{
+                      fontSize: '48px',
+                      color: '#111111',
+                      marginBottom: '35px'
+                    }}>{business.title}</h3>
+                    <p className="text-xl text-gray-700 mb-12 leading-relaxed" style={{
+                      fontSize: '20px',
+                      color: '#333333',
+                      lineHeight: '1.5',
+                      marginBottom: '45px'
+                    }}>
                       {business.desc}
                     </p>
-                    <ul className="space-y-3 mb-6 text-sm text-gray-700">
+                    <ul className="space-y-5 mb-12" style={{
+                      marginBottom: '40px'
+                    }}>
                       {business.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-3">
-                          <CheckCircle2 className={`w-5 h-5 ${textColorMap[business.color]} flex-shrink-0 mt-0.5`} />
+                        <li key={j} className="flex items-start gap-4" style={{
+                          fontSize: '18px',
+                          color: '#444444'
+                        }}>
+                          <span className="text-gray-400 flex-shrink-0 mt-1" style={{
+                            color: '#A8A8A8'
+                          }}>•</span>
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button className={`w-full ${business.buttonClass} text-white font-bold py-3 rounded-lg`}>
-                      {cta[business.title as keyof typeof cta]}
-                    </Button>
                   </div>
+                  <Button className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient}`} style={{
+                    height: '56px',
+                    borderRadius: '14px',
+                    padding: '0 28px',
+                    border: 'none',
+                    marginTop: 'auto'
+                  }}>
+                    {business.title === 'Restaurantes' ? 'Tengo un restaurante' : business.title === 'Domicilios' ? 'Tengo una empresa de domicilios' : 'Tengo un comercio'}
+                  </Button>
                 </div>
               );
             })}
@@ -574,130 +544,77 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Planes adaptados a tu negocio
             </h2>
-            <p className="text-gray-600">Elige el plan que mejor se adapte a tus necesidades</p>
           </div>
 
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            <button className="px-6 py-3 rounded-full font-semibold bg-emerald-500 text-white hover:bg-emerald-600 transition-colors">
-              🍽️ Restaurantes
-            </button>
-            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-              🚚 Domicilios
-            </button>
-            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-              🛍️ Comercio
-            </button>
-            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
-              🏢 Otros
-            </button>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:border-emerald-500 transition-colors">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Estándar</h3>
-              <p className="text-gray-600 mb-6">Para negocios pequeños</p>
-              
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-gray-900">$350K</span>
-                <span className="text-gray-600 ml-2">por mes</span>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                name: "Estándar",
+                price: "$350K",
+                description: "Perfecto para comenzar",
+                features: ["Hasta 1,000 mensajes/mes", "1 número WhatsApp", "Soporte por email", "Panel básico"]
+              },
+              {
+                name: "Premium",
+                price: "$950K",
+                description: "Para negocios en crecimiento",
+                features: ["Mensajes ilimitados", "Múltiples números WhatsApp", "Soporte prioritario 24/7", "Panel avanzado", "Integraciones personalizadas"],
+                highlighted: true
+              }
+            ].map((plan, i) => (
+              <div key={i} className={`rounded-2xl p-8 ${plan.highlighted ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl' : 'bg-white border border-gray-200'}`}>
+                <h3 className={`text-2xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
+                <p className={`text-sm mb-4 ${plan.highlighted ? 'text-emerald-100' : 'text-gray-600'}`}>{plan.description}</p>
+                <p className={`text-4xl font-bold mb-6 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, j) => (
+                    <li key={j} className="flex items-start gap-3">
+                      <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${plan.highlighted ? 'text-emerald-100' : 'text-emerald-500'}`} />
+                      <span className={plan.highlighted ? 'text-white' : 'text-gray-700'}>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className={`w-full font-bold py-3 rounded-lg ${plan.highlighted ? 'bg-white text-emerald-600 hover:bg-gray-100' : 'bg-emerald-500 hover:bg-emerald-600 text-white'}`}>
+                  Elegir plan
+                </Button>
               </div>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Hasta 1,000 mensajes/mes</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">1 número de WhatsApp</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Respuestas automáticas básicas</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Soporte por email</span>
-                </li>
-              </ul>
-
-              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-lg">
-                Empezar
-              </Button>
-            </div>
-
-            <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl border-2 border-purple-600 p-8 text-white relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-yellow-400 text-purple-900 px-4 py-1 rounded-full text-sm font-bold">
-                Más Popular
-              </div>
-
-              <h3 className="text-2xl font-bold mb-2">Premium</h3>
-              <p className="text-purple-100 mb-6">Para negocios en crecimiento</p>
-              
-              <div className="mb-6">
-                <span className="text-4xl font-bold">$950K</span>
-                <span className="text-purple-100 ml-2">por mes</span>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                  <span className="text-white">Hasta 10,000 mensajes/mes</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                  <span className="text-white">Hasta 3 números de WhatsApp</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                  <span className="text-white">Respuestas automáticas avanzadas</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                  <span className="text-white">Integración con CRM</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                  <span className="text-white">Soporte prioritario</span>
-                </li>
-              </ul>
-
-              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold py-3 rounded-lg">
-                Empezar
-              </Button>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">¿Necesitas un plan personalizado?</p>
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
-              Contáctanos
-            </Button>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 md:py-24 bg-gray-50" style={{backgroundColor: '#fafafa'}}>
+      <section id="faq" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Preguntas Frecuentes
             </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {[
-              { q: "¿Cómo funciona Express IA?", a: "Express IA se integra con WhatsApp Business para automatizar respuestas y procesos. Responde a tus clientes 24/7, procesa pedidos y gestiona tu operación automáticamente." },
-              { q: "¿Cuál es el costo?", a: "Contamos con planes flexibles según el tamaño de tu negocio. Desde $350K mensuales para negocios pequeños hasta planes personalizados para empresas grandes." },
-              { q: "¿Necesito instalación?", a: "No, es 100% en la nube. Solo conecta tu WhatsApp Business y nuestro equipo se encarga del resto. Implementación acompañada en 6 pasos." },
-              { q: "¿Cuánto tiempo tarda la implementación?", a: "La implementación típicamente toma entre 5-7 días hábiles. Nuestro equipo trabaja contigo en cada etapa para asegurar que todo esté perfectamente configurado." },
-              { q: "¿Puedo cambiar de plan?", a: "Sí, puedes cambiar de plan en cualquier momento. Tu facturación se ajustará proporcionalmente según el plan que elijas." },
+              {
+                q: "¿Cómo funciona Express IA?",
+                a: "Express IA se integra con tu WhatsApp Business y utiliza inteligencia artificial para responder automáticamente a tus clientes, procesar pedidos y gestionar tu operación 24/7."
+              },
+              {
+                q: "¿Necesito conocimientos técnicos?",
+                a: "No, Express IA es fácil de configurar. Nuestro equipo te acompaña en todo el proceso de implementación."
+              },
+              {
+                q: "¿Puedo integrar mi ERP?",
+                a: "Sí, Express IA se integra con la mayoría de sistemas ERP y plataformas de e-commerce."
+              },
+              {
+                q: "¿Qué pasa con mis datos?",
+                a: "Todos tus datos están encriptados y almacenados de forma segura. Cumplimos con todas las regulaciones de protección de datos."
+              }
             ].map((item, i) => (
-              <Card key={i} className="p-6 border-0 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="font-bold text-gray-900 mb-2">{item.q}</h3>
+              <div key={i} className="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{item.q}</h3>
                 <p className="text-gray-600">{item.a}</p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -708,36 +625,41 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">Express IA</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-bold text-lg">EXPRESS IA</span>
+              </div>
               <p className="text-gray-400 text-sm">Tu empleado digital que atiende, vende y opera 24/7</p>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Producto</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#features" className="hover:text-white transition-colors">Características</a></li>
-                <li><a href="#plans" className="hover:text-white transition-colors">Planes</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+              <h4 className="font-bold mb-4">Producto</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="#" className="hover:text-white">Características</a></li>
+                <li><a href="#" className="hover:text-white">Planes</a></li>
+                <li><a href="#" className="hover:text-white">FAQ</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Empresa</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Sobre nosotros</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
+              <h4 className="font-bold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="#" className="hover:text-white">Acerca de</a></li>
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+                <li><a href="#" className="hover:text-white">Contacto</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Legal</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Privacidad</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Términos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Cookies</a></li>
+              <h4 className="font-bold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="#" className="hover:text-white">Privacidad</a></li>
+                <li><a href="#" className="hover:text-white">Términos</a></li>
+                <li><a href="#" className="hover:text-white">Cookies</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center">
-            <p className="text-gray-400">&copy; 2024 Express IA. Todos los derechos reservados.</p>
+          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Express IA. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
