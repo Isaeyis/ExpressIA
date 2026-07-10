@@ -401,76 +401,145 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Filter Buttons */}
+          <div className="flex justify-center gap-3 mb-12 flex-wrap">
+            {['Restaurantes', 'Domicilios', 'Comercio'].map((type) => (
+              <button key={type} className="px-6 py-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold transition">
+                {type}
+              </button>
+            ))}
+          </div>
+
           {/* Restaurantes Plans */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Express IA para Restaurantes</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Express IA para Restaurantes</h3>
             <p className="text-gray-700 mb-8">Convierte WhatsApp en tu nuevo canal de ventas.</p>
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
-              <div className="rounded-2xl p-6 bg-white border border-gray-200">
-                <h4 className="text-xl font-bold mb-3 text-gray-900">Plan Estándar</h4>
-                <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Consultar el menú</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Preguntar por productos</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Realizar pedidos</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Recibir confirmaciones</span></li>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <div className="rounded-3xl p-8 bg-white border border-gray-300 flex flex-col">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">Estándar</h4>
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-600 mb-1">Create app:</p>
+                    <p className="text-3xl font-bold text-gray-900">$450K</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Mensual:</p>
+                    <p className="text-3xl font-bold text-gray-900">$350K</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Consultar el menú</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Preguntar por productos</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Realizar pedidos</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Recibir confirmaciones</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Notificación a cocina</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Seguimiento de entregas</span></li>
                 </ul>
-                <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-sm">Elegir plan</Button>
+                <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl text-base">Elegir plan</Button>
               </div>
-              <div className="rounded-2xl p-6 bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl">
-                <h4 className="text-xl font-bold mb-3">Plan con Delivery</h4>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Todo del plan estándar</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Consultar estados de entrega</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Coordinar entregas</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Notificación a cocina automática</span></li>
+              <div className="rounded-3xl p-8 bg-gradient-to-br from-purple-600 to-pink-600 text-white flex flex-col shadow-2xl">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-white mb-2">Premium</h4>
+                  <div className="mb-4">
+                    <p className="text-sm text-purple-100 mb-1">Create app:</p>
+                    <p className="text-3xl font-bold text-white">$690K</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-purple-100 mb-1">Mensual:</p>
+                    <p className="text-3xl font-bold text-white">$590K</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Todo del plan Estándar</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Solicitud de domicilios por WhatsApp</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Cálculo de tarifas automático</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Notificación a domiciliarios</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Aceptación de servicios</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Actualización de estados en tiempo real</span></li>
                 </ul>
-                <Button className="w-full bg-white text-emerald-600 hover:bg-gray-100 font-bold py-2 rounded-lg text-sm">Elegir plan</Button>
+                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 rounded-xl text-base">Elegir plan</Button>
               </div>
             </div>
           </div>
 
           {/* Domicilios Plans */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Express IA Domicilios</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Express IA Domicilios</h3>
             <p className="text-gray-700 mb-8">Gestiona todo tu servicio de entregas de forma automática.</p>
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
-              <div className="rounded-2xl p-6 bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl">
-                <h4 className="text-xl font-bold mb-3">Plan Único</h4>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Solicitud de domicilios por WhatsApp</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Cálculo de tarifas automático</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Notificación a domiciliarios</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Seguimiento en tiempo real</span></li>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <div className="rounded-3xl p-8 bg-gradient-to-br from-purple-600 to-pink-600 text-white flex flex-col shadow-2xl">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-white mb-2">Plan Único</h4>
+                  <div className="mb-4">
+                    <p className="text-sm text-purple-100 mb-1">Create app:</p>
+                    <p className="text-3xl font-bold text-white">$550K</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-purple-100 mb-1">Mensual:</p>
+                    <p className="text-3xl font-bold text-white">$450K</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Solicitud de domicilios por WhatsApp</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Cálculo de tarifas automático</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Notificación a domiciliarios disponibles</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Aceptación de servicios</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Actualización de estados</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Seguimiento del pedido</span></li>
                 </ul>
-                <Button className="w-full bg-white text-emerald-600 hover:bg-gray-100 font-bold py-2 rounded-lg text-sm">Elegir plan</Button>
+                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 rounded-xl text-base">Elegir plan</Button>
               </div>
             </div>
           </div>
 
           {/* Comercio Plans */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Express IA Comercio</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Express IA Comercio</h3>
             <p className="text-gray-700 mb-8">Ideal para negocios que venden productos.</p>
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
-              <div className="rounded-2xl p-6 bg-white border border-gray-200">
-                <h4 className="text-xl font-bold mb-3 text-gray-900">Plan Estándar</h4>
-                <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Administrar catálogo</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Gestionar inventario</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Recibir pedidos</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-500" /><span>Atención automática</span></li>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+              <div className="rounded-3xl p-8 bg-white border border-gray-300 flex flex-col">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-2">Estándar</h4>
+                  <div className="mb-4">
+                    <p className="text-sm text-gray-600 mb-1">Create app:</p>
+                    <p className="text-3xl font-bold text-gray-900">$480K</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Mensual:</p>
+                    <p className="text-3xl font-bold text-gray-900">$380K</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Administrar catálogo</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Gestionar inventario</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Recibir pedidos por WhatsApp</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Atención automática</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Confirmación de pedidos</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-emerald-500" /><span className="text-gray-700">Notificaciones de ventas</span></li>
                 </ul>
-                <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-sm">Elegir plan</Button>
+                <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl text-base">Elegir plan</Button>
               </div>
-              <div className="rounded-2xl p-6 bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl">
-                <h4 className="text-xl font-bold mb-3">Plan con Delivery</h4>
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Todo del plan estándar</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Marketplace personalizado</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Integración de entregas</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-100" /><span>Vitrina digital personalizada</span></li>
+              <div className="rounded-3xl p-8 bg-gradient-to-br from-purple-600 to-pink-600 text-white flex flex-col shadow-2xl">
+                <div className="mb-6">
+                  <h4 className="text-2xl font-bold text-white mb-2">Premium</h4>
+                  <div className="mb-4">
+                    <p className="text-sm text-purple-100 mb-1">Create app:</p>
+                    <p className="text-3xl font-bold text-white">$720K</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-purple-100 mb-1">Mensual:</p>
+                    <p className="text-3xl font-bold text-white">$620K</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Todo del plan Estándar</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Marketplace personalizado</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Integración de entregas</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Vitrina digital personalizada</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Seguimiento de entregas</span></li>
+                  <li className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-purple-200" /><span className="text-white">Reportes de ventas</span></li>
                 </ul>
-                <Button className="w-full bg-white text-emerald-600 hover:bg-gray-100 font-bold py-2 rounded-lg text-sm">Elegir plan</Button>
+                <Button className="w-full bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 rounded-xl text-base">Elegir plan</Button>
               </div>
             </div>
           </div>
