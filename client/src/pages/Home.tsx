@@ -452,7 +452,15 @@ export default function Home() {
       {/* Business Types Section */}
       <section id="features" className="py-20 md:py-24 bg-white" style={{backgroundColor: '#FFFFFF'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Express IA para tu negocio
+            </h2>
+            <p className="text-lg text-gray-600">
+              Soluciones inteligentes adaptadas al tipo de tu operación
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-6">
             {[
               {
                 title: "Restaurantes",
@@ -480,40 +488,40 @@ export default function Home() {
               },
             ].map((business, i) => {
               return (
-                <div key={i} className="flex flex-col bg-white rounded-3xl p-10" style={{
+                <div key={i} className="flex flex-col bg-white rounded-2xl p-6" style={{
                   boxShadow: '0 8px 30px rgba(0,0,0,.05)',
-                  minHeight: '700px'
+                  minHeight: '550px'
                 }}>
                   <div>
-                    <div className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-2xl flex items-center justify-center mb-12 flex-shrink-0`} style={{
-                      width: '72px',
-                      height: '72px',
-                      borderRadius: '18px'
+                    <div className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-lg flex items-center justify-center mb-6 flex-shrink-0`} style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '12px'
                     }}>
-                      <business.icon className="w-9 h-9 text-white" />
+                      <business.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-5xl font-bold text-gray-900 mb-9 leading-tight" style={{
-                      fontSize: '48px',
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight" style={{
+                      fontSize: '28px',
                       color: '#111111',
-                      marginBottom: '35px'
+                      marginBottom: '12px'
                     }}>{business.title}</h3>
-                    <p className="text-xl text-gray-700 mb-12 leading-relaxed" style={{
-                      fontSize: '20px',
+                    <p className="text-base text-gray-700 mb-6 leading-relaxed" style={{
+                      fontSize: '16px',
                       color: '#333333',
                       lineHeight: '1.5',
-                      marginBottom: '45px'
+                      marginBottom: '20px'
                     }}>
                       {business.desc}
                     </p>
-                    <ul className="space-y-5 mb-12" style={{
-                      marginBottom: '40px'
+                    <ul className="space-y-3 mb-6" style={{
+                      marginBottom: '20px'
                     }}>
                       {business.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-4" style={{
-                          fontSize: '18px',
+                        <li key={j} className="flex items-start gap-2 text-sm" style={{
+                          fontSize: '14px',
                           color: '#444444'
                         }}>
-                          <span className="text-gray-400 flex-shrink-0 mt-1" style={{
+                          <span className="text-gray-400 flex-shrink-0 mt-0.5" style={{
                             color: '#A8A8A8'
                           }}>•</span>
                           <span>{feature}</span>
@@ -521,10 +529,10 @@ export default function Home() {
                       ))}
                     </ul>
                   </div>
-                  <Button className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient}`} style={{
-                    height: '56px',
-                    borderRadius: '14px',
-                    padding: '0 28px',
+                  <Button className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient} text-sm`} style={{
+                    height: '44px',
+                    borderRadius: '10px',
+                    padding: '0 20px',
                     border: 'none',
                     marginTop: 'auto'
                   }}>
