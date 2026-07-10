@@ -127,7 +127,7 @@ export default function DynamicWhatsAppChat() {
             
             {/* Logo de Express IA */}
             <img 
-              src="/assets/logo.png" 
+              src="/manus-storage/logo_66b9638c.png" 
               alt="Express IA" 
               className="w-8 h-8 rounded-full object-cover flex-shrink-0" style={{backgroundColor: '#fcfcfc'}}
             />

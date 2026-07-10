@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import DynamicWhatsAppChat from "@/components/DynamicWhatsAppChat";
 import ProcessFlow from "@/components/ProcessFlow";
+import PricingPlans from "@/components/PricingPlans";
+import FAQSection from "@/components/FAQSection";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -265,7 +267,7 @@ export default function Home() {
 
       {/* Marketplace Section */}
       <section className="py-12 md:py-16 relative overflow-hidden" style={{
-        background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 30%, #c6f6d5 50%, #f0fdf4 70%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
+        background: 'linear-gradient(90deg, #fafafa 0%, #f0fdf4 30%, #c6f6d5 50%, #f0fdf4 70%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
       }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 right-1/3 w-72 h-72 bg-emerald-200/5 rounded-full blur-3xl"></div>
@@ -279,7 +281,7 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Obtén Express IA</span>
               </h2>
               <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight text-gray-700">
-                y te regalamos una Vitrina Digital
+                y te regalamos una Marketplace
               </h3>
               <p className="text-sm text-gray-600 mb-8 leading-relaxed">
                 Soluciones integrables adaptadas a tu negocio
@@ -318,41 +320,11 @@ export default function Home() {
             </div>
 
             <div className="hidden md:flex justify-center items-center relative h-96">
-              <div className="relative w-full max-w-sm" style={{
-                perspective: '1200px',
-                animation: 'float-3d 4s ease-in-out infinite'
-              }}>
-                <div className="relative mx-auto w-64 bg-black rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900" style={{
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
-                }}>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-50"></div>
-                  
-                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 pt-8">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-sm font-bold text-gray-900">Marketplace</h3>
-                      <div className="w-6 h-6 bg-emerald-500 rounded-full"></div>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      {[
-                        { gradient: "from-emerald-400 to-emerald-600" },
-                        { gradient: "from-cyan-400 to-cyan-600" },
-                        { gradient: "from-teal-400 to-teal-600" },
-                      ].map((colors, i) => (
-                        <div key={i} className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-                          <div className="flex gap-2 mb-2">
-                            <div className={`w-8 h-8 bg-gradient-to-br ${colors.gradient} rounded-lg`}></div>
-                            <div className="flex-1">
-                              <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
-                              <div className="h-1.5 bg-gray-100 rounded w-32"></div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img 
+                src="/manus-storage/2FEEDMAKINGAPPSACTUAL(1080x1350px)(5)_6926c7a7.png" 
+                alt="Marketplace Preview" 
+                className="max-h-full max-w-full object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
 
@@ -614,91 +586,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Plans Section */}
-      <section id="plans" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Planes adaptados para tu negocio
-            </h2>
-            <p className="text-lg text-gray-600">
-              Elige el plan que se ajuste a tus necesidades y presupuesto
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {[
-              {
-                name: "Estándar",
-                price: "$350K",
-                description: "Perfecto para comenzar",
-                features: ["Hasta 1,000 mensajes/mes", "1 número WhatsApp", "Soporte por email", "Panel básico"]
-              },
-              {
-                name: "Premium",
-                price: "$950K",
-                description: "Para negocios en crecimiento",
-                features: ["Mensajes ilimitados", "Múltiples números WhatsApp", "Soporte prioritario 24/7", "Panel avanzado", "Integraciones personalizadas"],
-                highlighted: true
-              }
-            ].map((plan, i) => (
-              <div key={i} className={`rounded-2xl p-6 ${plan.highlighted ? 'bg-gradient-to-br from-emerald-500 to-teal-500 text-white shadow-xl' : 'bg-white border border-gray-200'}`}>
-                <h3 className={`text-xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
-                <p className={`text-sm mb-3 ${plan.highlighted ? 'text-emerald-100' : 'text-gray-600'}`}>{plan.description}</p>
-                <p className={`text-3xl font-bold mb-5 ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
-                <ul className="space-y-2 mb-6">
-                  {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.highlighted ? 'text-emerald-100' : 'text-emerald-500'}`} />
-                      <span className={plan.highlighted ? 'text-white' : 'text-gray-700'}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className={`w-full font-bold py-2 rounded-lg text-sm ${plan.highlighted ? 'bg-white text-emerald-600 hover:bg-gray-100' : 'bg-emerald-500 hover:bg-emerald-600 text-white'}`}>
-                  Elegir plan
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Pricing Plans Section */}
+      <PricingPlans />
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Preguntas Frecuentes
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                q: "¿Cómo funciona Express IA?",
-                a: "Express IA se integra con tu WhatsApp Business y utiliza inteligencia artificial para responder automáticamente a tus clientes, procesar pedidos y gestionar tu operación 24/7."
-              },
-              {
-                q: "¿Necesito conocimientos técnicos?",
-                a: "No, Express IA es fácil de configurar. Nuestro equipo te acompaña en todo el proceso de implementación."
-              },
-              {
-                q: "¿Puedo integrar mi ERP?",
-                a: "Sí, Express IA se integra con la mayoría de sistemas ERP y plataformas de e-commerce."
-              },
-              {
-                q: "¿Qué pasa con mis datos?",
-                a: "Todos tus datos están encriptados y almacenados de forma segura. Cumplimos con todas las regulaciones de protección de datos."
-              }
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{item.q}</h3>
-                <p className="text-gray-600">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
