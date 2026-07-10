@@ -18,6 +18,8 @@ import {
   Settings,
   Database,
   User,
+  MessageSquare,
+  Rocket,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -414,37 +416,104 @@ export default function Home() {
       </section>
 
       {/* Implementation Section */}
-      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 bg-white" style={{backgroundColor: '#e8e8e8'}}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" style={{fontSize: '48px'}}>
+            <p className="text-sm font-bold text-gray-600 tracking-wider mb-4">PROCESO TRANSPARENTE</p>
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
               Implementación
             </h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mb-4" style={{fontSize: '48px'}}>
+            <h3 className="text-5xl md:text-6xl font-bold text-emerald-500 mb-8">
               Acompañada
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Te acompañamos en cada paso para que Express IA esté perfectamente configurado en tu negocio
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Nuestro equipo trabaja contigo en cada etapa, desde la configuración inicial hasta la puesta en marcha, asegurándose de que la plataforma esté completamente adaptada a tus procesos y lista para comenzar a generar resultados desde el primer día.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-6 gap-4">
+          {/* Steps Grid */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             {[
-              { number: "1", title: "Consultoría", desc: "Analizamos tu negocio" },
-              { number: "2", title: "Configuración", desc: "Configuramos Express IA" },
-              { number: "3", title: "Integración", desc: "Conectamos tus sistemas" },
-              { number: "4", title: "Capacitación", desc: "Entrenamos tu equipo" },
-              { number: "5", title: "Pruebas", desc: "Validamos todo funcione" },
-              { number: "6", title: "Lanzamiento", desc: "¡Comienza a vender!" },
+              {
+                number: "01",
+                title: "Análisis y Configuración",
+                desc: "Entendemos tu negocio y configuramos Express UI según tus necesidades.",
+                icon: Settings,
+                iconColor: "#0066FF",
+                bgColor: "#e6f0ff"
+              },
+              {
+                number: "02",
+                title: "Integración de Datos",
+                desc: "Conectamos tus bases de datos, inventario y procesos en la plataforma.",
+                icon: Database,
+                iconColor: "#7C3AED",
+                bgColor: "#f3e8ff"
+              },
+              {
+                number: "03",
+                title: "Entrenamiento de IA",
+                desc: "Personalizamos la inteligencia artificial con tu y procesos únicos.",
+                icon: Zap,
+                iconColor: "#10B981",
+                bgColor: "#d1fae5"
+              },
+              {
+                number: "04",
+                title: "Integración WhatsApp",
+                desc: "Configuramos Express en la WhatsApp Business para uso comercial.",
+                icon: MessageSquare,
+                iconColor: "#EF4444",
+                bgColor: "#fee2e2"
+              },
+              {
+                number: "05",
+                title: "Pruebas y Ajustes",
+                desc: "Realizamos pruebas exhaustivas y hacemos los últimos ajustes.",
+                icon: CheckCircle2,
+                iconColor: "#0066FF",
+                bgColor: "#e6f0ff"
+              },
+              {
+                number: "06",
+                title: "Lanzamiento en Vivo",
+                desc: "¡Tu expresión digital está lista! Comienza a ver resultados generales.",
+                icon: Rocket,
+                iconColor: "#EF4444",
+                bgColor: "#fee2e2"
+              }
             ].map((step, i) => (
-              <div key={i} className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-white font-bold">{step.number}</span>
+              <div key={i} className="rounded-2xl p-6 border border-gray-300" style={{backgroundColor: step.bgColor}}>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex-shrink-0">
+                    <p className="text-2xl font-bold text-gray-400">{step.number}</p>
+                  </div>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: step.iconColor}}>
+                    <step.icon className="w-5 h-5 text-white" />
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-1 text-sm">{step.title}</h4>
-                <p className="text-xs text-gray-600">{step.desc}</p>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h4>
+                <p className="text-sm text-gray-700 mb-4">{step.desc}</p>
+                <div className="flex items-center gap-2 text-emerald-500">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span className="text-xs font-semibold">Completado</span>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-white rounded-3xl p-12 text-center border border-gray-200">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              ¿Listo para transformar tu negocio?
+            </h3>
+            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              Nuestro equipo de expertos está disponible para comenzar tu implementación hoy mismo
+            </p>
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg text-lg">
+              Comenzar implementación
+            </Button>
           </div>
         </div>
       </section>
