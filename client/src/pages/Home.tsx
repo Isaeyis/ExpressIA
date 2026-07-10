@@ -230,7 +230,7 @@ export default function Home() {
           </div>
 
           {/* Statistics Section - Inside Comparison */}
-          <div className="mt-12 grid md:grid-cols-3 gap-6 mb-8" style={{height: '126px', width: '1098px'}}>
+          <div className="mt-12 grid md:grid-cols-3 gap-6 mb-8">
             <div className="text-center">
               <div className="mb-3">
                 <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
@@ -452,213 +452,95 @@ export default function Home() {
       {/* Business Types Section */}
       <section id="features" className="py-20 md:py-24 bg-white" style={{backgroundColor: '#FFFFFF'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Restaurantes */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                Express IA para Restaurantes
-              </h2>
-              <p className="text-lg text-gray-600">
-                Convierte WhatsApp en tu nuevo canal de ventas.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Plan Estándar",
-                  icon: ShoppingCart,
-                  gradientClass: "from-blue-400 to-cyan-500",
-                  buttonGradient: "from-blue-400 to-cyan-500",
-                  desc: "Tus clientes pueden:",
-                  features: ["Consultar el menú", "Preguntar por productos", "Realizar pedidos", "Recibir confirmaciones", "Consultar estados de entrega"]
-                },
-                {
-                  title: "Plan con Delivery",
-                  icon: ShoppingCart,
-                  gradientClass: "from-blue-400 to-cyan-500",
-                  buttonGradient: "from-blue-400 to-cyan-500",
-                  desc: "Incluye todo del plan estándar más:",
-                  features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido", "El sistema informa automáticamente a cocina y coordina el proceso hasta la entrega final"]
-                }
-              ].map((plan, i) => (
-                <div key={i} className="flex flex-col rounded-2xl p-6" style={{
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Express IA para tu negocio
+            </h2>
+            <p className="text-lg text-gray-600">
+              Soluciones inteligentes adaptadas al tipo de tu operación
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-6">
+            {[
+              {
+                title: "Restaurantes",
+                icon: ShoppingCart,
+                gradientClass: "from-blue-400 to-cyan-500",
+                buttonGradient: "from-blue-400 to-cyan-500",
+                desc: "Convierte WhatsApp en un nuevo canal de ventas",
+                features: ["Consultar el menú", "Preguntar por productos", "Realizar pedidos", "Recibir confirmaciones", "Consultar estados de entrega"]
+              },
+              {
+                title: "Domicilios",
+                icon: Smartphone,
+                gradientClass: "from-green-400 to-teal-500",
+                buttonGradient: "from-green-400 to-teal-500",
+                desc: "Gestiona todo tu servicio de entregas automáticamente",
+                features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido"]
+              },
+              {
+                title: "Comercio",
+                icon: Store,
+                gradientClass: "from-purple-400 to-pink-500",
+                buttonGradient: "from-purple-400 to-pink-500",
+                desc: "Ideal para negocios que venden productos",
+                features: ["Control de inventario", "Disponibilidad de productos", "Gestión de catálogo", "Recepción de pedidos", "Atención automática"]
+              },
+            ].map((business, i) => {
+              return (
+                <div key={i} className="flex flex-col bg-white rounded-2xl p-6" style={{
                   boxShadow: '0 8px 30px rgba(0,0,0,.05)',
-                  minHeight: '450px',
-                  backgroundColor: '#f5fbff'
+                  minHeight: '550px'
                 }}>
                   <div>
-                    <div className={`w-14 h-14 bg-gradient-to-br ${plan.gradientClass} rounded-lg flex items-center justify-center mb-4 flex-shrink-0`} style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '10px'
+                    <div className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-lg flex items-center justify-center mb-6 flex-shrink-0`} style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '12px'
                     }}>
-                      <plan.icon className="w-6 h-6 text-white" />
+                      <business.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2" style={{
-                      fontSize: '24px',
-                      color: '#111111'
-                    }}>{plan.title}</h3>
-                    <p className="text-sm text-gray-700 mb-4" style={{
-                      fontSize: '14px',
-                      color: '#333333'
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight" style={{
+                      fontSize: '28px',
+                      color: '#111111',
+                      marginBottom: '12px'
+                    }}>{business.title}</h3>
+                    <p className="text-base text-gray-700 mb-6 leading-relaxed" style={{
+                      fontSize: '16px',
+                      color: '#333333',
+                      lineHeight: '1.5',
+                      marginBottom: '20px'
                     }}>
-                      {plan.desc}
+                      {business.desc}
                     </p>
-                    <ul className="space-y-2 mb-6">
-                      {plan.features.map((feature, j) => (
+                    <ul className="space-y-3 mb-6" style={{
+                      marginBottom: '20px'
+                    }}>
+                      {business.features.map((feature, j) => (
                         <li key={j} className="flex items-start gap-2 text-sm" style={{
-                          fontSize: '13px',
+                          fontSize: '14px',
                           color: '#444444'
                         }}>
-                          <span style={{color: '#A8A8A8'}}>•</span>
+                          <span className="text-gray-400 flex-shrink-0 mt-0.5" style={{
+                            color: '#A8A8A8'
+                          }}>•</span>
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <Button className="w-full text-white font-bold bg-gradient-to-r from-blue-400 to-cyan-500 text-sm" style={{
-                    height: '40px',
-                    borderRadius: '8px',
-                    padding: '0 16px',
+                  <Button className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient} text-sm`} style={{
+                    height: '44px',
+                    borderRadius: '10px',
+                    padding: '0 20px',
                     border: 'none',
                     marginTop: 'auto'
                   }}>
-                    {plan.title === 'Plan Estándar' ? 'Tengo un restaurante' : 'Con servicio de delivery'}
+                    {business.title === 'Restaurantes' ? 'Tengo un restaurante' : business.title === 'Domicilios' ? 'Tengo una empresa de domicilios' : 'Tengo un comercio'}
                   </Button>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Domicilios */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                Express IA Domicilios
-              </h2>
-              <p className="text-lg text-gray-600">
-                Gestiona todo tu servicio de entregas de forma automática.
-              </p>
-            </div>
-            <div className="max-w-2xl mx-auto">
-              <div className="flex flex-col rounded-2xl p-6" style={{
-                boxShadow: '0 8px 30px rgba(0,0,0,.05)',
-                minHeight: '400px',
-                backgroundColor: '#f0fff9'
-              }}>
-                <div>
-                  <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center mb-4 flex-shrink-0" style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '10px'
-                  }}>
-                    <Smartphone className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2" style={{
-                    fontSize: '24px',
-                    color: '#111111'
-                  }}>Incluye:</h3>
-                  <ul className="space-y-2 mb-6">
-                    {["Solicitud de domicilios por WhatsApp", "Cálculo de tarifas", "Notificación a domiciliarios disponibles", "Aceptación de servicios", "Actualización de estados", "Seguimiento del pedido", "Cliente, domiciliario y negocio conectados en un solo flujo"].map((feature, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm" style={{
-                        fontSize: '13px',
-                        color: '#444444'
-                      }}>
-                        <span style={{color: '#A8A8A8'}}>•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Button className="w-full text-white font-bold bg-gradient-to-r from-green-400 to-teal-500 text-sm" style={{
-                  height: '40px',
-                  borderRadius: '8px',
-                  padding: '0 16px',
-                  border: 'none',
-                  marginTop: 'auto'
-                }}>
-                  Tengo una empresa de domicilios
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Comercio */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                Express IA Comercio
-              </h2>
-              <p className="text-lg text-gray-600">
-                Ideal para negocios que venden productos.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Plan Estándar",
-                  icon: Store,
-                  gradientClass: "from-purple-400 to-pink-500",
-                  buttonGradient: "from-purple-400 to-pink-500",
-                  desc: "Administra:",
-                  features: ["Catálogo", "Productos", "Inventario", "Disponibilidad", "Pedidos", "Atención automática", "Mantén tus clientes informados y controla tu operación"]
-                },
-                {
-                  title: "Plan con Delivery",
-                  icon: Store,
-                  gradientClass: "from-purple-400 to-pink-500",
-                  buttonGradient: "from-purple-400 to-pink-500",
-                  desc: "Incluye todo del plan estándar más:",
-                  features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido", "Marketplace personalizado", "Una vitrina digital personalizada para crecer sin depender completamente de terceros"]
-                }
-              ].map((plan, i) => (
-                <div key={i} className="flex flex-col rounded-2xl p-6" style={{
-                  boxShadow: '0 8px 30px rgba(0,0,0,.05)',
-                  minHeight: '450px',
-                  backgroundColor: '#fdf5ff'
-                }}>
-                  <div>
-                    <div className={`w-14 h-14 bg-gradient-to-br ${plan.gradientClass} rounded-lg flex items-center justify-center mb-4 flex-shrink-0`} style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '10px'
-                    }}>
-                      <plan.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2" style={{
-                      fontSize: '24px',
-                      color: '#111111'
-                    }}>{plan.title}</h3>
-                    <p className="text-sm text-gray-700 mb-4" style={{
-                      fontSize: '14px',
-                      color: '#333333'
-                    }}>
-                      {plan.desc}
-                    </p>
-                    <ul className="space-y-2 mb-6">
-                      {plan.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm" style={{
-                          fontSize: '13px',
-                          color: '#444444'
-                        }}>
-                          <span style={{color: '#A8A8A8'}}>•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Button className="w-full text-white font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-sm" style={{
-                    height: '40px',
-                    borderRadius: '8px',
-                    padding: '0 16px',
-                    border: 'none',
-                    marginTop: 'auto'
-                  }}>
-                    {plan.title === 'Plan Estándar' ? 'Tengo un comercio' : 'Con servicio de delivery'}
-                  </Button>
-                </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
