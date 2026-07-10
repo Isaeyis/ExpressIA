@@ -424,7 +424,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
               Implementación
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-emerald-500 mb-6">
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">
               Acompañada
             </h3>
             <p className="text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -485,10 +485,8 @@ export default function Home() {
               }
             ].map((step, i) => (
               <div key={i} className="rounded-2xl p-6 border border-gray-300" style={{backgroundColor: step.bgColor}}>
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-shrink-0">
-                    <p className="text-2xl font-bold text-gray-400">{step.number}</p>
-                  </div>
+                <div className="flex flex-col items-start gap-3 mb-4">
+                  <p className="text-2xl font-bold text-gray-400">{step.number}</p>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{backgroundColor: step.iconColor}}>
                     <step.icon className="w-5 h-5 text-white" />
                   </div>
@@ -523,7 +521,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Express IA para tu negocio
+              Express IA <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">para tu negocio</span>
             </h2>
             <p className="text-lg text-gray-600">
               Soluciones inteligentes adaptadas al tipo de tu operación

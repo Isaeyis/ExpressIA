@@ -77,16 +77,21 @@ export default function DynamicWhatsAppChat() {
       timeouts.push(timeout);
     });
 
-    // Resetear después de que todos los mensajes se muestren (sin pausa, loop inmediato)
+    // Resetear después de que todos los mensajes se muestren (loop infinito con pequeña pausa)
     const resetTimeout = setTimeout(() => {
       setVisibleMessages([]);
-    }, CHAT_FLOW.length * 1200); // Loop inmediato sin pausa
+    }, CHAT_FLOW.length * 1200 + 2000); // 2 segundos de pausa antes de reiniciar
     timeouts.push(resetTimeout);
 
     return () => {
       timeouts.forEach((t) => clearTimeout(t));
     };
   }, [isLooping]);
+
+  // Asegurar que el loop esté siempre activo
+  useEffect(() => {
+    setIsLooping(true);
+  }, []);
 
   return (
     <div className="w-full max-w-xs mx-auto">
