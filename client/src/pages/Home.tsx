@@ -117,7 +117,7 @@ export default function Home() {
                 <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
                   Adquiere Express IA
                 </Button>
-                <Button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-bold px-8 py-3 rounded-lg">
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
                   Ver cómo funciona
                 </Button>
               </div>
@@ -324,6 +324,7 @@ export default function Home() {
                 src="/manus-storage/2FEEDMAKINGAPPSACTUAL(1080x1350px)(5)_6926c7a7.png" 
                 alt="Marketplace Preview" 
                 className="max-h-full max-w-full object-contain drop-shadow-2xl"
+                style={{height: '388px', width: '325px'}}
               />
             </div>
           </div>
