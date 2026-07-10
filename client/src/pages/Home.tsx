@@ -115,7 +115,7 @@ export default function Home() {
                 <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
                   Adquiere Express IA
                 </Button>
-                <Button className="border-2 border-emerald-500 text-emerald-500 hover:bg-emerald-50 font-bold px-8 py-3 rounded-lg">
+                <Button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-bold px-8 py-3 rounded-lg">
                   Ver cómo funciona
                 </Button>
               </div>
@@ -140,7 +140,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{fontSize: '48px'}}>
               ¿Cuántas ventas estás <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">perdiendo</span> ahora mismo?
             </h2>
             <div className="inline-flex items-center gap-3 px-8 py-4 mb-6" style={{backgroundColor: '#d4f2eb', borderRadius: '8px', border: '2px solid #00bca5'}}>
@@ -232,7 +232,7 @@ export default function Home() {
           </div>
 
           {/* Statistics Section - Inside Comparison */}
-          <div className="mt-12 grid md:grid-cols-3 gap-6 mb-8">
+          <div className="mt-8 grid md:grid-cols-3 gap-4 mb-6">
             <div className="text-center">
               <div className="mb-3">
                 <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
@@ -416,18 +416,18 @@ export default function Home() {
       </section>
 
       {/* Implementation Section */}
-      <section className="py-20 md:py-28 bg-white" style={{backgroundColor: '#e8e8e8'}}>
+      <section className="py-20 md:py-28 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center mb-16">
-            <p className="text-sm font-bold text-gray-600 tracking-wider mb-4">PROCESO TRANSPARENTE</p>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
+          <div className="text-center mb-12">
+            <p className="text-sm font-bold text-gray-600 tracking-wider mb-3">PROCESO TRANSPARENTE</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
               Implementación
             </h2>
-            <h3 className="text-5xl md:text-6xl font-bold text-emerald-500 mb-8">
+            <h3 className="text-4xl md:text-5xl font-bold text-emerald-500 mb-6">
               Acompañada
             </h3>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Nuestro equipo trabaja contigo en cada etapa, desde la configuración inicial hasta la puesta en marcha, asegurándose de que la plataforma esté completamente adaptada a tus procesos y lista para comenzar a generar resultados desde el primer día.
             </p>
           </div>
@@ -504,14 +504,14 @@ export default function Home() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-white rounded-3xl p-12 text-center border border-gray-200">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="bg-white rounded-2xl p-8 text-center border border-gray-200">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               ¿Listo para transformar tu negocio?
             </h3>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            <p className="text-base text-gray-700 mb-6 max-w-2xl mx-auto">
               Nuestro equipo de expertos está disponible para comenzar tu implementación hoy mismo
             </p>
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg text-lg">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg text-base">
               Comenzar implementación
             </Button>
           </div>
