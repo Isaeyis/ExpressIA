@@ -128,9 +128,9 @@ export default function Home() {
       </section>
 
       {/* Transition Band */}
-      <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16">
+      <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16" style={{height: '113px', paddingTop: '43px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">
+          <h2 className="text-2xl md:text-3xl font-bold text-white" style={{fontSize: '23px', fontWeight: '400'}}>
             ⚡︎ Automatización 24/7 · WhatsApp Business · Inteligencia Artificial · Más Ventas ⚡︎
           </h2>
         </div>
@@ -232,28 +232,28 @@ export default function Home() {
           </div>
 
           {/* Statistics Section - Inside Comparison */}
-          <div className="mt-8 grid md:grid-cols-3 gap-4 mb-6">
+          <div className="mt-8 grid md:grid-cols-3 gap-4 mb-6" style={{height: '98px', width: '1005px', marginTop: '16px', paddingTop: '12px', backgroundColor: '#e9fbf3', borderRadius: '8px'}}>
             <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
+              <div className="mb-2">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500" style={{fontSize: '32px'}}>95%</p>
               </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">de clientes espera respuesta en 5 minutos</p>
+              <p className="text-base font-semibold text-gray-900 mb-1" style={{fontSize: '11px'}}>de clientes espera respuesta en 5 minutos</p>
               <p className="text-xs text-gray-600">Express IA responde en segundos, 24/7</p>
             </div>
 
             <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">3x</p>
+              <div className="mb-2">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500" style={{fontSize: '32px'}}>3x</p>
               </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">más conversiones con respuestas inmediatas</p>
+              <p className="text-base font-semibold text-gray-900 mb-1" style={{fontSize: '11px'}}>más conversiones con respuestas inmediatas</p>
               <p className="text-xs text-gray-600">Aumenta tus ventas automáticamente</p>
             </div>
 
             <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">24/7</p>
+              <div className="mb-2">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500" style={{fontSize: '32px'}}>24/7</p>
               </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">atención sin descanso, sin empleados</p>
+              <p className="text-base font-semibold text-gray-900 mb-1" style={{fontSize: '11px'}}>atención sin descanso, sin empleados</p>
               <p className="text-xs text-gray-600">Automatiza tu operación completamente</p>
             </div>
           </div>
@@ -299,7 +299,7 @@ export default function Home() {
                     rose: "from-rose-400 to-rose-600",
                   };
                   return (
-                    <div key={i} className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                    <div key={i} className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300" style={{height: '140px', width: '280px'}}>
                       <div className="relative z-10">
                         <div className={`w-12 h-12 bg-gradient-to-br ${colors[item.color]} rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300`}>
                           <item.icon className="w-6 h-6 text-white" />
@@ -504,11 +504,11 @@ export default function Home() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-white rounded-2xl p-8 text-center border border-gray-200">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+          <div className="bg-white rounded-2xl p-8 text-center border border-gray-200 mx-auto" style={{width: '770px', maxWidth: '100%'}}>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3" style={{fontSize: '19px'}}>
               ¿Listo para transformar tu negocio?
             </h3>
-            <p className="text-base text-gray-700 mb-6 max-w-2xl mx-auto">
+            <p className="text-base text-gray-700 mb-6 max-w-2xl mx-auto" style={{fontSize: '12px'}}>
               Nuestro equipo de expertos está disponible para comenzar tu implementación hoy mismo
             </p>
             <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg text-base">
@@ -559,7 +559,8 @@ export default function Home() {
               return (
                 <div key={i} className="flex flex-col bg-white rounded-2xl p-6" style={{
                   boxShadow: '0 8px 30px rgba(0,0,0,.05)',
-                  minHeight: '550px'
+                  minHeight: '558px',
+                  backgroundColor: i === 0 ? '#ebfcff' : i === 1 ? '#ebfff6' : '#fbf0ff'
                 }}>
                   <div>
                     <div className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-lg flex items-center justify-center mb-6 flex-shrink-0`} style={{
@@ -570,15 +571,16 @@ export default function Home() {
                       <business.icon className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-3 leading-tight" style={{
-                      fontSize: '28px',
+                      fontSize: '22px',
                       color: '#111111',
                       marginBottom: '12px'
                     }}>{business.title}</h3>
                     <p className="text-base text-gray-700 mb-6 leading-relaxed" style={{
-                      fontSize: '16px',
+                      fontSize: '13px',
                       color: '#333333',
                       lineHeight: '1.5',
-                      marginBottom: '20px'
+                      marginBottom: '20px',
+                      fontWeight: '500'
                     }}>
                       {business.desc}
                     </p>
