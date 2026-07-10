@@ -298,7 +298,7 @@ export default function Home() {
                       <Store className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="font-semibold text-gray-900 mb-1 text-sm">Tienda Digital</h3>
-                    <p className="text-xs text-gray-600 font-medium">100% Personalizada</p>
+                    <p className="text-xs text-gray-600 font-medium">Catálogo automático</p>
                   </div>
                 </div>
 
@@ -407,6 +407,200 @@ export default function Home() {
             50% { transform: translateY(-20px) rotateX(5deg) rotateY(-5deg); }
           }
         `}</style>
+      </section>
+
+      {/* NUEVA SECCIÓN: Estadísticas principales */}
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              Resultados que hablan por sí solos
+            </h2>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Stat 1 - 95% */}
+            <div className="text-center">
+              <div className="mb-4">
+                <p className="text-6xl md:text-7xl font-bold text-emerald-500">95%</p>
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-2">de clientes espera respuesta en 5 minutos</p>
+              <p className="text-sm text-gray-600">Express IA responde en segundos, 24/7</p>
+            </div>
+
+            {/* Stat 2 - 3x */}
+            <div className="text-center">
+              <div className="mb-4">
+                <p className="text-6xl md:text-7xl font-bold text-emerald-500">3x</p>
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-2">más conversiones con respuestas inmediatas</p>
+              <p className="text-sm text-gray-600">Aumenta tus ventas automáticamente</p>
+            </div>
+
+            {/* Stat 3 - 24/7 */}
+            <div className="text-center">
+              <div className="mb-4">
+                <p className="text-6xl md:text-7xl font-bold text-emerald-500">24/7</p>
+              </div>
+              <p className="text-lg font-semibold text-gray-900 mb-2">atención sin descanso, sin empleados</p>
+              <p className="text-sm text-gray-600">Automatiza tu operación completamente</p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+              Comienza tu transformación ahora
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* NUEVA SECCIÓN: ¿Por qué elegir Express IA? */}
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              ¿Por qué elegir Express IA?
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Opción 1 - Atención inmediata */}
+            <div className="bg-yellow-50 rounded-2xl p-8 border border-yellow-200">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Atención inmediata</h3>
+                  <p className="text-gray-700">Responde a tus clientes en segundos, sin importar la hora</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Opción 2 - Más ventas */}
+            <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Más ventas</h3>
+                  <p className="text-gray-700">Captura más clientes y aumenta tus conversiones automáticamente</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Opción 3 - Menos horas de trabajo */}
+            <div className="bg-cyan-50 rounded-2xl p-8 border border-cyan-200">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Menos horas de trabajo</h3>
+                  <p className="text-gray-700">Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Opción 4 - Fácil de usar */}
+            <div className="bg-purple-50 rounded-2xl p-8 border border-purple-200">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Settings className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Fácil de usar</h3>
+                  <p className="text-gray-700">Configura en minutos, sin necesidad de conocimientos técnicos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NUEVA SECCIÓN: Implementación Acompañada */}
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              Implementación
+            </h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mb-4">
+              Acompañada
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Nuestro equipo trabaja contigo en cada etapa, desde la configuración inicial hasta la puesta en marcha, asegurándonos de que la plataforma esté completamente adaptada a tu proceso y lista para comenzar a generar resultados desde el primer día.
+            </p>
+          </div>
+
+          {/* Grid de 6 pasos */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Paso 1 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                01
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Análisis y Configuración</h3>
+              <p className="text-gray-600 text-sm">Entendemos tu negocio y configuramos Express IA según tus necesidades</p>
+            </div>
+
+            {/* Paso 2 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                02
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Carga de datos</h3>
+              <p className="text-gray-600 text-sm">Importamos tu catálogo, precios y configuraciones automáticamente</p>
+            </div>
+
+            {/* Paso 3 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                03
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Pruebas de IA</h3>
+              <p className="text-gray-600 text-sm">Probamos y ajustamos las respuestas automáticas para tu negocio</p>
+            </div>
+
+            {/* Paso 4 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                04
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Integración WhatsApp</h3>
+              <p className="text-gray-600 text-sm">Conectamos tu WhatsApp Business de forma segura</p>
+            </div>
+
+            {/* Paso 5 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                05
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Pruebas y Ajustes</h3>
+              <p className="text-gray-600 text-sm">Realizamos pruebas exhaustivas y ajustes finales</p>
+            </div>
+
+            {/* Paso 6 */}
+            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
+                06
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Lanzamiento en Vivo</h3>
+              <p className="text-gray-600 text-sm">Express IA comienza a trabajar para ti, generando resultados desde el primer día</p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+              Comenzar Implementación
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Express IA para tu negocio */}
@@ -532,6 +726,120 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NUEVA SECCIÓN: Planes adaptados a tu negocio */}
+      <section id="plans" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Planes adaptados a tu negocio
+            </h2>
+            <p className="text-gray-600">Elige el plan que mejor se adapte a tus necesidades</p>
+          </div>
+
+          {/* Tabs para tipos de negocio */}
+          <div className="flex justify-center gap-4 mb-12 flex-wrap">
+            <button className="px-6 py-3 rounded-full font-semibold bg-emerald-500 text-white hover:bg-emerald-600 transition-colors">
+              🍽️ Restaurantes
+            </button>
+            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+              🚚 Domicilios
+            </button>
+            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+              🛍️ Comercio
+            </button>
+            <button className="px-6 py-3 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+              🏢 Otros
+            </button>
+          </div>
+
+          {/* Grid de planes */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Plan 1 - Estándar */}
+            <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:border-emerald-500 transition-colors">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Estándar</h3>
+              <p className="text-gray-600 mb-6">Para negocios pequeños</p>
+              
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-gray-900">$350K</span>
+                <span className="text-gray-600 ml-2">por mes</span>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Hasta 1,000 mensajes/mes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">1 número de WhatsApp</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Respuestas automáticas básicas</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Soporte por email</span>
+                </li>
+              </ul>
+
+              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3" style={{borderRadius: '10px'}}>
+                Empezar
+              </Button>
+            </div>
+
+            {/* Plan 2 - Premium */}
+            <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl border-2 border-purple-600 p-8 text-white relative overflow-hidden">
+              <div className="absolute top-4 right-4 bg-yellow-400 text-purple-900 px-4 py-1 rounded-full text-sm font-bold">
+                Más Popular
+              </div>
+
+              <h3 className="text-2xl font-bold mb-2">Premium</h3>
+              <p className="text-purple-100 mb-6">Para negocios en crecimiento</p>
+              
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$950K</span>
+                <span className="text-purple-100 ml-2">por mes</span>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span className="text-white">Hasta 10,000 mensajes/mes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span className="text-white">Hasta 3 números de WhatsApp</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span className="text-white">Respuestas automáticas avanzadas</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span className="text-white">Integración con CRM</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span className="text-white">Soporte prioritario</span>
+                </li>
+              </ul>
+
+              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold py-3" style={{borderRadius: '10px'}}>
+                Empezar
+              </Button>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">¿Necesitas un plan personalizado?</p>
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3" style={{borderRadius: '10px'}}>
+              Contáctanos
+            </Button>
           </div>
         </div>
       </section>
