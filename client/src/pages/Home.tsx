@@ -232,7 +232,7 @@ export default function Home() {
           </div>
 
           {/* Statistics Section - Inside Comparison */}
-          <div className="mt-8 grid md:grid-cols-3 gap-4 mb-6" style={{height: '98px', width: '1005px', marginTop: '16px', paddingTop: '12px', backgroundColor: '#e9fbf3', borderRadius: '8px'}}>
+          <div className="mt-8 grid md:grid-cols-3 gap-4 mb-6" style={{height: '98px', width: '1005px', marginTop: '45px', paddingTop: '12px', backgroundColor: '#e9fbf3', borderRadius: '8px'}}>
             <div className="text-center">
               <div className="mb-2">
                 <p className="text-5xl md:text-6xl font-bold text-emerald-500" style={{fontSize: '32px'}}>95%</p>
@@ -404,8 +404,8 @@ export default function Home() {
                       <item.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-700">{item.desc}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2" style={{fontSize: '17px'}}>{item.title}</h3>
+                      <p className="text-gray-700" style={{fontSize: '12px'}}>{item.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -416,7 +416,7 @@ export default function Home() {
       </section>
 
       {/* Implementation Section */}
-      <section className="py-20 md:py-28 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section className="py-20 md:py-28 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
@@ -493,8 +493,8 @@ export default function Home() {
                     <step.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h4>
-                <p className="text-sm text-gray-700 mb-4">{step.desc}</p>
+                <h4 className="text-lg font-bold text-gray-900 mb-2" style={{fontSize: '17px'}}>{step.title}</h4>
+                <p className="text-sm text-gray-700 mb-4" style={{fontSize: '12px'}}>{step.desc}</p>
                 <div className="flex items-center gap-2 text-emerald-500">
                   <CheckCircle2 className="w-4 h-4" />
                   <span className="text-xs font-semibold">Completado</span>
@@ -505,7 +505,7 @@ export default function Home() {
 
           {/* CTA Section */}
           <div className="bg-white rounded-2xl p-8 text-center border border-gray-200 mx-auto" style={{width: '770px', maxWidth: '100%'}}>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3" style={{fontSize: '19px'}}>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3" style={{fontSize: '17px'}}>
               ¿Listo para transformar tu negocio?
             </h3>
             <p className="text-base text-gray-700 mb-6 max-w-2xl mx-auto" style={{fontSize: '12px'}}>
