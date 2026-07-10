@@ -150,7 +150,7 @@ export default function Home() {
       <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
-            ⚡ Automatización 24/7 · WhatsApp Business · Inteligencia Artificial · Más Ventas ⚡
+            ⚡︎ Automatización 24/7 · WhatsApp Business · Inteligencia Artificial · Más Ventas ⚡︎
           </h2>
         </div>
       </div>
@@ -247,6 +247,33 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Statistics Section - Inside Comparison */}
+          <div className="mt-12 grid md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center">
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
+              </div>
+              <p className="text-base font-semibold text-gray-900 mb-1">de clientes espera respuesta en 5 minutos</p>
+              <p className="text-xs text-gray-600">Express IA responde en segundos, 24/7</p>
+            </div>
+
+            <div className="text-center">
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">3x</p>
+              </div>
+              <p className="text-base font-semibold text-gray-900 mb-1">más conversiones con respuestas inmediatas</p>
+              <p className="text-xs text-gray-600">Aumenta tus ventas automáticamente</p>
+            </div>
+
+            <div className="text-center">
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">24/7</p>
+              </div>
+              <p className="text-base font-semibold text-gray-900 mb-1">atención sin descanso, sin empleados</p>
+              <p className="text-xs text-gray-600">Automatiza tu operación completamente</p>
             </div>
           </div>
         </div>
@@ -357,42 +384,7 @@ export default function Home() {
         `}</style>
       </section>
 
-      {/* Statistics Section */}
-      <section className="py-12 md:py-16 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '30px', paddingTop: '30px'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
-              </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">de clientes espera respuesta en 5 minutos</p>
-              <p className="text-xs text-gray-600">Express IA responde en segundos, 24/7</p>
-            </div>
 
-            <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">3x</p>
-              </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">más conversiones con respuestas inmediatas</p>
-              <p className="text-xs text-gray-600">Aumenta tus ventas automáticamente</p>
-            </div>
-
-            <div className="text-center">
-              <div className="mb-3">
-                <p className="text-5xl md:text-6xl font-bold text-emerald-500">24/7</p>
-              </div>
-              <p className="text-base font-semibold text-gray-900 mb-1">atención sin descanso, sin empleados</p>
-              <p className="text-xs text-gray-600">Automatiza tu operación completamente</p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-lg">
-              Comienza tu transformación ahora
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Section */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
