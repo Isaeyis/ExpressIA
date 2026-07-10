@@ -19,7 +19,7 @@ const ProcessFlow: React.FC = () => {
     {
       id: 1,
       title: 'Cliente',
-      subtitle: 'Cliente manual',
+      subtitle: 'Envía mensaje',
       icon: <MessageCircle className="w-6 h-6" />,
       color: 'from-blue-400 to-blue-600',
       borderColor: '#3b82f6',
@@ -81,10 +81,10 @@ const ProcessFlow: React.FC = () => {
 
         {/* Process Flow Container - Diseño más fluido y creativo */}
         <div className="relative">
-          {/* Contenedor con 4 cuadritos */}
-          <div className="relative flex items-start justify-between gap-3 md:gap-4 mb-16">
+          {/* Contenedor con 4 cuadritos - Responsive */}
+          <div className="relative flex items-start justify-between gap-2 md:gap-4 mb-16 flex-wrap md:flex-nowrap">
             {steps.map((step, index) => (
-              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0">
+              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0 w-full md:w-auto">
                 {/* Check verde con fondo - Encima del cuadro tapando la punta */}
                 {index < activeStep && (
                   <div 
@@ -101,12 +101,14 @@ const ProcessFlow: React.FC = () => {
 
                 {/* Card del paso - Diseño mejorado y fluido */}
                 <div
-                  className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible`}
+                  className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full md:w-auto`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
                     padding: '14px 8px',
                     minHeight: activeStep === index ? 'auto' : '85px',
-                    width: activeStep === index ? '200px' : '160px',
+                    width: activeStep === index ? '100%' : '100%',
+                    maxWidth: activeStep === index ? '200px' : '160px',
+                    margin: '0 auto',
                     transform: activeStep === index ? 'scaleX(1.05) scaleY(1.15) translateY(-6px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
@@ -195,9 +197,9 @@ const ProcessFlow: React.FC = () => {
                   )}
                 </div>
 
-                {/* Línea conectora simple entre cuadritos */}
+                {/* Línea conectora simple entre cuadritos - Hidden en móvil */}
                 {index < steps.length - 1 && (
-                  <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5">
+                  <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5 hidden md:flex">
                     {/* Línea de conexión con gradiente */}
                     <svg className="w-full h-full" viewBox="0 0 100 4" preserveAspectRatio="none">
                       <defs>

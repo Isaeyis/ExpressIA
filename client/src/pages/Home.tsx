@@ -1,6 +1,4 @@
-import { Card } from "@/components/ui/card";
-import DynamicWhatsAppChat from "@/components/DynamicWhatsAppChat";
-import ProcessFlow from "@/components/ProcessFlow";
+import { useState, useEffect } from "react";
 import {
   MessageCircle,
   Users,
@@ -22,28 +20,17 @@ import {
   Database,
   User,
 } from "lucide-react";
-import { useState } from "react";
-import React from "react";
-
-function Button({ children, className = "", variant = "default", ...props }: { children: React.ReactNode; className?: string; variant?: "default" | "outline"; [key: string]: any }) {
-  const baseStyles = "font-medium rounded-lg transition-colors px-6 py-3";
-  const variants: Record<string, string> = {
-    default: "bg-emerald-500 hover:bg-emerald-600 text-white",
-    outline: "border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50",
-  };
-  return (
-    <button className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
-      {children}
-    </button>
-  );
-}
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import DynamicWhatsAppChat from "@/components/DynamicWhatsAppChat";
+import ProcessFlow from "@/components/ProcessFlow";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [counter, setCounter] = useState(50);
 
   // Efecto para incrementar el contador
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCounter(prev => prev + Math.floor(Math.random() * 5) + 1);
     }, 1500);
@@ -51,7 +38,7 @@ export default function Home() {
   }, []);
 
   // Actualizar el DOM del contador
-  React.useEffect(() => {
+  useEffect(() => {
     const counterEl = document.getElementById('counter');
     if (counterEl) {
       counterEl.textContent = `$${counter}`;
@@ -66,19 +53,21 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <img src="/assets/logo.png" alt="Express IA Logo" className="w-10 h-10 object-contain" />
+              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
               <span className="font-bold text-gray-900 hidden sm:inline">EXPRESS IA</span>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex gap-8 items-center">
-              <a href="#features" className="text-gray-700 hover:text-emerald-600 font-medium">
+              <a href="#features" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 Características
               </a>
-              <a href="#plans" className="text-gray-700 hover:text-emerald-600 font-medium">
+              <a href="#plans" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 Planes
               </a>
-              <a href="#faq" className="text-gray-700 hover:text-emerald-600 font-medium">
+              <a href="#faq" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 FAQ
               </a>
             </nav>
@@ -94,6 +83,9 @@ export default function Home() {
             <button
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -101,7 +93,7 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-gray-200">
+            <div className="md:hidden pb-4 border-t border-gray-200" id="mobile-menu" role="navigation" aria-label="Menú principal móvil">
               <a href="#features" className="block py-2 text-gray-700 hover:text-emerald-600">
                 Características
               </a>
@@ -135,13 +127,13 @@ export default function Home() {
                 Mientras tú atiendes tu negocio Express IA responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8" style={{borderRadius: '8px', paddingBottom: '10px', paddingTop: '10px'}}>
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white text-base px-8 py-3 rounded-lg" aria-label="Adquiere Express IA ahora">
                   Adquiere Express IA
                 </Button>
                 <Button
                   variant="outline"
-                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8"
-                  style={{borderRadius: '8px', paddingBottom: '10px', paddingTop: '10px'}}
+                  className="border-emerald-500 text-emerald-600 hover:bg-emerald-50 text-base px-8 py-3 rounded-lg"
+                  aria-label="Ver como funciona Express IA"
                 >
                   Ver como funciona
                 </Button>
@@ -157,17 +149,17 @@ export default function Home() {
       {/* Transition Band */}
       <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white" style={{fontSize: '23px', fontWeight: '600'}}>
-            ⚡︎ Automatización 24/7 · WhatsApp Business · Automatiza tu WhatsApp · Inteligencia Artificial ⚡︎
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            ⚡ Automatización 24/7 · WhatsApp Business · Inteligencia Artificial · Más Ventas ⚡
           </h2>
         </div>
       </div>
 
-      {/* New Section: Comparativa "Ahora Mismo" vs Express IA */}
-      <section className="py-16 md:py-24 bg-gray-100" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+      {/* Comparison Section */}
+      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{fontSize: '60px'}}>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               ¿Cuántas ventas estás <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">perdiendo</span> ahora mismo?
             </h2>
             <div className="inline-flex items-center gap-3 px-8 py-4 mb-6" style={{backgroundColor: '#d4f2eb', borderRadius: '8px', border: '2px solid #00bca5'}}>
@@ -179,7 +171,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Sin Express IA - Left Column */}
+            {/* Sin Express IA */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
@@ -188,7 +180,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900">Sin Express IA</h3>
               </div>
               <div className="space-y-4">
-                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </div>
@@ -197,7 +189,7 @@ export default function Home() {
                     <p className="text-sm text-gray-600 mt-0.5">El cliente escribe y nadie responde - Busca en otro lugar</p>
                   </div>
                 </div>
-                <div className="bg-orange-50 border border-orange-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-orange-50 border border-orange-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
@@ -206,7 +198,7 @@ export default function Home() {
                     <p className="text-sm text-gray-600 mt-0.5">Tu equipo dedica horas respondiendo las mismas preguntas</p>
                   </div>
                 </div>
-                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
@@ -218,7 +210,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Con Express IA - Right Column */}
+            {/* Con Express IA */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
@@ -227,31 +219,31 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900">Con Express IA</h3>
               </div>
               <div className="space-y-4">
-                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Respuestas Inmediatas</p>
-                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5565'}}>Express IA responde al cliente en segundos, 24/7</p>
+                    <p className="text-sm text-gray-600 mt-0.5">Express IA responde al cliente en segundos, 24/7</p>
                   </div>
                 </div>
-                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
                     <Zap className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Automatización Total</p>
-                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5565'}}>Procesa pedidos, agendas y consultas sin intervención humana</p>
+                    <p className="text-sm text-gray-600 mt-0.5">Procesa pedidos, agendas y consultas sin intervención humana</p>
                   </div>
                 </div>
-                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4">
+                <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 flex gap-4 hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
                     <CheckCircle2 className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-bold text-teal-700">Operación Optimizada</p>
-                    <p className="text-sm text-teal-600 mt-0.5" style={{color: '#4a5578'}}>Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
+                    <p className="text-sm text-gray-600 mt-0.5">Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
                   </div>
                 </div>
               </div>
@@ -260,138 +252,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Redesigned What is Express IA - Flow Diagram */}
+      {/* ProcessFlow Section */}
       <ProcessFlow />
 
-      {/* NUEVA SECCIÓN: Obtén Express IA y te regalamos un Marketplace */}
+      {/* Marketplace Section */}
       <section className="py-12 md:py-16 relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #fafafa 0%, #f0fdf4 30%, #c6f6d5 50%, #f0fdf4 70%, #fafafa 100%)', paddingBottom: '50px', paddingTop: '50px'
       }}>
-        {/* Elementos decorativos sutiles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 right-1/3 w-72 h-72 bg-emerald-200/5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-40 left-1/3 w-72 h-72 bg-emerald-100/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Layout: Contenido a la izquierda, imagen 3D a la derecha */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Contenido izquierdo */}
-            <div style={{height: '738px', width: '674px'}}>
+            <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-2 leading-tight">
                 <span className="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Obtén Express IA</span>
               </h2>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight" style={{color: '#8a8a8a'}}>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-tight text-gray-700">
                 y te regalamos una Vitrina Digital
               </h3>
-              <p className="text-sm text-gray-600 mb-2 leading-relaxed">
+              <p className="text-sm text-gray-600 mb-8 leading-relaxed">
                 Soluciones integrables adaptadas a tu negocio
               </p>
 
-
-              {/* Grid de 4 elementos - 2x2 Dinámico */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {/* Elemento 1 - Tienda Digital */}
-                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Store className="w-6 h-6 text-white" />
+                {[
+                  { icon: Store, label: "Tienda Digital", desc: "Catálogo automático", color: "emerald" },
+                  { icon: Zap, label: "Sincronización", desc: "Automática", color: "cyan" },
+                  { icon: Users, label: "Gestión de Inventario", desc: "En tiempo real", color: "teal" },
+                  { icon: Database, label: "Carga Masiva", desc: "Por ERP", color: "rose" },
+                ].map((item, i) => {
+                  const colors: Record<string, string> = {
+                    emerald: "from-emerald-400 to-emerald-600",
+                    cyan: "from-cyan-400 to-cyan-600",
+                    teal: "from-teal-400 to-teal-600",
+                    rose: "from-rose-400 to-rose-600",
+                  };
+                  return (
+                    <div key={i} className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                      <div className="relative z-10">
+                        <div className={`w-12 h-12 bg-gradient-to-br ${colors[item.color]} rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          <item.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <h3 className="font-semibold text-gray-900 mb-1 text-sm">{item.label}</h3>
+                        <p className="text-xs text-gray-600 font-medium">{item.desc}</p>
+                      </div>
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Tienda Digital</h3>
-                    <p className="text-xs text-gray-600 font-medium">Catálogo automático</p>
-                  </div>
-                </div>
-
-                {/* Elemento 2 - Sincronización */}
-                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Zap className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Sincronización</h3>
-                    <p className="text-xs text-gray-600 font-medium">Automática</p>
-                  </div>
-                </div>
-
-                {/* Elemento 3 - Inventario */}
-                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Gestión de Inventario</h3>
-                    <p className="text-xs text-gray-600 font-medium">En tiempo real</p>
-                  </div>
-                </div>
-
-                {/* Elemento 4 - Carga Masiva */}
-                <div className="group relative bg-gray-50 rounded-lg border border-gray-200 p-6 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300">
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-600 rounded-lg flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Zap className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">Carga Masiva</h3>
-                    <p className="text-xs text-gray-600 font-medium">Por ERP</p>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
 
-              {/* CTA */}
-              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-lg">
                 ¡Quiero una marketplace!
               </Button>
             </div>
 
-            {/* Imagen 3D a la derecha - Marketplace en celular */}
-            <div className="hidden md:flex justify-center items-center relative h-96" style={{height: '492px', width: '494px'}}>
+            <div className="hidden md:flex justify-center items-center relative h-96">
               <div className="relative w-full max-w-sm" style={{
                 perspective: '1200px',
                 animation: 'float-3d 4s ease-in-out infinite'
               }}>
-                {/* Celular con marketplace */}
                 <div className="relative mx-auto w-64 bg-black rounded-3xl shadow-2xl overflow-hidden border-8 border-gray-900" style={{
                   boxShadow: '0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
                 }}>
-                  {/* Notch */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-50"></div>
                   
-                  {/* Pantalla */}
                   <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 pt-8">
-                    {/* Header */}
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-sm font-bold text-gray-900">Marketplace</h3>
                       <div className="w-6 h-6 bg-emerald-500 rounded-full"></div>
                     </div>
                     
-                    {/* Cards en el marketplace */}
                     <div className="space-y-3">
-                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex gap-2 mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
-                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
+                      {[
+                        { gradient: "from-emerald-400 to-emerald-600" },
+                        { gradient: "from-cyan-400 to-cyan-600" },
+                        { gradient: "from-teal-400 to-teal-600" },
+                      ].map((colors, i) => (
+                        <div key={i} className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                          <div className="flex gap-2 mb-2">
+                            <div className={`w-8 h-8 bg-gradient-to-br ${colors.gradient} rounded-lg`}></div>
+                            <div className="flex-1">
+                              <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
+                              <div className="h-1.5 bg-gray-100 rounded w-32"></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex gap-2 mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
-                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex gap-2 mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg"></div>
-                          <div className="flex-1">
-                            <div className="h-2 bg-gray-200 rounded w-20 mb-1"></div>
-                            <div className="h-1.5 bg-gray-100 rounded w-32"></div>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -400,7 +349,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Estilos de animación */}
         <style>{`
           @keyframes float-3d {
             0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
@@ -409,55 +357,44 @@ export default function Home() {
         `}</style>
       </section>
 
-      {/* NUEVA SECCIÓN: Estadísticas principales */}
-      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+      {/* Statistics Section */}
+      <section className="py-12 md:py-16 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '30px', paddingTop: '30px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Resultados que hablan por sí solos
-            </h2>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Stat 1 - 95% */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="text-center">
-              <div className="mb-4">
-                <p className="text-6xl md:text-7xl font-bold text-emerald-500">95%</p>
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">95%</p>
               </div>
-              <p className="text-lg font-semibold text-gray-900 mb-2">de clientes espera respuesta en 5 minutos</p>
-              <p className="text-sm text-gray-600">Express IA responde en segundos, 24/7</p>
+              <p className="text-base font-semibold text-gray-900 mb-1">de clientes espera respuesta en 5 minutos</p>
+              <p className="text-xs text-gray-600">Express IA responde en segundos, 24/7</p>
             </div>
 
-            {/* Stat 2 - 3x */}
             <div className="text-center">
-              <div className="mb-4">
-                <p className="text-6xl md:text-7xl font-bold text-emerald-500">3x</p>
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">3x</p>
               </div>
-              <p className="text-lg font-semibold text-gray-900 mb-2">más conversiones con respuestas inmediatas</p>
-              <p className="text-sm text-gray-600">Aumenta tus ventas automáticamente</p>
+              <p className="text-base font-semibold text-gray-900 mb-1">más conversiones con respuestas inmediatas</p>
+              <p className="text-xs text-gray-600">Aumenta tus ventas automáticamente</p>
             </div>
 
-            {/* Stat 3 - 24/7 */}
             <div className="text-center">
-              <div className="mb-4">
-                <p className="text-6xl md:text-7xl font-bold text-emerald-500">24/7</p>
+              <div className="mb-3">
+                <p className="text-5xl md:text-6xl font-bold text-emerald-500">24/7</p>
               </div>
-              <p className="text-lg font-semibold text-gray-900 mb-2">atención sin descanso, sin empleados</p>
-              <p className="text-sm text-gray-600">Automatiza tu operación completamente</p>
+              <p className="text-base font-semibold text-gray-900 mb-1">atención sin descanso, sin empleados</p>
+              <p className="text-xs text-gray-600">Automatiza tu operación completamente</p>
             </div>
           </div>
 
-          {/* CTA */}
           <div className="text-center">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-lg">
               Comienza tu transformación ahora
             </Button>
           </div>
         </div>
       </section>
 
-      {/* NUEVA SECCIÓN: ¿Por qué elegir Express IA? */}
+      {/* Why Choose Section */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -466,63 +403,48 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Opción 1 - Atención inmediata */}
-            <div className="bg-yellow-50 rounded-2xl p-8 border border-yellow-200">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-6 h-6 text-white" />
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Clock, title: "Atención inmediata", desc: "Responde a tus clientes en segundos, sin importar la hora", color: "yellow" },
+              { icon: TrendingUp, title: "Más ventas", desc: "Captura más clientes y aumenta tus conversiones automáticamente", color: "green" },
+              { icon: Zap, title: "Menos horas de trabajo", desc: "Tu equipo se enfoca en lo importante, Express IA maneja el resto", color: "cyan" },
+              { icon: Settings, title: "Fácil de usar", desc: "Configura en minutos, sin necesidad de conocimientos técnicos", color: "purple" },
+              { icon: TrendingUp, title: "Mayor control", desc: "Te brindamos un panel administrativo intuitivo donde puedes gestionar todos los aspectos del servicio y el rendimiento.", color: "cyan" },
+              { icon: MessageCircle, title: "Disponible siempre", desc: "Nuestro sistema no descansa y siempre está listo para atender a tus clientes sin importar la hora o el día.", color: "pink" },
+            ].map((item, i) => {
+              const bgColors: Record<string, string> = {
+                yellow: "bg-yellow-50 border-yellow-200",
+                green: "bg-green-50 border-green-200",
+                cyan: "bg-cyan-50 border-cyan-200",
+                purple: "bg-purple-50 border-purple-200",
+                pink: "bg-pink-50 border-pink-200",
+              };
+              const iconColors: Record<string, string> = {
+                yellow: "bg-yellow-500",
+                green: "bg-green-500",
+                cyan: "bg-cyan-500",
+                purple: "bg-purple-500",
+                pink: "bg-pink-500",
+              };
+              return (
+                <div key={i} className={`${bgColors[item.color]} rounded-2xl p-8 border`}>
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 ${iconColors[item.color]} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                      <item.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                      <p className="text-gray-700">{item.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Atención inmediata</h3>
-                  <p className="text-gray-700">Responde a tus clientes en segundos, sin importar la hora</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Opción 2 - Más ventas */}
-            <div className="bg-green-50 rounded-2xl p-8 border border-green-200">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Más ventas</h3>
-                  <p className="text-gray-700">Captura más clientes y aumenta tus conversiones automáticamente</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Opción 3 - Menos horas de trabajo */}
-            <div className="bg-cyan-50 rounded-2xl p-8 border border-cyan-200">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Menos horas de trabajo</h3>
-                  <p className="text-gray-700">Tu equipo se enfoca en lo importante, Express IA maneja el resto</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Opción 4 - Fácil de usar */}
-            <div className="bg-purple-50 rounded-2xl p-8 border border-purple-200">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Settings className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Fácil de usar</h3>
-                  <p className="text-gray-700">Configura en minutos, sin necesidad de conocimientos técnicos</p>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* NUEVA SECCIÓN: Implementación Acompañada */}
+      {/* Implementation Section */}
       <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -537,74 +459,44 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Grid de 6 pasos */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Paso 1 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                01
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Análisis y Configuración</h3>
-              <p className="text-gray-600 text-sm">Entendemos tu negocio y configuramos Express IA según tus necesidades</p>
-            </div>
-
-            {/* Paso 2 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                02
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Carga de datos</h3>
-              <p className="text-gray-600 text-sm">Importamos tu catálogo, precios y configuraciones automáticamente</p>
-            </div>
-
-            {/* Paso 3 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                03
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Pruebas de IA</h3>
-              <p className="text-gray-600 text-sm">Probamos y ajustamos las respuestas automáticas para tu negocio</p>
-            </div>
-
-            {/* Paso 4 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                04
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Integración WhatsApp</h3>
-              <p className="text-gray-600 text-sm">Conectamos tu WhatsApp Business de forma segura</p>
-            </div>
-
-            {/* Paso 5 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                05
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Pruebas y Ajustes</h3>
-              <p className="text-gray-600 text-sm">Realizamos pruebas exhaustivas y ajustes finales</p>
-            </div>
-
-            {/* Paso 6 */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 text-center">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl">
-                06
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Lanzamiento en Vivo</h3>
-              <p className="text-gray-600 text-sm">Express IA comienza a trabajar para ti, generando resultados desde el primer día</p>
-            </div>
+            {[
+              { num: "01", title: "Análisis y Configuración", desc: "Entendemos tu negocio y configuramos Express IA según tus necesidades", color: "blue" },
+              { num: "02", title: "Carga de datos", desc: "Importamos tu catálogo, precios y configuraciones automáticamente", color: "purple" },
+              { num: "03", title: "Pruebas de IA", desc: "Probamos y ajustamos las respuestas automáticas para tu negocio", color: "emerald" },
+              { num: "04", title: "Integración WhatsApp", desc: "Conectamos tu WhatsApp Business de forma segura", color: "red" },
+              { num: "05", title: "Pruebas y Ajustes", desc: "Realizamos pruebas exhaustivas y ajustes finales", color: "blue" },
+              { num: "06", title: "Lanzamiento en Vivo", desc: "Express IA comienza a trabajar para ti, generando resultados desde el primer día", color: "orange" },
+            ].map((step, i) => {
+              const colorMap: Record<string, string> = {
+                blue: "bg-blue-500",
+                purple: "bg-purple-500",
+                emerald: "bg-emerald-500",
+                red: "bg-red-500",
+                orange: "bg-orange-500",
+              };
+              return (
+                <div key={i} className="bg-white rounded-2xl p-8 border border-gray-200 text-center hover:shadow-md transition-shadow">
+                  <div className={`w-16 h-16 ${colorMap[step.color]} rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-2xl`}>
+                    {step.num}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600 text-sm">{step.desc}</p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* CTA */}
           <div className="text-center">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" style={{borderRadius: '10px'}}>
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all rounded-lg">
               Comenzar Implementación
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Express IA para tu negocio */}
-      <section className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
+      {/* Business Types Section */}
+      <section id="features" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -613,124 +505,77 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Tarjeta Restaurantes */}
-            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <ShoppingCart className="w-7 h-7 text-white" />
+            {[
+              {
+                title: "Restaurantes",
+                icon: ShoppingCart,
+                color: "red",
+                buttonClass: "bg-red-500 hover:bg-red-600",
+                desc: "Convierte WhatsApp en un nuevo canal de ventas",
+                features: ["Consultar el menú", "Preguntar por productos", "Realizar pedidos", "Recibir confirmaciones", "Consultar estados de entrega"]
+              },
+              {
+                title: "Domicilios",
+                icon: Smartphone,
+                color: "orange",
+                buttonClass: "bg-orange-500 hover:bg-orange-600",
+                desc: "Gestiona todo tu servicio de entregas automáticamente",
+                features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido"]
+              },
+              {
+                title: "Comercio",
+                icon: Store,
+                color: "purple",
+                buttonClass: "bg-purple-500 hover:bg-purple-600",
+                desc: "Ideal para negocios que venden productos",
+                features: ["Control de inventario", "Disponibilidad de productos", "Gestión de catálogo", "Recepción de pedidos", "Atención automática"]
+              },
+            ].map((business, i) => {
+              const colorMap: Record<string, string> = {
+                red: "from-red-400 to-red-600",
+                orange: "from-orange-400 to-orange-600",
+                purple: "from-purple-400 to-purple-600",
+              };
+              const textColorMap: Record<string, string> = {
+                red: "text-red-500",
+                orange: "text-orange-500",
+                purple: "text-purple-500",
+              };
+              const cta: Record<string, string> = {
+                Restaurantes: "Tengo un restaurante",
+                Domicilios: "Tengo una empresa de domicilios",
+                Comercio: "Tengo un comercio",
+              };
+              return (
+                <div key={i} className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
+                  <div className="relative z-10">
+                    <div className={`w-14 h-14 bg-gradient-to-br ${colorMap[business.color]} rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                      <business.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">{business.title}</h3>
+                    <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
+                      {business.desc}
+                    </p>
+                    <ul className="space-y-3 mb-6 text-sm text-gray-700">
+                      {business.features.map((feature, j) => (
+                        <li key={j} className="flex items-start gap-3">
+                          <CheckCircle2 className={`w-5 h-5 ${textColorMap[business.color]} flex-shrink-0 mt-0.5`} />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className={`w-full ${business.buttonClass} text-white font-bold py-3 rounded-lg`}>
+                      {cta[business.title as keyof typeof cta]}
+                    </Button>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Restaurantes</h3>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
-                  Convierte WhatsApp en un nuevo canal de ventas
-                </p>
-                <ul className="space-y-3 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Consultar el menú</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Preguntar por productos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Realizar pedidos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Recibir confirmaciones</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Consultar estados de entrega</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
-                  Tengo un restaurante
-                </Button>
-              </div>
-            </div>
-
-            {/* Tarjeta Domicilios */}
-            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Smartphone className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Domicilios</h3>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
-                  Gestiona todo tu servicio de entregas automáticamente
-                </p>
-                <ul className="space-y-3 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Solicitud de domicilios</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Cálculo de tarifas</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Notificación a domiciliarios</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Aceptación de servicios</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Seguimiento del pedido</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
-                  Tengo una empresa de domicilios
-                </Button>
-              </div>
-            </div>
-
-            {/* Tarjeta Comercio */}
-            <div className="group relative bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 p-8 overflow-hidden">
-              <div className="relative z-10">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Store className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 text-left">Comercio</h3>
-                <p className="text-sm text-gray-600 mb-6 leading-relaxed text-left">
-                  Ideal para negocios que venden productos
-                </p>
-                <ul className="space-y-3 mb-6 text-sm text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Control de inventario</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Disponibilidad de productos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Gestión de catálogo</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Recepción de pedidos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                    <span>Atención automática</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 shadow-md hover:shadow-lg transition-all" style={{borderRadius: '10px'}}>
-                  Tengo un comercio
-                </Button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* NUEVA SECCIÓN: Planes adaptados a tu negocio */}
+      {/* Plans Section */}
       <section id="plans" className="py-16 md:py-24 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -740,7 +585,6 @@ export default function Home() {
             <p className="text-gray-600">Elige el plan que mejor se adapte a tus necesidades</p>
           </div>
 
-          {/* Tabs para tipos de negocio */}
           <div className="flex justify-center gap-4 mb-12 flex-wrap">
             <button className="px-6 py-3 rounded-full font-semibold bg-emerald-500 text-white hover:bg-emerald-600 transition-colors">
               🍽️ Restaurantes
@@ -756,9 +600,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Grid de planes */}
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Plan 1 - Estándar */}
             <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:border-emerald-500 transition-colors">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Estándar</h3>
               <p className="text-gray-600 mb-6">Para negocios pequeños</p>
@@ -787,12 +629,11 @@ export default function Home() {
                 </li>
               </ul>
 
-              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3" style={{borderRadius: '10px'}}>
+              <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-lg">
                 Empezar
               </Button>
             </div>
 
-            {/* Plan 2 - Premium */}
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl border-2 border-purple-600 p-8 text-white relative overflow-hidden">
               <div className="absolute top-4 right-4 bg-yellow-400 text-purple-900 px-4 py-1 rounded-full text-sm font-bold">
                 Más Popular
@@ -829,7 +670,7 @@ export default function Home() {
                 </li>
               </ul>
 
-              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold py-3" style={{borderRadius: '10px'}}>
+              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold py-3 rounded-lg">
                 Empezar
               </Button>
             </div>
@@ -837,7 +678,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-4">¿Necesitas un plan personalizado?</p>
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3" style={{borderRadius: '10px'}}>
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
               Contáctanos
             </Button>
           </div>
@@ -855,11 +696,13 @@ export default function Home() {
 
           <div className="space-y-4">
             {[
-              { q: "¿Cómo funciona Express IA?", a: "Express IA se integra con WhatsApp Business para automatizar respuestas y procesos." },
-              { q: "¿Cuál es el costo?", a: "Contamos con planes flexibles según el tamaño de tu negocio." },
-              { q: "¿Necesito instalación?", a: "No, es 100% en la nube. Solo conecta tu WhatsApp Business." },
+              { q: "¿Cómo funciona Express IA?", a: "Express IA se integra con WhatsApp Business para automatizar respuestas y procesos. Responde a tus clientes 24/7, procesa pedidos y gestiona tu operación automáticamente." },
+              { q: "¿Cuál es el costo?", a: "Contamos con planes flexibles según el tamaño de tu negocio. Desde $350K mensuales para negocios pequeños hasta planes personalizados para empresas grandes." },
+              { q: "¿Necesito instalación?", a: "No, es 100% en la nube. Solo conecta tu WhatsApp Business y nuestro equipo se encarga del resto. Implementación acompañada en 6 pasos." },
+              { q: "¿Cuánto tiempo tarda la implementación?", a: "La implementación típicamente toma entre 5-7 días hábiles. Nuestro equipo trabaja contigo en cada etapa para asegurar que todo esté perfectamente configurado." },
+              { q: "¿Puedo cambiar de plan?", a: "Sí, puedes cambiar de plan en cualquier momento. Tu facturación se ajustará proporcionalmente según el plan que elijas." },
             ].map((item, i) => (
-              <Card key={i} className="p-6 border-0 shadow-sm">
+              <Card key={i} className="p-6 border-0 shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="font-bold text-gray-900 mb-2">{item.q}</h3>
                 <p className="text-gray-600">{item.a}</p>
               </Card>
@@ -870,8 +713,40 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Express IA. Todos los derechos reservados.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="font-bold text-lg mb-4">Express IA</h3>
+              <p className="text-gray-400 text-sm">Tu empleado digital que atiende, vende y opera 24/7</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-4">Producto</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#features" className="hover:text-white transition-colors">Características</a></li>
+                <li><a href="#plans" className="hover:text-white transition-colors">Planes</a></li>
+                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-4">Empresa</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors">Sobre nosotros</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-4">Legal</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors">Privacidad</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Términos</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Cookies</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 text-center">
+            <p className="text-gray-400">&copy; 2024 Express IA. Todos los derechos reservados.</p>
+          </div>
         </div>
       </footer>
     </div>
