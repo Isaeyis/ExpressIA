@@ -50,7 +50,8 @@ export default function FAQSection() {
           {faqItems.map((item, index) => (
             <div
               key={index}
-              className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-300 hover:shadow-md"
+              className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-300 hover:shadow-md animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <button
                 onClick={() => toggleFAQ(index)}

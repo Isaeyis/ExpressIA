@@ -82,34 +82,20 @@ const ProcessFlow: React.FC = () => {
         {/* Process Flow Container - Diseño más fluido y creativo */}
         <div className="relative">
           {/* Contenedor con 4 cuadritos - Responsive */}
-          <div className="relative flex items-start justify-between gap-2 md:gap-4 mb-16 flex-wrap md:flex-nowrap">
+          <div className="relative flex items-start justify-between gap-0.5 md:gap-1 mb-16 flex-wrap md:flex-nowrap">
             {steps.map((step, index) => (
               <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0 w-full md:w-auto">
-                {/* Check verde con fondo - Encima del cuadro tapando la punta */}
-                {index < activeStep && (
-                  <div 
-                    className="absolute -top-3 -right-2 z-50"
-                    style={{
-                      animation: 'scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    }}
-                  >
-                    <div className="bg-emerald-500 rounded-full p-2 shadow-lg border-3 border-white flex items-center justify-center" style={{boxShadow: '0 4px 12px rgba(16, 185, 129, 0.4)'}}>
-                      <Check className="w-6 h-6 text-white stroke-[3]" />
-                    </div>
-                  </div>
-                )}
-
                 {/* Card del paso - Diseño mejorado y fluido */}
                 <div
                   className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full md:w-auto`}
                   style={{
                     borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '14px 8px',
-                    minHeight: activeStep === index ? 'auto' : '85px',
+                    padding: '10px 6px',
+                    minHeight: activeStep === index ? 'auto' : '70px',
                     width: activeStep === index ? '100%' : '100%',
-                    maxWidth: activeStep === index ? '200px' : '160px',
+                    maxWidth: activeStep === index ? '180px' : '140px',
                     margin: '0 auto',
-                    transform: activeStep === index ? 'scaleX(1.05) scaleY(1.15) translateY(-6px)' : 'scale(1)',
+                    transform: activeStep === index ? 'scaleX(1.01) scaleY(1.04) translateY(-2px)' : 'scale(1)',
                     boxShadow:
                       activeStep === index
                         ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
@@ -195,45 +181,39 @@ const ProcessFlow: React.FC = () => {
                       ))}
                     </div>
                   )}
+
+                  {/* Check verde con fondo - Encima del cuadro tapando la punta */}
+                  {index < activeStep && (
+                    <div 
+                      className="absolute z-[9999]"
+                      style={{
+                        top: '-12px',
+                        right: '-12px',
+                        pointerEvents: 'none',
+                        animation: 'scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      }}
+                    >
+                      <div className="bg-emerald-500 rounded-full flex items-center justify-center border-4 border-white" style={{
+                        boxShadow: '0 8px 20px rgba(16, 185, 129, 0.6), 0 0 0 3px rgba(16, 185, 129, 0.15)',
+                        width: '40px',
+                        height: '40px',
+                        position: 'relative',
+                        zIndex: 9999,
+                      }}>
+                        <Check className="w-6 h-6 text-white stroke-[3.5]" />
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Línea conectora simple entre cuadritos - Hidden en móvil */}
+                {/* Flecha conectora simple entre cuadritos - Hidden en móvil */}
                 {index < steps.length - 1 && (
-                  <div className="absolute top-1/4 -right-3 md:-right-4 w-6 md:w-8 h-1 flex items-center z-5 hidden md:flex">
-                    {/* Línea de conexión con gradiente */}
-                    <svg className="w-full h-full" viewBox="0 0 100 4" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient
-                          id={`gradient-${index}`}
-                          x1="0%"
-                          y1="0%"
-                          x2="100%"
-                          y2="0%"
-                        >
-                          <stop
-                            offset="0%"
-                            stopColor={steps[index].borderColor}
-                            stopOpacity={activeStep > index ? 1 : 0.2}
-                          />
-                          <stop
-                            offset="100%"
-                            stopColor={steps[Math.min(index + 1, steps.length - 1)].borderColor}
-                            stopOpacity={activeStep > index + 1 ? 1 : 0.2}
-                          />
-                        </linearGradient>
-                      </defs>
-                      <line
-                        x1="0"
-                        y1="2"
-                        x2="100"
-                        y2="2"
-                        stroke={`url(#gradient-${index})`}
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        style={{
-                          transition: 'stroke 0.5s ease-out',
-                        }}
-                      />
+                  <div className="hidden md:flex items-center justify-center px-0.5 flex-shrink-0">
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="9 18 15 12 9 6" style={{
+                        stroke: activeStep > index ? steps[index].borderColor : '#d1d5db',
+                        transition: 'stroke 0.5s ease-out',
+                      }} />
                     </svg>
                   </div>
                 )}
@@ -241,17 +221,7 @@ const ProcessFlow: React.FC = () => {
             ))}
           </div>
 
-          {/* Barra de progreso fluida y elegante */}
-          <div className="relative h-1.5 bg-gray-200 rounded-full overflow-hidden shadow-sm">
-            <div
-              className="h-full transition-all duration-700 ease-out rounded-full"
-              style={{
-                width: `${((activeStep + 1) / steps.length) * 100}%`,
-                background: `linear-gradient(90deg, ${steps[activeStep].borderColor}, ${steps[Math.min(activeStep + 1, steps.length - 1)].borderColor})`,
-                boxShadow: `0 0 16px ${steps[activeStep].borderColor}60`,
-              }}
-            />
-          </div>
+
         </div>
       </div>
 

@@ -113,11 +113,11 @@ export default function Home() {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Mientras tú atiendes tu negocio Express IA responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
-              <div className="flex gap-4">
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
+              <div className="flex gap-4 animate-fade-in-up">
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 transform">
                   Adquiere Express IA
                 </Button>
-                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg">
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 transform">
                   Ver cómo funciona
                 </Button>
               </div>

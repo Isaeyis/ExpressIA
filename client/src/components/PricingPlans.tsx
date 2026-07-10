@@ -160,11 +160,12 @@ export default function PricingPlans() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-2xl p-6 transition-all duration-300 flex flex-col ${
+              className={`rounded-2xl p-6 transition-all duration-300 flex flex-col animate-fade-in-up hover:shadow-2xl hover:-translate-y-2 ${
                 plan.isPremium
                   ? "bg-gradient-to-br from-purple-500 via-purple-600 to-pink-500 text-white shadow-2xl"
                   : "bg-white border-2 border-gray-200 text-gray-900 shadow-lg hover:shadow-xl"
               }`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Plan Name */}
               <div className="flex items-center gap-2 mb-6">
