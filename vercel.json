@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": "dist/public",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
@@ -16,16 +17,8 @@
       "destination": "/oauth/:path*"
     },
     {
-      "source": "/assets/:path*",
-      "destination": "/dist/public/assets/:path*"
-    },
-    {
-      "source": "/:file.(png|jpg|ico|gif|svg|json|css|js)",
-      "destination": "/dist/public/:file.$1"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/dist/public/index.html"
+      "destination": "/index.html"
     }
   ]
 }
