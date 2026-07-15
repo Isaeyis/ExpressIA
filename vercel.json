@@ -16,12 +16,16 @@
       "destination": "/oauth/:path*"
     },
     {
-      "source": "/((?!api|trpc|oauth).*)/",
-      "destination": "/index.html"
+      "source": "/assets/:path*",
+      "destination": "/dist/public/assets/:path*"
+    },
+    {
+      "source": "/:file.(png|jpg|ico|gif|svg|json|css|js)",
+      "destination": "/dist/public/:file.$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/dist/public/index.html"
     }
   ]
 }
