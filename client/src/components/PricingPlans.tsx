@@ -96,20 +96,30 @@ const plansData: Record<BusinessType, Plan[]> = {
   ],
 };
 
-export default function PricingPlans() {
-  const [selectedType, setSelectedType] = useState<BusinessType>("restaurantes");
+export default function PricingPlans({
+  selectedType: externalType,
+  onTypeChange
+}: {
+  selectedType?: BusinessType;
+  onTypeChange?: (type: BusinessType) => void;
+}) {
+  const [internalType, setInternalType] = useState<BusinessType>("restaurantes");
+
+  const selectedType = externalType ?? internalType;
+  const setSelectedType = onTypeChange ?? setInternalType;
 
   const plans = plansData[selectedType];
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section id="plans" className="py-12 md:py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Planes adaptados a tu negocio
+          <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">PLANES DE PRECIOS</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            Planes adaptados <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent block sm:inline">a tu negocio</span>
           </h2>
-          <p className="text-base md:text-lg text-gray-600">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Elige el plan que se ajuste a tus necesidades y presupuesto
           </p>
         </div>
@@ -154,7 +164,7 @@ export default function PricingPlans() {
         {/* Plans Grid */}
         <div
           className={`grid gap-6 ${
-            plans.length === 1 ? "max-w-2xl mx-auto" : "md:grid-cols-2 max-w-4xl mx-auto"
+            plans.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-2 max-w-4xl mx-auto"
           }`}
         >
           {plans.map((plan, index) => (

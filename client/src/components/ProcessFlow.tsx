@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Zap, ShoppingBag, Truck, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface ProcessStep {
   id: number;
@@ -67,14 +68,15 @@ const ProcessFlow: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
+    <section id="que-es" className="py-16 md:py-20 bg-white" style={{backgroundColor: '#fafafa', paddingBottom: '50px', paddingTop: '50px'}}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Título y descripción */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            ¿Qué es Express IA?
+          <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">¿CÓMO OPERA?</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            ¿Qué es <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent block sm:inline">Express IA?</span>
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Conoce a tu nuevo empleado digital, una plataforma de inteligencia artificial diseñada para restaurantes, comercios y empresas de domicilios que quieren automatizar su atención y operación.
           </p>
         </div>
@@ -82,145 +84,186 @@ const ProcessFlow: React.FC = () => {
         {/* Process Flow Container - Diseño más fluido y creativo */}
         <div className="relative">
           {/* Contenedor con 4 cuadritos - Responsive */}
-          <div className="relative flex items-start justify-between gap-0.5 md:gap-1 mb-16 flex-wrap md:flex-nowrap">
+          <div className="relative flex items-center justify-center gap-0 mb-16 flex-wrap md:flex-nowrap" style={{ minHeight: '240px' }}>
             {steps.map((step, index) => (
-              <div key={step.id} className="relative flex-1 flex flex-col items-center min-w-0 w-full md:w-auto">
-                {/* Card del paso - Diseño mejorado y fluido */}
-                <div
-                  className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full md:w-auto`}
+              <React.Fragment key={step.id}>
+                <div 
+                  className="relative flex-1 md:flex-none flex flex-col items-center min-w-0 w-full transition-all duration-300"
                   style={{
-                    borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
-                    padding: '10px 6px',
-                    minHeight: activeStep === index ? 'auto' : '70px',
-                    width: activeStep === index ? '100%' : '100%',
-                    maxWidth: activeStep === index ? '180px' : '140px',
-                    margin: '0 auto',
-                    transform: activeStep === index ? 'scaleX(1.01) scaleY(1.04) translateY(-2px)' : 'scale(1)',
-                    boxShadow:
-                      activeStep === index
-                        ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
-                        : '0 2px 8px rgba(0,0,0,0.06)',
-                    zIndex: activeStep === index ? 10 : 1,
+                    maxWidth: activeStep === index ? '240px' : '180px',
+                    width: '100%',
                   }}
                 >
-                  {/* Efecto de ola expansiva - Ripple effect */}
-                  {activeStep === index && (
-                    <div
-                      className="absolute inset-0 rounded-2xl pointer-events-none"
-                      style={{
-                        border: `2px solid ${step.borderColor}`,
-                        animation: `wave-ripple 2s ease-out infinite`,
-                        opacity: 0.6,
-                      }}
-                    />
-                  )}
-
-                  {/* Efecto de fondo degradado sutil - Solo cuando está activo */}
-                  {activeStep === index && (
-                    <div
-                      className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl"
-                      style={{
-                        background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
-                        opacity: 1,
-                      }}
-                    />
-                  )}
-
-                  {/* Icono con animación fluida */}
+                  {/* Card del paso - Diseño mejorado y fluido */}
                   <div
-                    className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1.5 relative z-10`}
+                    className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full`}
                     style={{
-                      transform: activeStep === index ? 'scale(1.15) rotate(0deg)' : 'scale(1) rotate(-5deg)',
-                      filter: activeStep === index ? 'drop-shadow(0 6px 12px rgba(0,0,0,0.15))' : 'drop-shadow(0 1px 2px rgba(0,0,0,0.08))',
+                      borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
+                      padding: '24px 16px',
+                      minHeight: activeStep === index ? '210px' : '150px',
+                      width: '100%',
+                      maxWidth: '100%',
+                      margin: '0 auto',
+                      transform: activeStep === index ? 'scaleX(1.01) scaleY(1.04) translateY(-2px)' : 'scale(1)',
+                      boxShadow:
+                        activeStep === index
+                          ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
+                          : '0 2px 8px rgba(0,0,0,0.06)',
+                      zIndex: activeStep === index ? 10 : 1,
                     }}
                   >
-                    {step.icon}
-                  </div>
+                    {/* Efecto de ola expansiva - Ripple effect */}
+                    {activeStep === index && (
+                      <div
+                        className="absolute inset-0 rounded-2xl pointer-events-none"
+                        style={{
+                          border: `2px solid ${step.borderColor}`,
+                          animation: `wave-ripple 2s ease-out infinite`,
+                          opacity: 0.6,
+                        }}
+                      />
+                    )}
 
-                  {/* Título - Tipografía mejorada */}
-                  <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1 transition-all duration-300" style={{
-                    fontSize: activeStep === index ? '0.875rem' : '0.75rem',
-                  }}>
-                    {step.title}
-                  </h3>
+                    {/* Efecto de fondo degradado sutil - Solo cuando está activo */}
+                    {activeStep === index && (
+                      <div
+                        className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl"
+                        style={{
+                          background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
+                          opacity: 1,
+                        }}
+                      />
+                    )}
 
-                  {/* Subtítulo - Siempre visible */}
-                  <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1 transition-all duration-300" style={{
-                    opacity: activeStep === index ? 1 : 0.7,
-                    fontSize: activeStep === index ? '0.75rem' : '0.7rem',
-                  }}>
-                    {step.subtitle}
-                  </p>
-
-                  {/* Viñetas - SOLO cuando está activo, con animación suave */}
-                  {activeStep === index && (
-                    <div className="space-y-1 mt-2.5 w-full relative z-10 px-1" style={{
-                      animation: 'slide-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    }}>
-                      {step.bullets.map((bullet, i) => (
-                        <div key={i} className="flex items-start gap-1.5 text-left" style={{
-                          animation: `fade-in 0.4s ease-out ${i * 0.1}s both`,
-                        }}>
-                          <div className="flex-shrink-0 mt-0.5">
-                            <svg
-                              className="w-2.5 h-2.5 text-emerald-500"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </div>
-                          <p className="text-xs text-gray-700 leading-tight line-clamp-2">
-                            {bullet}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Check verde con fondo - Encima del cuadro tapando la punta */}
-                  {index < activeStep && (
-                    <div 
-                      className="absolute z-[9999]"
+                    {/* Icono con animación fluida */}
+                    <div
+                      className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white transition-all duration-500 flex-shrink-0 mb-1.5 relative z-10`}
                       style={{
-                        top: '-12px',
-                        right: '-12px',
-                        pointerEvents: 'none',
-                        animation: 'scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        transform: activeStep === index ? 'scale(1.15) rotate(0deg)' : 'scale(1) rotate(-5deg)',
+                        filter: activeStep === index ? 'drop-shadow(0 6px 12px rgba(0,0,0,0.15))' : 'drop-shadow(0 1px 2px rgba(0,0,0,0.08))',
                       }}
                     >
-                      <div className="bg-emerald-500 rounded-full flex items-center justify-center border-4 border-white" style={{
-                        boxShadow: '0 8px 20px rgba(16, 185, 129, 0.6), 0 0 0 3px rgba(16, 185, 129, 0.15)',
-                        width: '40px',
-                        height: '40px',
-                        position: 'relative',
-                        zIndex: 9999,
-                      }}>
-                        <Check className="w-6 h-6 text-white stroke-[3.5]" />
-                      </div>
+                      {step.icon}
                     </div>
-                  )}
+
+                    {/* Título - Tipografía mejorada */}
+                    <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1 transition-all duration-300" style={{
+                      fontSize: activeStep === index ? '0.875rem' : '0.75rem',
+                    }}>
+                      {step.title}
+                    </h3>
+
+                    {/* Subtítulo - Siempre visible */}
+                    <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1 transition-all duration-300" style={{
+                      opacity: activeStep === index ? 1 : 0.7,
+                      fontSize: activeStep === index ? '0.75rem' : '0.7rem',
+                    }}>
+                      {step.subtitle}
+                    </p>
+
+                    {/* Viñetas - SOLO cuando está activo, con animación suave */}
+                    {activeStep === index && (
+                      <div className="space-y-1 mt-2.5 w-full relative z-10 px-1" style={{
+                        animation: 'slide-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      }}>
+                        {step.bullets.map((bullet, i) => (
+                          <div key={i} className="flex items-start gap-1.5 text-left" style={{
+                            animation: `fade-in 0.4s ease-out ${i * 0.1}s both`,
+                          }}>
+                            <div className="flex-shrink-0 mt-0.5">
+                              <svg
+                                className="w-3.5 h-3.5 text-gray-400"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                            </div>
+                            <p className="text-xs text-gray-700 leading-tight line-clamp-2">
+                              {bullet}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Check verde con fondo - Encima del cuadro tapando la punta */}
+                    {index < activeStep && (
+                      <div 
+                        className="absolute z-[9999]"
+                        style={{
+                          top: '-10px',
+                          right: '-10px',
+                          pointerEvents: 'none',
+                          animation: 'scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        }}
+                      >
+                        <div className="bg-emerald-500 rounded-full flex items-center justify-center border-4 border-white" style={{
+                          boxShadow: '0 8px 20px rgba(16, 185, 129, 0.4), 0 0 0 3px rgba(16, 185, 129, 0.15)',
+                          width: '32px',
+                          height: '32px',
+                          position: 'relative',
+                          zIndex: 9999,
+                        }}>
+                          <Check className="w-4 h-4 text-white stroke-[3.5]" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Flecha conectora simple entre cuadritos - Hidden en móvil */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:flex items-center justify-center px-0.5 flex-shrink-0">
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="9 18 15 12 9 6" style={{
-                        stroke: activeStep > index ? steps[index].borderColor : '#d1d5db',
-                        transition: 'stroke 0.5s ease-out',
-                      }} />
-                    </svg>
+                  <div className="hidden md:flex items-center justify-center flex-1 min-w-[20px] max-w-[60px] mx-1">
+                    <div className="relative w-full h-[2px]" style={{ backgroundColor: activeStep > index ? '#10b981' : '#e5e7eb' }}>
+                      <div 
+                        className="absolute top-1/2 left-1/2 rounded-full border-2 border-white transition-all duration-500"
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          transform: 'translate(-50%, -50%)',
+                          backgroundColor: activeStep > index ? '#10b981' : '#e5e7eb',
+                          animation: activeStep - 1 === index ? 'pulse-dot 2s infinite ease-in-out' : 'none',
+                          boxShadow: activeStep > index ? '0 0 8px rgba(16, 185, 129, 0.6)' : 'none',
+                        }}
+                      />
+                    </div>
                   </div>
                 )}
-              </div>
+              </React.Fragment>
             ))}
           </div>
 
+          {/* Progress Bar at the bottom of the section */}
+          <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden mt-12 mb-4 max-w-5xl mx-auto">
+            <div 
+              className="bg-emerald-500 h-full transition-all duration-500 ease-out"
+              style={{
+                width: `${((activeStep + 1) / steps.length) * 100}%`
+              }}
+            />
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">⚡ Mientras tú administras tu negocio</p>
+            <p className="text-lg md:text-xl font-bold text-gray-900 max-w-2xl mx-auto mb-6">
+              Express IA trabaja para que ninguna oportunidad de ventas se pierda
+            </p>
+            <a 
+              href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+estoy+interesado+en+sus+servicios+y+me+gustaría+ver+una+demostración+de+Express+IA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg text-base">
+                Solicitar una demostración
+              </Button>
+            </a>
+          </div>
 
         </div>
       </div>
@@ -269,6 +312,21 @@ const ProcessFlow: React.FC = () => {
           }
           to {
             opacity: 1;
+          }
+        }
+
+        @keyframes pulse-dot {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          50% {
+            transform: translate(-50% , -50%) scale(1.4);
+            box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
           }
         }
       `}</style>

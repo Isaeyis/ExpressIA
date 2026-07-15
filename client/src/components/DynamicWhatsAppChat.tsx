@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Plus, Paperclip, Camera, Mic } from "lucide-react";
 
 interface Message {
   id: string;
@@ -54,6 +55,7 @@ const CHAT_FLOW: Message[] = [
 export default function DynamicWhatsAppChat() {
   const [visibleMessages, setVisibleMessages] = useState<string[]>([]);
   const [isLooping, setIsLooping] = useState(true);
+  const [loopTrigger, setLoopTrigger] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll al final
@@ -80,13 +82,14 @@ export default function DynamicWhatsAppChat() {
     // Resetear después de que todos los mensajes se muestren (loop infinito con pequeña pausa)
     const resetTimeout = setTimeout(() => {
       setVisibleMessages([]);
+      setLoopTrigger((prev) => prev + 1);
     }, CHAT_FLOW.length * 1200 + 2000); // 2 segundos de pausa antes de reiniciar
     timeouts.push(resetTimeout);
 
     return () => {
       timeouts.forEach((t) => clearTimeout(t));
     };
-  }, [isLooping]);
+  }, [isLooping, loopTrigger]);
 
   // Asegurar que el loop esté siempre activo
   useEffect(() => {
@@ -101,6 +104,8 @@ export default function DynamicWhatsAppChat() {
         style={{
           aspectRatio: "9/19.5",
           boxShadow: "0 15px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
+          transform: "translate3d(0, 0, 0)",
+          isolation: "isolate",
         }}
       >
         {/* Notch */}
@@ -108,8 +113,11 @@ export default function DynamicWhatsAppChat() {
 
         {/* Screen Container */}
         <div
-          className="absolute inset-0 bg-white rounded-[2.5rem] overflow-hidden flex flex-col"
-          style={{ inset: "10px" }}
+          className="absolute inset-0 bg-white rounded-[2rem] overflow-hidden flex flex-col"
+          style={{ 
+            inset: "10px",
+            transform: "translate3d(0, 0, 0)"
+          }}
         >
           {/* Status Bar - WhatsApp style */}
           <div className="bg-white px-3 py-1.5 flex justify-between items-center text-xs font-medium text-gray-900 border-b border-gray-100" style={{backgroundColor: '#6e6e6e'}}>
@@ -127,7 +135,7 @@ export default function DynamicWhatsAppChat() {
             
             {/* Logo de Express IA */}
             <img 
-              src="/manus-storage/logo_66b9638c.png" 
+              src="/logo.png" 
               alt="Express IA" 
               className="w-8 h-8 rounded-full object-cover flex-shrink-0" style={{backgroundColor: '#fcfcfc'}}
             />
@@ -142,11 +150,11 @@ export default function DynamicWhatsAppChat() {
           {/* Chat Messages Area with Scroll - WhatsApp style */}
           <div
             ref={scrollContainerRef}
-            className="flex-1 overflow-y-auto bg-white px-2.5 py-3 space-y-2 scroll-smooth"
+            className="flex-1 overflow-y-auto bg-[#e6eedf] px-2.5 py-3 space-y-2 scroll-smooth no-scrollbar"
             style={{
               scrollBehavior: "smooth",
               WebkitOverflowScrolling: "touch",
-              backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"><defs><pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"%23ffffff\" /><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\" /></svg>')",
+              scrollbarWidth: "none",
             }}
           >
             {visibleMessages.map((msgId) => {
@@ -183,18 +191,24 @@ export default function DynamicWhatsAppChat() {
           </div>
 
           {/* Input Bar - WhatsApp style */}
-          <div className="bg-white px-2.5 py-2 flex items-center gap-1.5 border-t border-gray-100 flex-shrink-0">
-            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">+</button>
+          <div className="bg-white px-4 pb-4 pt-2 flex items-center gap-1.5 border-t border-gray-100 flex-shrink-0">
+            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
+              <Plus className="w-4 h-4" />
+            </button>
             <input
               type="text"
               placeholder="Mensaje"
-              className="flex-1 bg-gray-100 rounded-full px-3 py-1.5 text-xs outline-none"
+              className="flex-1 min-w-0 bg-gray-100 rounded-full px-3 py-1.5 text-xs outline-none"
               disabled
             />
-            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">📎</button>
-            <button className="text-gray-500 text-sm hover:bg-gray-100 p-1 rounded">📷</button>
-            <button className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs hover:bg-green-600">
-              🎤
+            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
+              <Paperclip className="w-4 h-4" />
+            </button>
+            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
+              <Camera className="w-4 h-4" />
+            </button>
+            <button className="w-7 h-7 bg-[#25d366] rounded-full flex items-center justify-center text-white hover:bg-[#20ba5a] flex-shrink-0">
+              <Mic className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -210,6 +224,12 @@ export default function DynamicWhatsAppChat() {
         {/* Power Button */}
         <div className="absolute -right-0.5 top-32 w-0.5 h-10 bg-gray-600 rounded-r" />
       </div>
+      
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }
