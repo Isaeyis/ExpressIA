@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, UtensilsCrossed, Truck, Store, Palette } from "lucide-react";
+import { CheckCircle2, UtensilsCrossed, Truck, Store, Palette, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type BusinessType = "restaurantes" | "domicilios" | "comercio";
@@ -112,6 +112,17 @@ export default function PricingPlans({
 
   return (
     <section id="plans" className="py-12 md:py-16 bg-white">
+      <style>{`
+        @keyframes ribbon-shine {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .animate-ribbon-shine {
+          background: linear-gradient(120deg, #d97706 20%, #fef08a 50%, #d97706 80%);
+          background-size: 200% 100%;
+          animation: ribbon-shine 3s infinite linear;
+        }
+      `}</style>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -163,58 +174,70 @@ export default function PricingPlans({
 
         {/* Plans Grid */}
         <div
-          className={`grid gap-6 ${
-            plans.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-2 max-w-4xl mx-auto"
+          className={`grid gap-5 ${
+            plans.length === 1 ? "max-w-sm mx-auto" : "md:grid-cols-2 max-w-3xl mx-auto"
           }`}
         >
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-2xl p-6 transition-all duration-300 flex flex-col animate-fade-in-up hover:shadow-2xl hover:-translate-y-2 ${
+              className={`relative rounded-2xl p-5 transition-all duration-300 flex flex-col animate-fade-in-up hover:shadow-2xl hover:-translate-y-1.5 ${
                 plan.isPremium
                   ? "bg-gradient-to-br from-purple-500 via-purple-600 to-pink-500 text-white shadow-2xl"
                   : "bg-white border-2 border-gray-200 text-gray-900 shadow-lg hover:shadow-xl"
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Plan Name */}
-              <div className="flex items-center gap-2 mb-6">
-                <div
-                  className={`w-8 h-8 rounded flex items-center justify-center text-lg ${
-                    plan.isPremium ? "bg-white/20" : "bg-gray-100"
-                  }`}
+              {plan.isPremium && (
+                <div 
+                  className="absolute -top-3 right-6 w-14 h-16 shadow-lg flex flex-col items-center pt-2.5 animate-ribbon-shine text-gray-950 z-10"
+                  style={{
+                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 50% 82%, 0% 100%)',
+                    borderTopLeftRadius: '4px',
+                    borderTopRightRadius: '4px',
+                  }}
                 >
-                  {plan.isPremium ? "👑" : <Palette className="w-5 h-5" />}
+                  <Star className="w-3.5 h-3.5 fill-gray-950 text-gray-950 mb-1 animate-pulse" />
+                  <span className="text-[8.5px] font-black uppercase tracking-wider text-center leading-none">
+                    Popular
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold">{plan.name}</h3>
+              )}
+              {/* Plan Name */}
+              <div className="mb-4">
+                <h3 className={`text-xl sm:text-[22px] font-black tracking-tight ${
+                  plan.isPremium ? "text-white drop-shadow-sm" : "text-gray-900"
+                }`}>
+                  {plan.name}
+                </h3>
               </div>
 
               {/* Pricing */}
-              <div className="mb-6 pb-6 border-b border-opacity-20" style={{borderColor: plan.isPremium ? "white" : "#e5e7eb"}}>
-                <div className="mb-4">
-                  <p className={`text-xs font-medium mb-1 ${plan.isPremium ? "text-white/90" : "text-gray-600"}`}>
-                    Create app:
+              <div className="mb-4 pb-4 border-b border-opacity-20" style={{borderColor: plan.isPremium ? "white" : "#e5e7eb"}}>
+                <div className="mb-3">
+                  <p className={`text-[11px] font-medium mb-0.5 ${plan.isPremium ? "text-white/90" : "text-gray-600"}`}>
+                    Costo único (Incluye implementación):
                   </p>
-                  <p className="text-2xl font-bold" style={{fontSize: '20px'}}>{plan.createAppPrice}</p>
+                  <p className="text-xl font-bold" style={{fontSize: '18px'}}>{plan.createAppPrice}</p>
                 </div>
                 <div>
-                  <p className={`text-xs font-medium mb-1 ${plan.isPremium ? "text-white/90" : "text-gray-600"}`}>
+                  <p className={`text-[11px] font-medium mb-0.5 ${plan.isPremium ? "text-white/90" : "text-gray-600"}`}>
                     Mensual:
                   </p>
-                  <p className="text-2xl font-bold" style={{fontSize: '20px'}}>{plan.monthlyPrice}</p>
+                  <p className="text-xl font-bold" style={{fontSize: '18px'}}>{plan.monthlyPrice}</p>
                 </div>
               </div>
 
               {/* Features */}
-              <div className="space-y-3 mb-6">
+              <div className="space-y-2.5 mb-5">
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-start gap-2">
                     <CheckCircle2
-                      className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                      className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${
                         plan.isPremium ? "text-white" : "text-emerald-500"
                       }`}
                     />
-                    <span className={`text-xs leading-relaxed ${plan.isPremium ? "text-white" : "text-gray-700"}`}>
+                    <span className={`text-[11.5px] leading-relaxed ${plan.isPremium ? "text-white" : "text-gray-700"}`}>
                       {feature}
                     </span>
                   </div>
@@ -223,7 +246,7 @@ export default function PricingPlans({
 
               {/* CTA Button */}
               <Button
-                className={`w-full py-2 font-bold rounded-lg transition-all duration-300 text-sm mt-auto ${
+                className={`w-full py-1.5 font-bold rounded-lg transition-all duration-300 text-xs mt-auto ${
                   plan.isPremium
                     ? "bg-white text-purple-600 hover:bg-gray-100"
                     : "bg-emerald-500 hover:bg-emerald-600 text-white"

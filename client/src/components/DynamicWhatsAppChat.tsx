@@ -1,233 +1,366 @@
 import { useEffect, useRef, useState } from "react";
-import { Plus, Paperclip, Camera, Mic } from "lucide-react";
+import { Mic, Paperclip, Phone, Search, Video } from "lucide-react";
 
 interface Message {
   id: string;
   type: "sent" | "received";
   text: string;
-  timestamp: string;
+  time: string;
+  status?: "sent" | "delivered" | "read";
 }
 
 const CHAT_FLOW: Message[] = [
-  { id: "1", type: "sent", text: "hola", timestamp: "6:03 p.m." },
+  { id: "1", type: "sent", text: "Hola! 👋", time: "6:03 p.m.", status: "read" },
   {
     id: "2",
     type: "received",
-    text: "¡Bienvenido, stef! 👋\n\nBienvenido a Burgerlucho 🍔\n\nAquí está nuestro menú:\nhttps://expresiacol.vercel.app/m/burgerlucho\n\nÁbrelo, arma tu pedido y envíanoslo desde la página. ¡Te esperamos!",
-    timestamp: "6:03 p.m.",
+    text: "¡Bienvenido! 🎉\nSoy Express IA, tu asistente virtual de *Burgerlucho* 🍔\n\nAquí está nuestro menú para que armes tu pedido:",
+    time: "6:03 p.m.",
   },
   {
     id: "3",
     type: "received",
-    text: "¡Recibí tu pedido! 🎉\n\n• 1x CIRO ($59.900)\n\nSubtotal: $59.900\n\n¿Tienes alguna observación? (ej: hamburguesa sin cebolla)\nEscríbela o selecciona una opción:",
-    timestamp: "6:03 p.m.",
+    text: "🛒 *Pedido recibido*\n• 1x CIRO — $59.900\n\nSubtotal: $59.900\n\n¿Alguna observación?",
+    time: "6:03 p.m.",
   },
-  { id: "4", type: "sent", text: "Sin observación", timestamp: "6:03 p.m." },
+  { id: "4", type: "sent", text: "Sin observación ✅", time: "6:04 p.m.", status: "read" },
   {
     id: "5",
     type: "received",
-    text: "¿A qué dirección te lo enviamos? Comparte tu 📍 ubicación o escríbela.",
-    timestamp: "6:03 p.m.",
+    text: "📍 ¿A qué dirección te lo enviamos?\nComparte tu ubicación o escríbela.",
+    time: "6:04 p.m.",
   },
-  { id: "6", type: "sent", text: "calle 1cz #2a - 111", timestamp: "6:03 p.m." },
+  { id: "6", type: "sent", text: "Calle 1cz #2a - 111", time: "6:04 p.m.", status: "read" },
   {
     id: "7",
     type: "received",
-    text: "¿Es esta tu dirección de entrega?\n📍 Cra. 2A, Barranquilla, Atlántico, Colombia",
-    timestamp: "6:03 p.m.",
+    text: "¿Es esta tu dirección?\n📍 Cra. 2A, Barranquilla, Colombia",
+    time: "6:04 p.m.",
   },
-  { id: "8", type: "sent", text: "Sí, es correcta", timestamp: "6:03 p.m." },
+  { id: "8", type: "sent", text: "Sí, es correcta 👍", time: "6:05 p.m.", status: "read" },
   {
     id: "9",
     type: "received",
-    text: "Total: $ 65.400\nSubtotal: $ 59.900\n🚚 Envío: $ 5.500\n\n¿Cómo vas a pagar?",
-    timestamp: "6:05 p.m.",
+    text: "💰 *Resumen del pedido*\nSubtotal: $59.900\n🚚 Envío: $5.500\n*Total: $65.400*\n\n¿Cómo vas a pagar?",
+    time: "6:05 p.m.",
   },
-  { id: "10", type: "sent", text: "Efectivo", timestamp: "6:05 p.m." },
+  { id: "10", type: "sent", text: "Efectivo 💵", time: "6:05 p.m.", status: "read" },
   {
     id: "11",
     type: "received",
-    text: "¡Pedido confirmado! 🎉\n\nEstamos preparando tu orden. Pronto te notificaremos cuando esté lista. ¡Gracias por elegirnos!",
-    timestamp: "6:05 p.m.",
+    text: "¡Pedido confirmado! 🎊\nEstamos preparando tu orden. Te notificamos cuando esté en camino. ¡Gracias por elegirnos! 🙌",
+    time: "6:06 p.m.",
   },
 ];
 
+function DoubleCheck({ status }: { status?: Message["status"] }) {
+  if (!status) return null;
+  const color = status === "read" ? "#53bdeb" : "rgba(255,255,255,0.6)";
+  return (
+    <span style={{ color, fontSize: "11px", marginLeft: "2px" }}>
+      {status === "sent" ? "✓" : "✓✓"}
+    </span>
+  );
+}
+
+function TypingIndicator() {
+  return (
+    <div className="flex justify-start">
+      <div
+        className="flex items-center gap-1 px-3 py-2.5 rounded-2xl rounded-bl-none"
+        style={{ backgroundColor: "#fff", boxShadow: "0 1px 2px rgba(0,0,0,0.12)" }}
+      >
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="w-1.5 h-1.5 rounded-full bg-gray-400"
+            style={{ animation: `typing-dot 1.2s ease-in-out ${i * 0.2}s infinite` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function formatText(text: string) {
+  // Bold: *text*
+  const parts = text.split(/(\*[^*]+\*)/g);
+  return parts.map((part, i) =>
+    part.startsWith("*") && part.endsWith("*") ? (
+      <strong key={i}>{part.slice(1, -1)}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
+}
+
 export default function DynamicWhatsAppChat() {
-  const [visibleMessages, setVisibleMessages] = useState<string[]>([]);
-  const [isLooping, setIsLooping] = useState(true);
-  const [loopTrigger, setLoopTrigger] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [visibleIds, setVisibleIds] = useState<string[]>([]);
+  const [showTyping, setShowTyping] = useState(false);
+  const [loopKey, setLoopKey] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll al final
   useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [visibleMessages]);
+  }, [visibleIds, showTyping]);
 
-  // Animación del chat
   useEffect(() => {
-    if (!isLooping) return;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    let delay = 0;
 
-    const timeouts: NodeJS.Timeout[] = [];
+    CHAT_FLOW.forEach((msg, i) => {
+      const isReceived = msg.type === "received";
 
-    // Mostrar cada mensaje con delay progresivo (1200ms entre mensajes)
-    CHAT_FLOW.forEach((msg, index) => {
-      const timeout = setTimeout(() => {
-        setVisibleMessages((prev) => [...prev, msg.id]);
-      }, index * 1200); // 1200ms entre mensajes (más lento)
-      timeouts.push(timeout);
+      if (isReceived && i > 0) {
+        // Show typing before received messages
+        timeouts.push(
+          setTimeout(() => setShowTyping(true), delay)
+        );
+        delay += 900;
+        timeouts.push(
+          setTimeout(() => {
+            setShowTyping(false);
+            setVisibleIds((prev) => [...prev, msg.id]);
+          }, delay)
+        );
+      } else {
+        timeouts.push(
+          setTimeout(() => setVisibleIds((prev) => [...prev, msg.id]), delay)
+        );
+      }
+      delay += 1400;
     });
 
-    // Resetear después de que todos los mensajes se muestren (loop infinito con pequeña pausa)
-    const resetTimeout = setTimeout(() => {
-      setVisibleMessages([]);
-      setLoopTrigger((prev) => prev + 1);
-    }, CHAT_FLOW.length * 1200 + 2000); // 2 segundos de pausa antes de reiniciar
-    timeouts.push(resetTimeout);
+    // Reset loop
+    timeouts.push(
+      setTimeout(() => {
+        setVisibleIds([]);
+        setShowTyping(false);
+        setLoopKey((k) => k + 1);
+      }, delay + 2500)
+    );
 
-    return () => {
-      timeouts.forEach((t) => clearTimeout(t));
-    };
-  }, [isLooping, loopTrigger]);
-
-  // Asegurar que el loop esté siempre activo
-  useEffect(() => {
-    setIsLooping(true);
-  }, []);
+    return () => timeouts.forEach(clearTimeout);
+  }, [loopKey]);
 
   return (
-    <div className="w-full max-w-xs mx-auto">
-      {/* iPhone Frame - Más pequeño */}
+    <div className="w-full max-w-[300px] mx-auto select-none">
+      {/* Phone frame */}
       <div
-        className="relative bg-black rounded-[2.5rem] overflow-hidden shadow-xl"
+        className="relative rounded-[2.8rem] overflow-hidden"
         style={{
-          aspectRatio: "9/19.5",
-          boxShadow: "0 15px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
-          transform: "translate3d(0, 0, 0)",
-          isolation: "isolate",
+          background: "linear-gradient(145deg, #1a1a1a, #0d0d0d)",
+          boxShadow:
+            "0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.15)",
+          padding: "10px",
         }}
       >
-        {/* Notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20" />
-
-        {/* Screen Container */}
+        {/* Dynamic Island */}
         <div
-          className="absolute inset-0 bg-white rounded-[2rem] overflow-hidden flex flex-col"
-          style={{ 
-            inset: "10px",
-            transform: "translate3d(0, 0, 0)"
+          className="absolute top-3 left-1/2 -translate-x-1/2 z-30"
+          style={{
+            width: "90px",
+            height: "28px",
+            backgroundColor: "#000",
+            borderRadius: "20px",
+          }}
+        />
+
+        {/* Screen */}
+        <div
+          className="overflow-hidden flex flex-col"
+          style={{
+            borderRadius: "2.2rem",
+            height: "580px",
+            backgroundColor: "#000",
           }}
         >
-          {/* Status Bar - WhatsApp style */}
-          <div className="bg-white px-3 py-1.5 flex justify-between items-center text-xs font-medium text-gray-900 border-b border-gray-100" style={{backgroundColor: '#6e6e6e'}}>
-            <span className="text-xs">11:19</span>
-            <div className="flex gap-0.5 text-xs">
-              <span>📶</span>
-              <span>📡</span>
-              <span>🔋</span>
-            </div>
-          </div>
-
-          {/* Chat Header - WhatsApp style */}
-          <div className="bg-white px-3 py-2.5 flex items-center gap-2.5 border-b border-gray-100 flex-shrink-0" style={{backgroundColor: '#171717'}}>
-            <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">←</button>
-            
-            {/* Logo de Express IA */}
-            <img 
-              src="/logo.png" 
-              alt="Express IA" 
-              className="w-8 h-8 rounded-full object-cover flex-shrink-0" style={{backgroundColor: '#fcfcfc'}}
-            />
-            
-            <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-xs" style={{color: '#ffffff'}}>ExpressIA</h3>
-              <p className="text-xs text-gray-500" style={{color: '#b0b0b0'}}>En linea</p>
-            </div>
-            <button className="text-gray-700 text-base hover:bg-gray-100 p-0.5 rounded">⋮</button>
-          </div>
-
-          {/* Chat Messages Area with Scroll - WhatsApp style */}
+          {/* Status bar */}
           <div
-            ref={scrollContainerRef}
-            className="flex-1 overflow-y-auto bg-[#e6eedf] px-2.5 py-3 space-y-2 scroll-smooth no-scrollbar"
+            className="flex justify-between items-center px-6 pt-3 pb-1 flex-shrink-0"
+            style={{ backgroundColor: "#075e54" }}
+          >
+            <span className="text-white text-[11px] font-semibold">9:41</span>
+            <div className="flex items-center gap-1">
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="white">
+                <rect x="0" y="4" width="2" height="6" rx="0.5" />
+                <rect x="3" y="3" width="2" height="7" rx="0.5" />
+                <rect x="6" y="1" width="2" height="9" rx="0.5" />
+                <rect x="9" y="0" width="2" height="10" rx="0.5" />
+              </svg>
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="white">
+                <path d="M7 1.5C9.5 1.5 11.7 2.7 13 4.6L14 3.4C12.4 1.3 9.9 0 7 0S1.6 1.3 0 3.4L1 4.6C2.3 2.7 4.5 1.5 7 1.5Z"/>
+                <path d="M7 4C8.7 4 10.2 4.8 11.2 6L12.2 4.8C10.9 3.4 9.1 2.5 7 2.5S3.1 3.4 1.8 4.8L2.8 6C3.8 4.8 5.3 4 7 4Z"/>
+                <circle cx="7" cy="8.5" r="1.5"/>
+              </svg>
+              <svg width="22" height="10" viewBox="0 0 22 10" fill="white">
+                <rect x="0" y="1" width="19" height="8" rx="2" stroke="white" strokeWidth="1" fill="none"/>
+                <rect x="19.5" y="3.5" width="2" height="3" rx="1" fill="white" opacity="0.5"/>
+                <rect x="1" y="2" width="15" height="6" rx="1" fill="white"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* WhatsApp Header */}
+          <div
+            className="flex items-center gap-2.5 px-2 py-2 flex-shrink-0"
+            style={{ backgroundColor: "#075e54" }}
+          >
+            <button className="text-white opacity-80 text-lg leading-none">←</button>
+
+            {/* Avatar */}
+            <div className="relative flex-shrink-0">
+              <img
+                src="/logo.png"
+                alt="Express IA"
+                className="w-9 h-9 rounded-full object-cover"
+                style={{ border: "2px solid rgba(255,255,255,0.2)" }}
+                onError={(e) => {
+                  const t = e.currentTarget;
+                  t.style.display = "none";
+                  if (t.nextElementSibling) (t.nextElementSibling as HTMLElement).style.display = "flex";
+                }}
+              />
+              <div
+                className="w-9 h-9 rounded-full items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                style={{ backgroundColor: "#128C7E", display: "none" }}
+              >
+                IA
+              </div>
+              {/* Online dot */}
+              <span
+                className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full border-2"
+                style={{ backgroundColor: "#4ade80", borderColor: "#075e54" }}
+              />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <p className="text-white font-semibold text-sm leading-tight truncate">ExpressIA</p>
+              <p className="text-green-300 text-[10px] leading-tight">En línea</p>
+            </div>
+
+            <div className="flex items-center gap-3 text-white opacity-80">
+              <Video className="w-4 h-4" />
+              <Phone className="w-4 h-4" />
+              <Search className="w-4 h-4" />
+            </div>
+          </div>
+
+          {/* Chat background */}
+          <div
+            ref={scrollRef}
+            className="flex-1 overflow-y-auto px-2 py-3 space-y-1"
             style={{
-              scrollBehavior: "smooth",
-              WebkitOverflowScrolling: "touch",
+              backgroundImage: `
+                radial-gradient(circle at 20% 80%, rgba(37,211,102,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(7,94,84,0.08) 0%, transparent 50%)
+              `,
+              backgroundColor: "#ece5dd",
               scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
-            {visibleMessages.map((msgId) => {
-              const msg = CHAT_FLOW.find((m) => m.id === msgId);
-              if (!msg) return null;
+            {/* Date badge */}
+            <div className="flex justify-center mb-2">
+              <span
+                className="text-[10px] px-2.5 py-0.5 rounded-full"
+                style={{ backgroundColor: "rgba(225,245,239,0.92)", color: "#555", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}
+              >
+                HOY
+              </span>
+            </div>
 
-              const isReceived = msg.type === "received";
+            {visibleIds.map((id) => {
+              const msg = CHAT_FLOW.find((m) => m.id === id);
+              if (!msg) return null;
+              const isSent = msg.type === "sent";
 
               return (
                 <div
-                  key={msgId}
-                  className={`flex ${isReceived ? "justify-start" : "justify-end"} animate-in fade-in slide-in-from-bottom-1 duration-300`}
+                  key={id}
+                  className={`flex ${isSent ? "justify-end" : "justify-start"}`}
+                  style={{ animation: "msg-pop 0.25s cubic-bezier(0.34,1.56,0.64,1) forwards" }}
                 >
                   <div
-                    className={`max-w-xs px-2.5 py-1.5 rounded-lg text-xs leading-relaxed break-words ${
-                      isReceived
-                        ? "bg-gray-200 text-gray-900 rounded-bl-none"
-                        : "bg-green-500 text-white rounded-br-none"
-                    }`}
+                    className="relative max-w-[80%] px-3 py-1.5"
+                    style={{
+                      backgroundColor: isSent ? "#dcf8c6" : "#ffffff",
+                      borderRadius: isSent
+                        ? "12px 12px 2px 12px"
+                        : "12px 12px 12px 2px",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.13)",
+                    }}
                   >
-                    <div className="whitespace-pre-wrap">{msg.text}</div>
+                    {/* Bubble tail */}
                     <div
-                      className={`text-xs mt-1 flex items-center gap-0.5 justify-end ${
-                        isReceived ? "text-gray-600" : "text-green-100"
-                      }`}
+                      style={{
+                        position: "absolute",
+                        bottom: "0",
+                        [isSent ? "right" : "left"]: "-6px",
+                        width: "10px",
+                        height: "10px",
+                        backgroundColor: isSent ? "#dcf8c6" : "#ffffff",
+                        clipPath: isSent
+                          ? "polygon(0 0, 100% 0, 100% 100%)"
+                          : "polygon(0 0, 100% 0, 0 100%)",
+                      }}
+                    />
+
+                    <p
+                      className="text-[11.5px] leading-snug text-gray-800 whitespace-pre-wrap break-words"
                     >
-                      <span className="text-xs">{msg.timestamp}</span>
-                      {!isReceived && <span className="text-xs">✓✓</span>}
+                      {formatText(msg.text)}
+                    </p>
+                    <div className="flex items-center justify-end gap-0.5 mt-0.5">
+                      <span className="text-[9.5px] text-gray-400">{msg.time}</span>
+                      {isSent && <DoubleCheck status={msg.status} />}
                     </div>
                   </div>
                 </div>
               );
             })}
+
+            {showTyping && <TypingIndicator />}
           </div>
 
-          {/* Input Bar - WhatsApp style */}
-          <div className="bg-white px-4 pb-4 pt-2 flex items-center gap-1.5 border-t border-gray-100 flex-shrink-0">
-            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
-              <Plus className="w-4 h-4" />
-            </button>
-            <input
-              type="text"
-              placeholder="Mensaje"
-              className="flex-1 min-w-0 bg-gray-100 rounded-full px-3 py-1.5 text-xs outline-none"
-              disabled
-            />
-            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
-              <Paperclip className="w-4 h-4" />
-            </button>
-            <button className="text-gray-500 hover:bg-gray-100 p-1 rounded flex-shrink-0">
-              <Camera className="w-4 h-4" />
-            </button>
-            <button className="w-7 h-7 bg-[#25d366] rounded-full flex items-center justify-center text-white hover:bg-[#20ba5a] flex-shrink-0">
+          {/* Input bar */}
+          <div
+            className="flex items-center gap-1.5 px-2 py-2 flex-shrink-0"
+            style={{ backgroundColor: "#f0f0f0" }}
+          >
+            <div
+              className="flex-1 flex items-center gap-2 bg-white rounded-full px-3 py-1.5"
+              style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }}
+            >
+              <span className="text-gray-400 text-sm">😊</span>
+              <span className="text-gray-400 text-[11px] flex-1">Mensaje</span>
+              <Paperclip className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
+            </div>
+            <button
+              className="w-9 h-9 rounded-full flex items-center justify-center text-white flex-shrink-0"
+              style={{ backgroundColor: "#075e54" }}
+            >
               <Mic className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Side Bezels */}
-        <div className="absolute left-0 top-10 bottom-10 w-1 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
-        <div className="absolute right-0 top-10 bottom-10 w-1 bg-gradient-to-b from-gray-800 via-black to-gray-800" />
-
-        {/* Volume Buttons */}
-        <div className="absolute -left-0.5 top-24 w-0.5 h-8 bg-gray-700 rounded-l" />
-        <div className="absolute -left-0.5 top-36 w-0.5 h-8 bg-gray-700 rounded-l" />
-
-        {/* Power Button */}
-        <div className="absolute -right-0.5 top-32 w-0.5 h-10 bg-gray-600 rounded-r" />
+        {/* Phone side buttons */}
+        <div className="absolute -left-[3px] top-[100px] w-[3px] h-8 bg-gray-700 rounded-l" />
+        <div className="absolute -left-[3px] top-[148px] w-[3px] h-8 bg-gray-700 rounded-l" />
+        <div className="absolute -right-[3px] top-[120px] w-[3px] h-12 bg-gray-700 rounded-r" />
       </div>
-      
+
       <style>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
+        @keyframes msg-pop {
+          from { opacity: 0; transform: scale(0.85) translateY(4px); }
+          to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes typing-dot {
+          0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+          30% { transform: translateY(-4px); opacity: 1; }
         }
       `}</style>
     </div>

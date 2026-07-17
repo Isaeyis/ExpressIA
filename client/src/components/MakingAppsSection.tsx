@@ -79,6 +79,17 @@ export default function MakingAppsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 md:py-28">
 
+        {/* Logo de Making Apps con animación flotante */}
+        <div className="flex justify-center mb-8">
+          <div className="animate-float">
+            <img
+              src="/makingapps-logo.png"
+              alt="Making Apps Logo"
+              className="w-24 h-24 md:w-32 md:h-32 object-contain filter drop-shadow-[0_0_15px_rgba(14,165,233,0.3)]"
+            />
+          </div>
+        </div>
+
         {/* Badge */}
         <div className="flex justify-center mb-10">
           <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border text-sm font-bold"
@@ -90,7 +101,7 @@ export default function MakingAppsSection() {
 
         {/* Main title */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-4 leading-none tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-none tracking-tight">
             Making{" "}
             <span
               className="bg-clip-text text-transparent"
@@ -99,24 +110,24 @@ export default function MakingAppsSection() {
               Apps
             </span>
           </h2>
-          <p className="text-lg md:text-xl font-semibold mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3" style={{ color: "rgba(255,255,255,0.5)" }}>
             Innovación Digital Transformadora
           </p>
-          <p className="text-base max-w-2xl mx-auto leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>
+          <p className="text-sm sm:text-base max-w-2xl mx-auto leading-relaxed px-4 sm:px-0" style={{ color: "rgba(255,255,255,0.4)" }}>
             Arquitectos digitales innovadores que transforman ideas en soluciones tecnológicas de impacto.
             Express IA es el resultado de años de experiencia en desarrollo tecnológico y automatización empresarial.
           </p>
         </div>
 
         {/* Stats strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 md:mb-20">
           {stats.map((s, i) => (
             <div
               key={i}
-              className="text-center py-5 px-4 rounded-2xl border"
+              className="text-center py-4 sm:py-5 px-3 sm:px-4 rounded-2xl border"
               style={{ backgroundColor: "rgba(255,255,255,0.03)", borderColor: "rgba(14,165,233,0.15)" }}
             >
-              <p className="text-3xl font-black mb-1" style={{ backgroundImage: "linear-gradient(135deg, #0ea5e9, #38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <p className="text-2xl sm:text-3xl font-black mb-1" style={{ backgroundImage: "linear-gradient(135deg, #0ea5e9, #38bdf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 {s.value}
               </p>
               <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.4)" }}>{s.label}</p>
@@ -125,24 +136,24 @@ export default function MakingAppsSection() {
         </div>
 
         {/* Mission + Who we are */}
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 md:mb-20">
           {/* Mission */}
           <div
-            className="rounded-3xl p-8 border relative overflow-hidden group"
+            className="rounded-3xl p-6 sm:p-8 border relative overflow-hidden group"
             style={{ backgroundColor: "rgba(14,165,233,0.05)", borderColor: "rgba(14,165,233,0.18)" }}
           >
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-20 group-hover:opacity-35 transition-opacity duration-500"
               style={{ background: "radial-gradient(circle, #0ea5e9, transparent)" }} />
             <div className="relative z-10">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-4 sm:mb-6"
                 style={{ background: "linear-gradient(135deg, #0ea5e9, #1d4ed8)" }}>
-                <Zap className="w-6 h-6 text-white" />
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#38bdf8" }}>NUESTRA MISIÓN</p>
-              <h3 className="text-xl font-bold text-white mb-4 leading-snug">
+              <p className="text-xs font-bold tracking-widest mb-2 sm:mb-3" style={{ color: "#38bdf8" }}>NUESTRA MISIÓN</p>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 leading-snug">
                 Potenciar proyectos empresariales con tecnología a medida
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                 Desarrollamos software a medida y soluciones tecnológicas que proporcionan a nuestros clientes herramientas esenciales para alcanzar nuevos niveles de éxito.
               </p>
             </div>
@@ -150,21 +161,21 @@ export default function MakingAppsSection() {
 
           {/* Who we are */}
           <div
-            className="rounded-3xl p-8 border relative overflow-hidden group"
+            className="rounded-3xl p-6 sm:p-8 border relative overflow-hidden group"
             style={{ backgroundColor: "rgba(29,78,216,0.08)", borderColor: "rgba(99,102,241,0.2)" }}
           >
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-20 group-hover:opacity-35 transition-opacity duration-500"
               style={{ background: "radial-gradient(circle, #6366f1, transparent)" }} />
             <div className="relative z-10">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-4 sm:mb-6"
                 style={{ background: "linear-gradient(135deg, #6366f1, #1d4ed8)" }}>
-                <Cpu className="w-6 h-6 text-white" />
+                <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <p className="text-xs font-bold tracking-widest mb-3" style={{ color: "#818cf8" }}>¿QUIÉNES SOMOS?</p>
-              <h3 className="text-xl font-bold text-white mb-4 leading-snug">
+              <p className="text-xs font-bold tracking-widest mb-2 sm:mb-3" style={{ color: "#818cf8" }}>¿QUIÉNES SOMOS?</p>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 leading-snug">
                 Especialistas en software, apps móviles y marketing digital
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
                 Somos arquitectos digitales comprometidos con crear estrategias pioneras con imaginación sin límites, transformando cada proyecto en una experiencia tecnológica única.
               </p>
             </div>
@@ -223,19 +234,19 @@ export default function MakingAppsSection() {
         </div>
 
         {/* CTA bottom */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8 sm:mt-12 px-4">
           <a
             href="https://makingapps.com.co"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-white text-sm transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-bold text-white text-xs sm:text-sm transition-all duration-300 hover:scale-105 hover:shadow-2xl text-center"
             style={{
               background: "linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 60%, #38bdf8 100%)",
               boxShadow: "0 0 30px rgba(14,165,233,0.35)",
             }}
           >
             Conoce más sobre Making Apps
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
           </a>
         </div>
       </div>

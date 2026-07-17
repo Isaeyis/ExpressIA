@@ -3,54 +3,34 @@ import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Carlos Mendoza",
-    role: "Dueño · Restaurante El Fogón",
-    avatar: "CM",
+    name: "Alvaro Ramos",
+    role: "Gerente General · Everia",
+    avatar: "AR",
     avatarColor: "from-blue-400 to-cyan-500",
     rating: 5,
-    text: "Antes perdíamos el 40% de las consultas porque no podíamos responder rápido. Con Express IA, el bot atiende en segundos y ya llevamos 3 meses sin perder un solo pedido. Las ventas subieron un 35%.",
+    text: "Antes perdíamos muchas consultas porque no podíamos responder con la rapidez necesaria. Con Express IA, el bot atiende en segundos y ya no perdemos leads. Las ventas se incrementaron notablemente. Lo que más nos sorprendió fue que Express IA no solo responde preguntas, también guía al cliente durante la compra y mantiene todo organizado. Pasamos de responder manualmente cada conversación a tener un proceso mucho más ágil y profesional.",
     metric: "+35% ventas",
     metricColor: "text-emerald-500",
   },
   {
-    name: "Valentina Ríos",
-    role: "Gerente · Domicilios Rápidos SAS",
-    avatar: "VR",
+    name: "Heyne Camargo",
+    role: "Director · ZonaAudiovisual",
+    avatar: "HC",
     avatarColor: "from-green-400 to-teal-500",
     rating: 5,
-    text: "La integración con WhatsApp fue increíblemente sencilla. Ahora nuestros domiciliarios reciben la asignación automáticamente y los clientes siguen el pedido en tiempo real. Es un cambio total.",
-    metric: "3x más pedidos",
+    text: "La integración con WhatsApp fue increíblemente sencilla. Ahora el bot responde dudas frecuentes sobre nuestros servicios, portafolio y disponibilidad de inmediato. Es un cambio total para nuestra atención.",
+    metric: "Respuestas 24/7",
     metricColor: "text-blue-500",
   },
   {
-    name: "Andrés Castillo",
-    role: "Fundador · TechStore Colombia",
-    avatar: "AC",
+    name: "Laura Rivas",
+    role: "Comercial · Punto Digital",
+    avatar: "LR",
     avatarColor: "from-purple-400 to-pink-500",
     rating: 5,
-    text: "Tenía miedo de que fuera complicado pero el equipo de Express IA nos acompañó en cada paso. En 2 semanas ya teníamos la vitrina digital funcionando y el inventario sincronizado automáticamente.",
+    text: "Tenía dudas sobre si la IA podría adaptarse a nuestro catálogo, pero el equipo de Express IA nos guió en cada paso. En 2 semanas ya teníamos el sistema funcionando y el inventario sincronizado de forma automática.",
     metric: "2 semanas de setup",
     metricColor: "text-purple-500",
-  },
-  {
-    name: "Laura Gómez",
-    role: "Administradora · Burger House",
-    avatar: "LG",
-    avatarColor: "from-orange-400 to-red-500",
-    rating: 5,
-    text: "Lo que más me sorprendió fue el panel de control. Puedo ver todo en tiempo real, cuántas conversaciones activas hay, qué productos se consultan más, y ajustar el bot sin necesidad de saber programar.",
-    metric: "100% visibilidad",
-    metricColor: "text-orange-500",
-  },
-  {
-    name: "Miguel Torres",
-    role: "CEO · Comercializadora El Éxito",
-    avatar: "MT",
-    avatarColor: "from-indigo-400 to-violet-500",
-    rating: 5,
-    text: "Nuestra operación maneja 500+ productos. Con Express IA, el bot responde consultas de inventario, precios y disponibilidad sin que nadie tenga que estar pendiente. Ahorramos 3 personas de atención.",
-    metric: "3 personas ahorradas",
-    metricColor: "text-indigo-500",
   },
 ];
 
@@ -131,32 +111,32 @@ export default function TestimonialsSection() {
         <div className="relative flex items-center justify-center gap-4">
           {/* Prev ghost card */}
           <div
-            className="hidden lg:block w-64 flex-shrink-0 cursor-pointer"
+            className="hidden lg:block w-56 flex-shrink-0 cursor-pointer"
             onClick={prev}
           >
             <div
-              className="rounded-2xl p-5 bg-white/60 border border-gray-100 shadow-md opacity-50 scale-90 transition-all duration-300 hover:opacity-70"
+              className="rounded-xl p-4 bg-white/60 border border-gray-100 shadow-md opacity-50 scale-90 transition-all duration-300 hover:opacity-70"
               style={{ transform: "scale(0.88)" }}
             >
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-2.5 mb-2.5">
                 <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br ${prev1.avatarColor} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}
+                  className={`w-9 h-9 rounded-full bg-gradient-to-br ${prev1.avatarColor} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}
                 >
                   {prev1.avatar}
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-sm">{prev1.name}</p>
-                  <p className="text-xs text-gray-500">{prev1.role}</p>
+                  <p className="font-bold text-gray-900 text-xs">{prev1.name}</p>
+                  <p className="text-[10px] text-gray-500">{prev1.role}</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 line-clamp-3">{prev1.text}</p>
+              <p className="text-[11px] text-gray-500 line-clamp-3 leading-normal">{prev1.text}</p>
             </div>
           </div>
 
           {/* Main card */}
-          <div className="flex-1 max-w-2xl">
+          <div className="flex-1 max-w-xl">
             <div
-              className="rounded-3xl bg-white border border-gray-100 shadow-2xl p-8 md:p-10 transition-all duration-300"
+              className="rounded-2xl bg-white border border-gray-100 shadow-2xl p-6 sm:p-7 md:p-8 transition-all duration-300"
               style={{
                 opacity: isAnimating ? 0 : 1,
                 transform: isAnimating
@@ -165,43 +145,43 @@ export default function TestimonialsSection() {
               }}
             >
               {/* Quote icon */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
-                  <Quote className="w-6 h-6 text-emerald-500" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+                  <Quote className="w-5 h-5 text-emerald-500" />
                 </div>
                 {/* Metric badge */}
                 <span
-                  className={`text-sm font-bold px-4 py-1.5 rounded-full bg-gray-50 border border-gray-100 ${t.metricColor}`}
+                  className={`text-xs font-bold px-3 py-1 rounded-full bg-gray-50 border border-gray-100 ${t.metricColor}`}
                 >
                   {t.metric}
                 </span>
               </div>
 
               {/* Stars */}
-              <div className="flex gap-1 mb-5">
+              <div className="flex gap-1 mb-3.5">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 text-yellow-400 fill-yellow-400"
+                    className="w-4 h-4 text-yellow-400 fill-yellow-400"
                   />
                 ))}
               </div>
 
               {/* Testimony text */}
-              <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8 font-medium">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 font-medium">
                 "{t.text}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                 <div
-                  className={`w-14 h-14 rounded-full bg-gradient-to-br ${t.avatarColor} flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-lg`}
+                  className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.avatarColor} flex items-center justify-center text-white font-bold text-base flex-shrink-0 shadow-md`}
                 >
                   {t.avatar}
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-base">{t.name}</p>
-                  <p className="text-sm text-gray-500">{t.role}</p>
+                  <p className="font-bold text-gray-900 text-sm sm:text-base">{t.name}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
                 </div>
               </div>
             </div>
@@ -209,25 +189,25 @@ export default function TestimonialsSection() {
 
           {/* Next ghost card */}
           <div
-            className="hidden lg:block w-64 flex-shrink-0 cursor-pointer"
+            className="hidden lg:block w-56 flex-shrink-0 cursor-pointer"
             onClick={next}
           >
             <div
-              className="rounded-2xl p-5 bg-white/60 border border-gray-100 shadow-md opacity-50 transition-all duration-300 hover:opacity-70"
+              className="rounded-xl p-4 bg-white/60 border border-gray-100 shadow-md opacity-50 transition-all duration-300 hover:opacity-70"
               style={{ transform: "scale(0.88)" }}
             >
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-2.5 mb-2.5">
                 <div
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br ${next1.avatarColor} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}
+                  className={`w-9 h-9 rounded-full bg-gradient-to-br ${next1.avatarColor} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}
                 >
                   {next1.avatar}
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-sm">{next1.name}</p>
-                  <p className="text-xs text-gray-500">{next1.role}</p>
+                  <p className="font-bold text-gray-900 text-xs">{next1.name}</p>
+                  <p className="text-[10px] text-gray-500">{next1.role}</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 line-clamp-3">{next1.text}</p>
+              <p className="text-[11px] text-gray-500 line-clamp-3 leading-normal">{next1.text}</p>
             </div>
           </div>
         </div>

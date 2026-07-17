@@ -84,21 +84,21 @@ const ProcessFlow: React.FC = () => {
         {/* Process Flow Container - Diseño más fluido y creativo */}
         <div className="relative">
           {/* Contenedor con 4 cuadritos - Responsive */}
-          <div className="relative flex items-center justify-center gap-0 mb-16 flex-wrap md:flex-nowrap" style={{ minHeight: '240px' }}>
+          <div className="relative grid grid-cols-2 md:flex md:items-center md:justify-center gap-3 md:gap-0 mb-10 md:h-[240px]" style={{ alignItems: 'center' }}>
             {steps.map((step, index) => (
               <React.Fragment key={step.id}>
                 <div 
-                  className="relative flex-1 md:flex-none flex flex-col items-center min-w-0 w-full transition-all duration-300"
+                  className="relative md:flex-none flex flex-col items-center min-w-0 transition-all duration-300"
                   style={{
-                    maxWidth: activeStep === index ? '240px' : '180px',
+                    maxWidth: typeof window !== 'undefined' && window.innerWidth >= 768 ? (activeStep === index ? '240px' : '180px') : '100%',
                     width: '100%',
                   }}
                 >
                   {/* Card del paso - Diseño mejorado y fluido */}
                   <div
-                    className={`transition-all duration-500 ${step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full`}
+                    className={`process-step-card transition-all duration-500 ${activeStep === index ? 'bg-emerald-50/40' : step.bgColor} border-2 rounded-2xl flex flex-col items-center justify-center relative overflow-visible w-full`}
                     style={{
-                      borderColor: activeStep === index ? step.borderColor : '#e5e7eb',
+                      borderColor: activeStep === index ? '#10b981' : '#e5e7eb',
                       padding: '24px 16px',
                       minHeight: activeStep === index ? '210px' : '150px',
                       width: '100%',
@@ -107,7 +107,7 @@ const ProcessFlow: React.FC = () => {
                       transform: activeStep === index ? 'scaleX(1.01) scaleY(1.04) translateY(-2px)' : 'scale(1)',
                       boxShadow:
                         activeStep === index
-                          ? `0 16px 32px ${step.borderColor}35, inset 0 1px 0 ${step.borderColor}15`
+                          ? `0 16px 32px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(16, 185, 129, 0.15)`
                           : '0 2px 8px rgba(0,0,0,0.06)',
                       zIndex: activeStep === index ? 10 : 1,
                     }}
@@ -117,7 +117,7 @@ const ProcessFlow: React.FC = () => {
                       <div
                         className="absolute inset-0 rounded-2xl pointer-events-none"
                         style={{
-                          border: `2px solid ${step.borderColor}`,
+                          border: `2px solid #10b981`,
                           animation: `wave-ripple 2s ease-out infinite`,
                           opacity: 0.6,
                         }}
@@ -129,7 +129,7 @@ const ProcessFlow: React.FC = () => {
                       <div
                         className="absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl"
                         style={{
-                          background: `radial-gradient(circle at top right, ${step.borderColor}08, transparent)`,
+                          background: `radial-gradient(circle at top right, #10b98108, transparent)`,
                           opacity: 1,
                         }}
                       />
@@ -147,12 +147,12 @@ const ProcessFlow: React.FC = () => {
                     </div>
 
                     {/* Título - Tipografía mejorada */}
-                    <h3 className="text-xs font-bold text-center text-gray-900 leading-tight relative z-10 px-1 transition-all duration-300" style={{
+                    <h3 className={`text-xs font-bold text-center leading-tight relative z-10 px-1 transition-all duration-300 ${activeStep === index ? 'text-emerald-600' : 'text-gray-900'}`} style={{
                       fontSize: activeStep === index ? '0.875rem' : '0.75rem',
                     }}>
                       {step.title}
                     </h3>
-
+ 
                     {/* Subtítulo - Siempre visible */}
                     <p className="text-xs text-center text-gray-600 leading-tight mt-0.5 relative z-10 px-1 transition-all duration-300" style={{
                       opacity: activeStep === index ? 1 : 0.7,
@@ -160,7 +160,7 @@ const ProcessFlow: React.FC = () => {
                     }}>
                       {step.subtitle}
                     </p>
-
+ 
                     {/* Viñetas - SOLO cuando está activo, con animación suave */}
                     {activeStep === index && (
                       <div className="space-y-1 mt-2.5 w-full relative z-10 px-1" style={{
@@ -172,7 +172,7 @@ const ProcessFlow: React.FC = () => {
                           }}>
                             <div className="flex-shrink-0 mt-0.5">
                               <svg
-                                className="w-3.5 h-3.5 text-gray-400"
+                                className={`w-3.5 h-3.5 ${activeStep === index ? 'text-emerald-500' : 'text-gray-400'}`}
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2.5"
@@ -218,18 +218,18 @@ const ProcessFlow: React.FC = () => {
                   </div>
                 </div>
 
-                {index < steps.length - 1 && (
+                 {index < steps.length - 1 && (
                   <div className="hidden md:flex items-center justify-center flex-1 min-w-[20px] max-w-[60px] mx-1">
-                    <div className="relative w-full h-[2px]" style={{ backgroundColor: activeStep > index ? '#10b981' : '#e5e7eb' }}>
+                    <div className="relative w-full h-[2px]" style={{ backgroundColor: activeStep >= index ? '#10b981' : '#e5e7eb' }}>
                       <div 
                         className="absolute top-1/2 left-1/2 rounded-full border-2 border-white transition-all duration-500"
                         style={{
                           width: '14px',
                           height: '14px',
                           transform: 'translate(-50%, -50%)',
-                          backgroundColor: activeStep > index ? '#10b981' : '#e5e7eb',
-                          animation: activeStep - 1 === index ? 'pulse-dot 2s infinite ease-in-out' : 'none',
-                          boxShadow: activeStep > index ? '0 0 8px rgba(16, 185, 129, 0.6)' : 'none',
+                          backgroundColor: activeStep >= index ? '#10b981' : '#e5e7eb',
+                          animation: activeStep === index ? 'pulse-dot 2s infinite ease-in-out' : 'none',
+                          boxShadow: activeStep >= index ? '0 0 8px rgba(16, 185, 129, 0.6)' : 'none',
                         }}
                       />
                     </div>
@@ -249,17 +249,17 @@ const ProcessFlow: React.FC = () => {
             />
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">⚡ Mientras tú administras tu negocio</p>
-            <p className="text-lg md:text-xl font-bold text-gray-900 max-w-2xl mx-auto mb-6">
-              Express IA trabaja para que ninguna oportunidad de ventas se pierda
+          <div className="text-center mt-8">
+            <p className="text-xs sm:text-sm font-bold text-emerald-600 tracking-wider mb-2 uppercase">⚡ Mientras tú administras tu negocio</p>
+            <p className="text-sm sm:text-base md:text-lg font-bold text-gray-900 max-w-4xl mx-auto mb-4 px-4">
+              Express IA trabaja para que ninguna oportunidad de venta se pierda
             </p>
             <a 
               href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+estoy+interesado+en+sus+servicios+y+me+gustaría+ver+una+demostración+de+Express+IA"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg text-base">
+              <Button className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2 rounded-lg text-sm transition-all duration-300">
                 Solicitar una demostración
               </Button>
             </a>
@@ -271,15 +271,15 @@ const ProcessFlow: React.FC = () => {
       <style>{`
         @keyframes wave-ripple {
           0% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
             transform: scale(1);
           }
           50% {
-            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
             transform: scale(1.05);
           }
           100% {
-            box-shadow: 0 0 0 12px rgba(59, 130, 246, 0);
+            box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
             transform: scale(1);
           }
         }
@@ -327,6 +327,13 @@ const ProcessFlow: React.FC = () => {
           100% {
             transform: translate(-50%, -50%) scale(1);
             box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+          }
+        }
+
+        @media (max-width: 767px) {
+          .process-step-card {
+            min-height: 150px !important;
+            height: auto !important;
           }
         }
       `}</style>
