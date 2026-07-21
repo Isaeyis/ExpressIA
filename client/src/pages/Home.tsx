@@ -34,6 +34,7 @@ import PricingPlans from "@/components/PricingPlans";
 import FAQSection from "@/components/FAQSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import MakingAppsSection from "@/components/MakingAppsSection";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -64,10 +65,18 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover" />
-              <span className="font-bold text-lg text-gray-900">EXPRESS IA</span>
-            </div>
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="flex items-center gap-2 cursor-pointer group"
+              aria-label="Ir al inicio"
+            >
+              <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" />
+              <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">EXPRESS IA</span>
+            </a>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
@@ -1127,12 +1136,20 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-10 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
-            <div className="col-span-2 sm:col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover" />
-                <span className="font-bold text-lg">EXPRESS IA</span>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
+            <div className="sm:col-span-2 md:col-span-1">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="flex items-center gap-2 mb-4 cursor-pointer group w-fit"
+                aria-label="Ir al inicio"
+              >
+                <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" />
+                <span className="font-bold text-lg text-white group-hover:text-emerald-400 transition-colors">EXPRESS IA</span>
+              </a>
               <p className="text-gray-400 text-sm">Tu empleado digital que atiende, vende y opera 24/7</p>
               {/* Social Buttons */}
               <div className="flex items-center gap-3.5 mt-5">
@@ -1153,7 +1170,7 @@ export default function Home() {
                 
                 {/* TikTok */}
                 <a 
-                  href="https://www.tiktok.com/@makingapps?is_from_webapp=1&sender_device=pc" 
+                  href="https://www.tiktok.com/@makingappsco" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-gray-800 hover:bg-black text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/40 hover:border-gray-900 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/25 shadow-sm"
@@ -1198,25 +1215,17 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-3 text-sm sm:text-base">Producto</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white">Características</a></li>
-                <li><a href="#" className="hover:text-white">Planes</a></li>
-                <li><a href="#" className="hover:text-white">FAQ</a></li>
+                <li><a href="#features" className="hover:text-white transition-colors">Características</a></li>
+                <li><a href="#plans" className="hover:text-white transition-colors">Planes</a></li>
+                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3 text-sm sm:text-base">Empresa</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white">Acerca de</a></li>
-                <li><a href="#" className="hover:text-white">Blog</a></li>
-                <li><a href="#" className="hover:text-white">Contacto</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3 text-sm sm:text-base">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white">Privacidad</a></li>
-                <li><a href="#" className="hover:text-white">Términos</a></li>
-                <li><a href="#" className="hover:text-white">Cookies</a></li>
+                <li><a href="#making-apps" className="hover:text-white transition-colors">Acerca de</a></li>
+                <li><a href="https://makingapps.com.co/blogs.html" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Contacto</a></li>
               </ul>
             </div>
           </div>
@@ -1225,6 +1234,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsApp />
     </div>
   );
 }
