@@ -214,7 +214,12 @@ export default function DynamicWhatsAppChat() {
             <div className="relative flex-shrink-0">
               <img
                 src="/logo.png"
-                alt="Express IA"
+                alt="Logo de Express IA - Asistente Virtual 24/7 en WhatsApp"
+                title="Express IA Asistente Virtual"
+                width="36"
+                height="36"
+                loading="eager"
+                decoding="async"
                 className="w-9 h-9 rounded-full object-cover"
                 style={{ border: "2px solid rgba(255,255,255,0.2)" }}
                 onError={(e) => {

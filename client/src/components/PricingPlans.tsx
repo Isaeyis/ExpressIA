@@ -119,7 +119,11 @@ export default function PricingPlans({
   const plans = plansData[selectedType];
 
   return (
-    <section id="plans" className="py-12 md:py-16 bg-white">
+    <section 
+      id="plans" 
+      aria-label="Planes y Precios de Suscripción Express IA"
+      className="py-12 md:py-16 bg-white"
+    >
       <style>{`
         @keyframes ribbon-shine {
           0% { background-position: -200% 0; }

@@ -53,6 +53,7 @@ export default function MakingAppsSection() {
   return (
     <section
       id="making-apps"
+      aria-label="Desarrollador y Creador de Express IA: Making Apps"
       className="relative overflow-hidden"
       style={{ backgroundColor: "#050c2e" }}
     >
@@ -84,7 +85,12 @@ export default function MakingAppsSection() {
           <div className="animate-float">
             <img
               src="/makingapps-logo.png"
-              alt="Making Apps Logo"
+              alt="Making Apps - Creadores de Express IA y Soluciones de Software a Medida"
+              title="Making Apps - Desarrollador Oficial de Express IA"
+              width="128"
+              height="128"
+              loading="lazy"
+              decoding="async"
               className="w-24 h-24 md:w-32 md:h-32 object-contain filter drop-shadow-[0_0_15px_rgba(14,165,233,0.3)]"
             />
           </div>

@@ -75,6 +75,7 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonios"
+      aria-label="Opiniones y Testimonios de Clientes Express IA"
       className="py-20 md:py-24 relative overflow-hidden"
       style={{
         background:

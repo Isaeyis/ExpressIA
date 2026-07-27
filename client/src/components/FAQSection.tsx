@@ -32,8 +32,29 @@ export default function FAQSection() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+
   return (
-    <section id="faq" className="py-20 md:py-24 bg-white relative overflow-hidden">
+    <section 
+      id="faq" 
+      aria-label="Preguntas Frecuentes sobre la Automatización por WhatsApp con Express IA"
+      className="py-20 md:py-24 bg-white relative overflow-hidden"
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Subtle graphic backgrounds */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-10 right-10 w-72 h-72 rounded-full bg-emerald-50 blur-3xl" />

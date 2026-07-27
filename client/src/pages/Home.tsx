@@ -43,6 +43,22 @@ export default function Home() {
   const [selectedPricingType, setSelectedPricingType] = useState<"restaurantes" | "domicilios" | "comercio">("restaurantes");
   const [activeOnboardingStep, setActiveOnboardingStep] = useState(0);
 
+  // Asegurar el título SEO de la página
+  useEffect(() => {
+    document.title = "Express IA | Empleado Digital 24/7 para WhatsApp, Ventas y Pedidos";
+  }, []);
+
+  // Limpiar el hash de la URL cuando se esté cerca del inicio (pantalla de inicio)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 120 && window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Efecto para incrementar el contador
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,19 +86,31 @@ export default function Home() {
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
+                if (window.location.hash) {
+                  window.history.replaceState(null, "", window.location.pathname + window.location.search);
+                }
               }}
               className="flex items-center gap-2 cursor-pointer group"
               aria-label="Ir al inicio"
             >
-              <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" />
+              <img 
+                src="/logo.png" 
+                alt="Logo oficial de Express IA - Empleado Digital 24/7 para WhatsApp" 
+                title="Express IA Logo"
+                width="32"
+                height="32"
+                loading="eager"
+                decoding="async"
+                className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" 
+              />
               <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">EXPRESS IA</span>
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-6">
+            <nav className="hidden lg:flex items-center gap-6" aria-label="Navegación principal">
               <a href="#que-es" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">¿Qué es?</a>
               <a href="#marketplace" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Marketplace</a>
-              <a href="#features" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Negocios</a>
+              <a href="#negocios" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Negocios</a>
               <a href="#panel" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Panel</a>
               <a href="#plans" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Planes</a>
               <a href="#testimonios" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Opiniones</a>
@@ -117,7 +145,7 @@ export default function Home() {
             <div className="lg:hidden pb-4 space-y-3">
               <a href="#que-es" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">¿Qué es?</a>
               <a href="#marketplace" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Marketplace</a>
-              <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Negocios</a>
+              <a href="#negocios" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Negocios</a>
               <a href="#panel" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Panel</a>
               <a href="#plans" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Planes</a>
               <a href="#testimonios" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Opiniones</a>
@@ -139,7 +167,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-12 md:py-24 lg:py-32 bg-white">
+      <section id="hero" aria-label="Express IA - Tu empleado digital 24/7 con Inteligencia Artificial" className="py-12 md:py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
             <div className="animate-fade-in-up text-center md:text-left">
@@ -178,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* Transition Band */}
-      <div className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-5 md:py-7">
+      <div role="region" aria-label="Resumen de beneficios Express IA" className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 py-5 md:py-7">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm sm:text-base md:text-xl font-medium text-white leading-relaxed">
             ⚡︎ Automatización 24/7 · WhatsApp Business · Inteligencia Artificial · Más Ventas ⚡︎
@@ -187,7 +215,7 @@ export default function Home() {
       </div>
 
       {/* Comparison Section */}
-      <section className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section id="diagnostico" aria-label="Diagnóstico Comercial y Comparativa de Ventas en WhatsApp" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">DIAGNÓSTICO COMERCIAL</p>
@@ -320,7 +348,7 @@ export default function Home() {
       <ProcessFlow />
 
       {/* Marketplace Section */}
-      <section id="marketplace" className="py-12 md:py-16 relative overflow-hidden" style={{
+      <section id="marketplace" aria-label="Vitrina Digital e Inventario en Tiempo Real Gratis con Express IA" className="py-12 md:py-16 relative overflow-hidden" style={{
         background: 'linear-gradient(90deg, #fafafa 0%, #f0fdf4 30%, #c6f6d5 50%, #f0fdf4 70%, #fafafa 100%)'
       }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -399,7 +427,12 @@ export default function Home() {
 
                 <img 
                   src="/GIFTMP.png" 
-                  alt="Marketplace Preview" 
+                  alt="Vitrina Digital Express IA - Catálogo de productos e inventario sincronizado en tiempo real" 
+                  title="Vitrina Digital Personalizada Express IA"
+                  width="320"
+                  height="460"
+                  loading="lazy"
+                  decoding="async"
                   className="h-auto object-contain drop-shadow-2xl"
                   style={{ maxHeight: '460px', width: 'auto' }}
                 />
@@ -433,7 +466,12 @@ export default function Home() {
             <div className="flex md:hidden flex-col items-center justify-center mt-4 gap-4">
               <img 
                 src="/GIFTMP.png" 
-                alt="Marketplace Preview" 
+                alt="Vitrina Digital Express IA para Móviles - Catálogo de productos e inventario sincronizado en tiempo real" 
+                title="Vitrina Digital Express IA Móvil"
+                width="280"
+                height="400"
+                loading="lazy"
+                decoding="async"
                 className="max-w-xs w-full h-auto object-contain drop-shadow-xl"
               />
               
@@ -485,7 +523,7 @@ export default function Home() {
       </section>
 
       {/* Business Types Section */}
-      <section id="features" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
+      <section id="negocios" aria-label="Soluciones Inteligentes Express IA para Restaurantes, Domicilios y Comercio" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">ADAPTABILIDAD</p>
@@ -619,7 +657,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-12 md:py-20" style={{ background: 'linear-gradient(180deg, #fafafa 0%, #ffffff 100%)' }}>
+      <section id="ventajas" aria-label="Ventajas Competitivas de Elegir Express IA" className="py-12 md:py-20" style={{ background: 'linear-gradient(180deg, #fafafa 0%, #ffffff 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
@@ -685,7 +723,7 @@ export default function Home() {
       </section>
 
       {/* Implementation Section */}
-      <section className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section id="implementacion" aria-label="Proceso de Implementación Acompañada e Integración de WhatsApp" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-10">
@@ -1098,7 +1136,7 @@ export default function Home() {
       </section>
 
       {/* Dashboard Section */}
-      <section id="panel" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
+      <section id="panel" aria-label="Panel de Control e Inventario Web Intuitivo de Express IA" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3">GESTIÓN CENTRALIZADA</p>
@@ -1113,7 +1151,12 @@ export default function Home() {
             <div className="relative rounded-xl sm:rounded-2xl border border-gray-200/80 shadow-xl sm:shadow-2xl w-full overflow-hidden">
               <img 
                 src="/dashboard.png" 
-                alt="Panel de Control Intuitivo" 
+                alt="Panel de Control Web Express IA - Gestión de Inventario, Domicilios y Ventas en Tiempo Real" 
+                title="Panel de Administración Express IA"
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto block"
               />
             </div>
@@ -1147,7 +1190,16 @@ export default function Home() {
                 className="flex items-center gap-2 mb-4 cursor-pointer group w-fit"
                 aria-label="Ir al inicio"
               >
-                <img src="/logo.png" alt="Express IA" className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" />
+                <img 
+                  src="/logo.png" 
+                  alt="Logo de Express IA en Pie de Página - Empleado Digital 24/7" 
+                  title="Express IA Logo"
+                  width="32"
+                  height="32"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" 
+                />
                 <span className="font-bold text-lg text-white group-hover:text-emerald-400 transition-colors">EXPRESS IA</span>
               </a>
               <p className="text-gray-400 text-sm">Tu empleado digital que atiende, vende y opera 24/7</p>
