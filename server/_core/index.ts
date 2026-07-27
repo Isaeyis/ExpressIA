@@ -44,6 +44,31 @@ async function startServer() {
       createContext,
     })
   );
+
+  // Dynamic Sitemap endpoint using "sitemap" NPM package
+  app.get("/sitemap.xml", async (_req, res) => {
+    try {
+      const { SitemapStream, streamToPromise } = await import("sitemap");
+      const smStream = new SitemapStream({ hostname: "https://expressia.co" });
+      smStream.write({ url: "/", changefreq: "daily", priority: 1.0 });
+      smStream.write({ url: "/#que-es", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/#marketplace", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/#negocios", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/#panel", changefreq: "weekly", priority: 0.7 });
+      smStream.write({ url: "/#plans", changefreq: "weekly", priority: 0.9 });
+      smStream.write({ url: "/#testimonios", changefreq: "monthly", priority: 0.6 });
+      smStream.write({ url: "/#making-apps", changefreq: "monthly", priority: 0.5 });
+      smStream.write({ url: "/#faq", changefreq: "monthly", priority: 0.7 });
+      smStream.end();
+      
+      const xml = await streamToPromise(smStream);
+      res.header("Content-Type", "application/xml");
+      res.send(xml.toString());
+    } catch (e) {
+      console.error("Error generating sitemap:", e);
+      res.status(500).end();
+    }
+  });
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
