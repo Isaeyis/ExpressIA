@@ -48,16 +48,38 @@ export default function Home() {
     document.title = "Express IA | Empleado Digital 24/7 para WhatsApp, Ventas y Pedidos";
   }, []);
 
-  // Limpiar el hash de la URL cuando se esté cerca del inicio (pantalla de inicio)
+  // Limpiar cualquier hash (#) de la URL en todo momento para mantener la URL limpia (expressia.co/)
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY < 120 && window.location.hash) {
+    const cleanHash = () => {
+      if (window.location.hash) {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
       }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    cleanHash();
+    window.addEventListener("hashchange", cleanHash, { passive: true });
+    window.addEventListener("popstate", cleanHash, { passive: true });
+    window.addEventListener("scroll", cleanHash, { passive: true });
+    return () => {
+      window.removeEventListener("hashchange", cleanHash);
+      window.removeEventListener("popstate", cleanHash);
+      window.removeEventListener("scroll", cleanHash);
+    };
   }, []);
+
+  // Función para desplazarse a las secciones sin agregar "#" a la barra de direcciones
+  const scrollToSection = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = -70;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  };
 
   // Efecto para incrementar el contador
   useEffect(() => {
@@ -82,7 +104,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <a 
-              href="#" 
+              href="/" 
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -108,14 +130,14 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6" aria-label="Navegación principal">
-              <a href="#que-es" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">¿Qué es?</a>
-              <a href="#marketplace" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Marketplace</a>
-              <a href="#negocios" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Negocios</a>
-              <a href="#panel" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Panel</a>
-              <a href="#plans" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Planes</a>
-              <a href="#testimonios" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Opiniones</a>
-              <a href="#making-apps" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">Creadores</a>
-              <a href="#faq" className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap">FAQ</a>
+              <button onClick={(e) => scrollToSection(e, "que-es")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">¿Qué es?</button>
+              <button onClick={(e) => scrollToSection(e, "marketplace")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Marketplace</button>
+              <button onClick={(e) => scrollToSection(e, "negocios")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Negocios</button>
+              <button onClick={(e) => scrollToSection(e, "panel")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Panel</button>
+              <button onClick={(e) => scrollToSection(e, "plans")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Planes</button>
+              <button onClick={(e) => scrollToSection(e, "testimonios")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Opiniones</button>
+              <button onClick={(e) => scrollToSection(e, "making-apps")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">Creadores</button>
+              <button onClick={(e) => scrollToSection(e, "faq")} className="text-gray-600 hover:text-emerald-500 transition-colors text-sm font-semibold whitespace-nowrap cursor-pointer">FAQ</button>
             </nav>
 
             <div className="hidden lg:block">
@@ -143,14 +165,14 @@ export default function Home() {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="lg:hidden pb-4 space-y-3">
-              <a href="#que-es" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">¿Qué es?</a>
-              <a href="#marketplace" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Marketplace</a>
-              <a href="#negocios" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Negocios</a>
-              <a href="#panel" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Panel</a>
-              <a href="#plans" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Planes</a>
-              <a href="#testimonios" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Opiniones</a>
-              <a href="#making-apps" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">Creadores</a>
-              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="block text-gray-600 hover:text-gray-900 font-semibold">FAQ</a>
+              <button onClick={(e) => scrollToSection(e, "que-es")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">¿Qué es?</button>
+              <button onClick={(e) => scrollToSection(e, "marketplace")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Marketplace</button>
+              <button onClick={(e) => scrollToSection(e, "negocios")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Negocios</button>
+              <button onClick={(e) => scrollToSection(e, "panel")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Panel</button>
+              <button onClick={(e) => scrollToSection(e, "plans")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Planes</button>
+              <button onClick={(e) => scrollToSection(e, "testimonios")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Opiniones</button>
+              <button onClick={(e) => scrollToSection(e, "making-apps")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Creadores</button>
+              <button onClick={(e) => scrollToSection(e, "faq")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">FAQ</button>
               <a 
                 href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+quiero+empezar+con+Express+IA."
                 target="_blank"
@@ -1267,15 +1289,15 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-3 text-sm sm:text-base">Producto</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#features" className="hover:text-white transition-colors">Características</a></li>
-                <li><a href="#plans" className="hover:text-white transition-colors">Planes</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+                <li><button onClick={(e) => scrollToSection(e, "negocios")} className="hover:text-white transition-colors cursor-pointer text-left">Características</button></li>
+                <li><button onClick={(e) => scrollToSection(e, "plans")} className="hover:text-white transition-colors cursor-pointer text-left">Planes</button></li>
+                <li><button onClick={(e) => scrollToSection(e, "faq")} className="hover:text-white transition-colors cursor-pointer text-left">FAQ</button></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3 text-sm sm:text-base">Empresa</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#making-apps" className="hover:text-white transition-colors">Acerca de</a></li>
+                <li><button onClick={(e) => scrollToSection(e, "making-apps")} className="hover:text-white transition-colors cursor-pointer text-left">Acerca de</button></li>
                 <li><a href="https://makingapps.com.co/blogs.html" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Blog</a></li>
                 <li><a href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Contacto</a></li>
               </ul>
