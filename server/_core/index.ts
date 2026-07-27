@@ -51,14 +51,14 @@ async function startServer() {
       const { SitemapStream, streamToPromise } = await import("sitemap");
       const smStream = new SitemapStream({ hostname: "https://expressia.co" });
       smStream.write({ url: "/", changefreq: "daily", priority: 1.0 });
-      smStream.write({ url: "/#que-es", changefreq: "weekly", priority: 0.8 });
-      smStream.write({ url: "/#marketplace", changefreq: "weekly", priority: 0.8 });
-      smStream.write({ url: "/#negocios", changefreq: "weekly", priority: 0.8 });
-      smStream.write({ url: "/#panel", changefreq: "weekly", priority: 0.7 });
-      smStream.write({ url: "/#plans", changefreq: "weekly", priority: 0.9 });
-      smStream.write({ url: "/#testimonios", changefreq: "monthly", priority: 0.6 });
-      smStream.write({ url: "/#making-apps", changefreq: "monthly", priority: 0.5 });
-      smStream.write({ url: "/#faq", changefreq: "monthly", priority: 0.7 });
+      smStream.write({ url: "/que-es", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/marketplace", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/negocios", changefreq: "weekly", priority: 0.8 });
+      smStream.write({ url: "/panel", changefreq: "weekly", priority: 0.7 });
+      smStream.write({ url: "/plans", changefreq: "weekly", priority: 0.9 });
+      smStream.write({ url: "/testimonios", changefreq: "monthly", priority: 0.6 });
+      smStream.write({ url: "/making-apps", changefreq: "monthly", priority: 0.5 });
+      smStream.write({ url: "/faq", changefreq: "monthly", priority: 0.7 });
       smStream.end();
       
       const xml = await streamToPromise(smStream);
