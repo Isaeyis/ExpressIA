@@ -98,10 +98,15 @@ const planFullLogistic: Plan = {
   whatsappLink: "https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C%20estoy%20interesado%20en%20adquirir%20el%20PLAN%20FULL%20LOGISTIC",
 };
 
+const planInteligenteComercio: Plan = {
+  ...planInteligente,
+  monthlyPrice: "$1.000.000 COP/mes",
+};
+
 const plansData: Record<BusinessType, Plan[]> = {
   restaurantes: [planNegocio, planInteligente, planFullLogistic],
   domicilios: [planExpress],
-  comercio: [planNegocio, planInteligente, planFullLogistic],
+  comercio: [planNegocio, planInteligenteComercio, planFullLogistic],
 };
 
 export default function PricingPlans({
