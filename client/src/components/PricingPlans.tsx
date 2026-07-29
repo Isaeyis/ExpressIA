@@ -19,7 +19,7 @@ const planExpress: Plan = {
   name: "PLAN EXPRESS",
   description: "Para negocios de mensajería y domicilios que necesitan ordenar y despachar rápido.",
   createAppPrice: "$450.000",
-  monthlyPrice: "$380.000 COP/mes",
+  monthlyPrice: "$450.000 COP/mes",
   features: [
     "Bot de pedidos por WhatsApp 24/7",
     "Toma de pedidos guiada paso a paso",
@@ -61,7 +61,7 @@ const planInteligente: Plan = {
   name: "PLAN INTELIGENTE",
   description: "Para negocios que buscan un asesor virtual que venda y converse de forma natural, como una persona.",
   createAppPrice: "$990.000",
-  monthlyPrice: "$800.000 COP/mes",
+  monthlyPrice: "$900.000 COP/mes",
   features: [
     "Bot 24/7, catálogo y carrito de compras",
     "Asistente con Inteligencia Artificial conversacional",
@@ -100,13 +100,18 @@ const planFullLogistic: Plan = {
 
 const planInteligenteComercio: Plan = {
   ...planInteligente,
-  monthlyPrice: "$1.000.000 COP/mes",
+  monthlyPrice: "$1.100.000 COP/mes",
+};
+
+const planFullLogisticComercio: Plan = {
+  ...planFullLogistic,
+  monthlyPrice: "$1.800.000 COP/mes",
 };
 
 const plansData: Record<BusinessType, Plan[]> = {
   restaurantes: [planNegocio, planInteligente, planFullLogistic],
   domicilios: [planExpress],
-  comercio: [planNegocio, planInteligenteComercio, planFullLogistic],
+  comercio: [planNegocio, planInteligenteComercio, planFullLogisticComercio],
 };
 
 export default function PricingPlans({
@@ -185,7 +190,7 @@ export default function PricingPlans({
             }`}
           >
             <Store className="w-4 h-4" />
-            Comercio
+            Farmacias y Comercios
           </button>
         </div>
 

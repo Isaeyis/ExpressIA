@@ -25,6 +25,11 @@ import {
   ShoppingBag,
   Briefcase,
   Truck,
+  Bike,
+  Pill,
+  Utensils,
+  Scissors,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -103,8 +108,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <a 
-              href="/" 
+            <a
+              href="/"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -115,15 +120,15 @@ export default function Home() {
               className="flex items-center gap-2 cursor-pointer group"
               aria-label="Ir al inicio"
             >
-              <img 
-                src="/logo.png" 
-                alt="Logo oficial de Express IA - Empleado Digital 24/7 para WhatsApp" 
+              <img
+                src="/logo.png"
+                alt="Logo oficial de Express IA - Empleado Digital 24/7 para WhatsApp"
                 title="Express IA Logo"
                 width="32"
                 height="32"
                 loading="eager"
                 decoding="async"
-                className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" 
+                className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform"
               />
               <span className="font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">EXPRESS IA</span>
             </a>
@@ -141,7 +146,7 @@ export default function Home() {
             </nav>
 
             <div className="hidden lg:block">
-              <a 
+              <a
                 href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+quiero+empezar+con+Express+IA."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -173,7 +178,7 @@ export default function Home() {
               <button onClick={(e) => scrollToSection(e, "testimonios")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Opiniones</button>
               <button onClick={(e) => scrollToSection(e, "making-apps")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">Creadores</button>
               <button onClick={(e) => scrollToSection(e, "faq")} className="block w-full text-left text-gray-600 hover:text-gray-900 font-semibold cursor-pointer">FAQ</button>
-              <a 
+              <a
                 href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+quiero+empezar+con+Express+IA."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -199,11 +204,34 @@ export default function Home() {
               <p className="text-sm sm:text-base md:text-lg text-gray-900 font-semibold mb-5 leading-relaxed">
                 Nunca vuelvas a perder una venta por no responder un WhatsApp.
               </p>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-                Mientras tú atiendes tu negocio, <span className="text-emerald-500 font-bold">Express IA</span> responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
+                <span className="text-emerald-600 font-bold">Express IA</span> responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
+
+              {/* Clean & Seamless Business Badges Row */}
+              <div className="mb-8">
+                <p className="text-xs sm:text-sm font-semibold text-gray-500 mb-3 flex items-center justify-center md:justify-start gap-1.5 uppercase tracking-wide">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+                  <span>Ideal para cualquier negocio que atiende por <strong className="text-emerald-600 font-bold lowercase sm:normal-case">WhatsApp</strong>:</span>
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                  <span className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-blue-50 text-gray-800 hover:text-blue-700 px-3 py-1.5 rounded-full border border-gray-200/80 hover:border-blue-200 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs cursor-default">
+                    <Pill className="w-4 h-4 text-blue-500" /> Farmacias
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-amber-50 text-gray-800 hover:text-amber-700 px-3 py-1.5 rounded-full border border-gray-200/80 hover:border-amber-200 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs cursor-default">
+                    <Utensils className="w-4 h-4 text-amber-500" /> Restaurantes
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-emerald-50 text-gray-800 hover:text-emerald-700 px-3 py-1.5 rounded-full border border-gray-200/80 hover:border-emerald-200 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs cursor-default">
+                    <Store className="w-4 h-4 text-emerald-500" /> Tiendas
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 bg-gray-50 hover:bg-purple-50 text-gray-800 hover:text-purple-700 px-3 py-1.5 rounded-full border border-gray-200/80 hover:border-purple-200 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-2xs cursor-default">
+                    <Bike className="w-4 h-4 text-purple-500" /> Domicilios
+                  </span>
+                </div>
+              </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <a 
+                <a
                   href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+estoy+interesado+en+adquirir+Express+IA."
                   target="_blank"
                   rel="noopener noreferrer"
@@ -213,9 +241,16 @@ export default function Home() {
                     Adquiere ExpressIA &rarr;
                   </Button>
                 </a>
-                <Button variant="outline" className="w-full sm:w-auto border-emerald-500 text-emerald-500 bg-transparent hover:bg-emerald-500 hover:text-white font-bold px-6 sm:px-8 py-3 rounded-lg hover:-translate-y-1 transition-all duration-300 transform flex items-center justify-center gap-2">
-                  ▶ Ver cómo funciona
-                </Button>
+                <a
+                  href="https://www.instagram.com/p/DZ-fdw-pmlI/?hl=es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" className="w-full sm:w-auto border-emerald-500 text-emerald-500 bg-transparent hover:bg-emerald-500 hover:text-white font-bold px-6 sm:px-8 py-3 rounded-lg hover:-translate-y-1 transition-all duration-300 transform flex items-center justify-center gap-2">
+                    ▶ Ver cómo funciona
+                  </Button>
+                </a>
               </div>
             </div>
             <div className="flex justify-center animate-scale-in mt-6 md:mt-0">
@@ -237,16 +272,16 @@ export default function Home() {
       </div>
 
       {/* Comparison Section */}
-      <section id="diagnostico" aria-label="Diagnóstico Comercial y Comparativa de Ventas en WhatsApp" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section id="diagnostico" aria-label="Diagnóstico Comercial y Comparativa de Ventas en WhatsApp" className="py-12 md:py-20 bg-white" style={{ backgroundColor: '#fafafa' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">DIAGNÓSTICO COMERCIAL</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               ¿Cuántas ventas estás <span className="bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent block sm:inline">perdiendo ahora mismo?</span>
             </h2>
-            <div className="inline-flex flex-wrap items-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 mb-6 animate-pulse-soft" style={{backgroundColor: '#d4f2eb', borderRadius: '16px', border: '2px solid #00bca5'}}>
-              <span className="text-2xl sm:text-3xl font-extrabold" id="counter" style={{color: '#ef2a30'}}>$50</span>
-              <span className="text-sm sm:text-lg font-bold" style={{color: '#4d4d4d'}}>en ventas perdidas esta sesión</span>
+            <div className="inline-flex flex-wrap items-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 mb-6 animate-pulse-soft" style={{ backgroundColor: '#d4f2eb', borderRadius: '16px', border: '2px solid #00bca5' }}>
+              <span className="text-2xl sm:text-3xl font-extrabold" id="counter" style={{ color: '#ef2a30' }}>$50</span>
+              <span className="text-sm sm:text-lg font-bold" style={{ color: '#4d4d4d' }}>en ventas perdidas esta sesión</span>
             </div>
             <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Cada segundo que tu cliente espera una respuesta en WhatsApp es una oportunidad de venta que se va a la competencia.
@@ -333,7 +368,7 @@ export default function Home() {
           </div>
 
           {/* Statistics Section - Inside Comparison */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6" style={{marginTop: '45px', paddingTop: '24px', paddingBottom: '24px', backgroundColor: '#e9fbf3', border: '1px solid #c6f6d5', borderRadius: '16px', boxShadow: '0 4px 10px rgba(0,0,0,0.02)'}}>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6" style={{ marginTop: '45px', paddingTop: '24px', paddingBottom: '24px', backgroundColor: '#e9fbf3', border: '1px solid #c6f6d5', borderRadius: '16px', boxShadow: '0 4px 10px rgba(0,0,0,0.02)' }}>
             <div className="text-center px-4 py-3 sm:py-0">
               <span className="font-bold text-emerald-500 text-3xl sm:text-4xl md:text-5xl animate-text-pulse">95%</span>
               <p className="font-semibold text-gray-500 mt-2.5 text-xs sm:text-sm leading-relaxed">de clientes esperan respuesta en <br /> 5 minutos</p>
@@ -353,7 +388,7 @@ export default function Home() {
             No esperes más. Cada segundo cuenta.
           </p>
           <div className="flex justify-center mb-6">
-            <a 
+            <a
               href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+quiero+detener+mis+ventas+perdidas+con+Express+IA"
               target="_blank"
               rel="noopener noreferrer"
@@ -410,7 +445,7 @@ export default function Home() {
               </div>
 
               <div className="flex justify-center md:justify-start">
-                <a 
+                <a
                   href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+me+gustaría+obtener+Express+IA+y+la+vitrina+digital"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -433,7 +468,7 @@ export default function Home() {
               {/* Tight relative container for the phone + orbiting box */}
               <div className="relative">
                 {/* Floating Orbiting Box */}
-                <div 
+                <div
                   className="absolute z-20 bg-[#d1fae5] flex items-center justify-center hover:scale-105 transition-all duration-300"
                   style={{
                     top: '20px',
@@ -447,9 +482,9 @@ export default function Home() {
                   <ShoppingBag className="w-9 h-9 text-emerald-600 stroke-[1.8]" />
                 </div>
 
-                <img 
-                  src="/GIFTMP.png" 
-                  alt="Vitrina Digital Express IA - Catálogo de productos e inventario sincronizado en tiempo real" 
+                <img
+                  src="/GIFTMP.png"
+                  alt="Vitrina Digital Express IA - Catálogo de productos e inventario sincronizado en tiempo real"
                   title="Vitrina Digital Personalizada Express IA"
                   width="320"
                   height="460"
@@ -486,9 +521,9 @@ export default function Home() {
 
             {/* Show image and stats on mobile below text */}
             <div className="flex md:hidden flex-col items-center justify-center mt-4 gap-4">
-              <img 
-                src="/GIFTMP.png" 
-                alt="Vitrina Digital Express IA para Móviles - Catálogo de productos e inventario sincronizado en tiempo real" 
+              <img
+                src="/GIFTMP.png"
+                alt="Vitrina Digital Express IA para Móviles - Catálogo de productos e inventario sincronizado en tiempo real"
                 title="Vitrina Digital Express IA Móvil"
                 width="280"
                 height="400"
@@ -496,7 +531,7 @@ export default function Home() {
                 decoding="async"
                 className="max-w-xs w-full h-auto object-contain drop-shadow-xl"
               />
-              
+
               {/* Mobile Stats Box with Floating Icon (Transparent Layout, No Overlap) */}
               <div className="flex items-center gap-4 mt-4 max-w-xs w-full">
                 {/* Floating Circle Icon */}
@@ -545,7 +580,7 @@ export default function Home() {
       </section>
 
       {/* Business Types Section */}
-      <section id="negocios" aria-label="Soluciones Inteligentes Express IA para Restaurantes, Domicilios y Comercio" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
+      <section id="negocios" aria-label="Soluciones Inteligentes Express IA para Restaurantes, Domicilios y Comercio" className="py-12 md:py-20 bg-white" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">ADAPTABILIDAD</p>
@@ -595,16 +630,16 @@ export default function Home() {
                 "0 4px 14px rgba(217,70,239,0.35)"
               ];
               return (
-                <div 
-                  key={i} 
-                  className={`flex flex-col bg-white rounded-3xl p-6 border group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${borderColors[i]}`} 
+                <div
+                  key={i}
+                  className={`flex flex-col bg-white rounded-3xl p-6 border group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${borderColors[i]}`}
                   style={{
                     minHeight: '430px',
                     backgroundColor: i === 0 ? '#ebfcff' : i === 1 ? '#ebfff6' : '#fbf0ff'
                   }}
                 >
                   <div>
-                    <div 
+                    <div
                       className={`w-18 h-18 bg-gradient-to-br ${business.gradientClass} rounded-lg flex items-center justify-center mb-5 flex-shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-md`}
                       style={{
                         width: '46px',
@@ -630,17 +665,17 @@ export default function Home() {
                     </p>
                     <ul className="space-y-3 mb-8">
                       {business.features.map((feature, j) => (
-                        <li 
-                          key={j} 
+                        <li
+                          key={j}
                           className="flex items-start gap-2.5 text-sm transition-all duration-200 hover:translate-x-1 group/item cursor-default"
                         >
-                          <span 
-                            className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 transition-colors duration-200" 
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 transition-colors duration-200"
                             style={{
                               backgroundColor: bulletColors[i],
                             }}
                           />
-                          <span 
+                          <span
                             className="text-gray-600 transition-colors duration-200 group-hover/item:text-gray-950"
                             style={{
                               fontSize: '13.5px',
@@ -653,13 +688,13 @@ export default function Home() {
                       ))}
                     </ul>
                   </div>
-                  <Button 
+                  <Button
                     onClick={() => {
                       const typeKey = business.title === 'Restaurantes' ? 'restaurantes' : business.title === 'Domicilios' ? 'domicilios' : 'comercio';
                       setSelectedPricingType(typeKey);
                       document.getElementById("plans")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient} text-sm transition-all duration-300 hover:scale-102 hover:brightness-105 active:scale-98`} 
+                    className={`w-full text-white font-bold bg-gradient-to-r ${business.buttonGradient} text-sm transition-all duration-300 hover:scale-102 hover:brightness-105 active:scale-98`}
                     style={{
                       height: '40px',
                       borderRadius: '10px',
@@ -681,7 +716,7 @@ export default function Home() {
       {/* Why Choose Section */}
       <section id="ventajas" aria-label="Ventajas Competitivas de Elegir Express IA" className="py-12 md:py-20" style={{ background: 'linear-gradient(180deg, #fafafa 0%, #ffffff 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header */}
           <div className="text-center mb-10">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3 uppercase">VENTAJAS COMPETITIVAS</p>
@@ -720,8 +755,8 @@ export default function Home() {
                 pink: "from-rose-400 to-rose-500 shadow-rose-200",
               };
               return (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className={`${bgColors[item.color]} rounded-2xl p-5 border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-default`}
                 >
                   <div className="flex items-start gap-4">
@@ -745,7 +780,7 @@ export default function Home() {
       </section>
 
       {/* Implementation Section */}
-      <section id="implementacion" aria-label="Proceso de Implementación Acompañada e Integración de WhatsApp" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#fafafa'}}>
+      <section id="implementacion" aria-label="Proceso de Implementación Acompañada e Integración de WhatsApp" className="py-12 md:py-20 bg-white" style={{ backgroundColor: '#fafafa' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-10">
@@ -761,65 +796,65 @@ export default function Home() {
           {/* Steps Grid (Interactive Dynamic Dashboard & Timeline) */}
           {(() => {
             const steps = [
-              { 
-                number: "01", 
-                title: "Análisis y Configuración", 
-                desc: "Entendemos tu negocio y configuramos Express IA según tus necesidades.", 
+              {
+                number: "01",
+                title: "Análisis y Configuración",
+                desc: "Entendemos tu negocio y configuramos Express IA según tus necesidades.",
                 detailedDesc: "Realizamos un mapeo detallado de tu proceso de ventas, identificando las preguntas más frecuentes de tus clientes, el tono ideal de tu marca y las respuestas clave. Con esta información configuramos la lógica central de la IA.",
-                icon: Settings, 
-                iconColor: "#3b82f6", 
-                bgColor: "bg-blue-50/10", 
-                borderColor: "border-blue-200" 
+                icon: Settings,
+                iconColor: "#3b82f6",
+                bgColor: "bg-blue-50/10",
+                borderColor: "border-blue-200"
               },
-              { 
-                number: "02", 
-                title: "Integración de Datos", 
-                desc: "Conectamos tus bases de datos, inventario y procesos en la plataforma.", 
+              {
+                number: "02",
+                title: "Integración de Datos",
+                desc: "Conectamos tus bases de datos, inventario y procesos en la plataforma.",
                 detailedDesc: "Sincronizamos tu catálogo completo, niveles de stock, listas de precios y horarios de atención. Ya sea mediante archivos masivos o integraciones con tu ERP actual, garantizamos información 100% exacta y en tiempo real.",
-                icon: Database, 
-                iconColor: "#8b5cf6", 
-                bgColor: "bg-purple-50/10", 
-                borderColor: "border-purple-200" 
+                icon: Database,
+                iconColor: "#8b5cf6",
+                bgColor: "bg-purple-50/10",
+                borderColor: "border-purple-200"
               },
-              { 
-                number: "03", 
-                title: "Entrenamiento de IA", 
-                desc: "Personalizamos la inteligencia artificial con tu marca y procesos únicos.", 
+              {
+                number: "03",
+                title: "Entrenamiento de IA",
+                desc: "Personalizamos la inteligencia artificial con tu marca y procesos únicos.",
                 detailedDesc: "Alimentamos a la inteligencia artificial con tus políticas de envíos, catálogos, promociones e instrucciones de venta consultiva. La IA aprende a recomendar productos y cerrar ventas tal como lo haría tu mejor vendedor.",
-                icon: Zap, 
-                iconColor: "#10b981", 
-                bgColor: "bg-emerald-50/10", 
-                borderColor: "border-emerald-200" 
+                icon: Zap,
+                iconColor: "#10b981",
+                bgColor: "bg-emerald-50/10",
+                borderColor: "border-emerald-200"
               },
-              { 
-                number: "04", 
-                title: "Integración WhatsApp", 
-                desc: "Configuramos Express IA en la API de WhatsApp Business para uso comercial.", 
+              {
+                number: "04",
+                title: "Integración WhatsApp",
+                desc: "Configuramos Express IA en la API de WhatsApp Business para uso comercial.",
                 detailedDesc: "Conectamos el sistema a tu número de WhatsApp Business a través de la API oficial de Meta. Configuramos plantillas preaprobadas y accesos seguros para que la IA atienda todas las conversaciones entrantes de forma inmediata.",
-                icon: MessageSquare, 
-                iconColor: "#ef4444", 
-                bgColor: "bg-rose-50/10", 
-                borderColor: "border-rose-200" 
+                icon: MessageSquare,
+                iconColor: "#ef4444",
+                bgColor: "bg-rose-50/10",
+                borderColor: "border-rose-200"
               },
-              { 
-                number: "05", 
-                title: "Pruebas y Ajustes", 
-                desc: "Realizamos pruebas exhaustivas y hacemos los últimos ajustes.", 
+              {
+                number: "05",
+                title: "Pruebas y Ajustes",
+                desc: "Realizamos pruebas exhaustivas y hacemos los últimos ajustes.",
                 detailedDesc: "Ejecutamos simulaciones masivas con clientes para auditar la precisión de las respuestas, la fluidez de las cotizaciones y la velocidad de entrega, puliendo los últimos detalles antes de salir a producción.",
-                icon: CheckCircle2, 
-                iconColor: "#3b82f6", 
-                bgColor: "bg-blue-50/10", 
-                borderColor: "border-blue-200" 
+                icon: CheckCircle2,
+                iconColor: "#3b82f6",
+                bgColor: "bg-blue-50/10",
+                borderColor: "border-blue-200"
               },
-              { 
-                number: "06", 
-                title: "Lanzamiento en Vivo", 
-                desc: "¡Tu empleado digital está listo! Comienza a ver resultados desde el día uno.", 
+              {
+                number: "06",
+                title: "Lanzamiento en Vivo",
+                desc: "¡Tu empleado digital está listo! Comienza a ver resultados desde el día uno.",
                 detailedDesc: "¡Paso final completado! Tu línea oficial de WhatsApp queda 100% automatizada. Express IA comienza a gestionar cientos de chats en paralelo las 24 horas del día, incrementando tus ventas de forma inmediata y automática.",
-                icon: Rocket, 
-                iconColor: "#ef4444", 
-                bgColor: "bg-rose-50/10", 
-                borderColor: "border-rose-200" 
+                icon: Rocket,
+                iconColor: "#ef4444",
+                bgColor: "bg-rose-50/10",
+                borderColor: "border-rose-200"
               },
             ];
 
@@ -831,7 +866,7 @@ export default function Home() {
                 <div className="relative flex justify-between items-center max-w-4xl mx-auto mb-10 px-4 sm:px-8">
                   {/* Connection Line */}
                   <div className="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-[3px] bg-gray-200 z-0">
-                    <div 
+                    <div
                       className="h-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-500 transition-all duration-500"
                       style={{ width: `${(activeOnboardingStep / 5) * 100}%` }}
                     />
@@ -849,14 +884,13 @@ export default function Home() {
                         onClick={() => setActiveOnboardingStep(idx)}
                         className="relative z-10 flex flex-col items-center group focus:outline-none"
                       >
-                        <div 
-                          className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
-                            isActive 
-                              ? "bg-white text-emerald-600 scale-110 shadow-lg border-emerald-500 ring-4 ring-emerald-100" 
-                              : isCompleted 
-                                ? "bg-emerald-500 border-emerald-500 text-white shadow-sm" 
-                                : "bg-white border-gray-300 text-gray-400 hover:border-gray-400 hover:text-gray-600"
-                          }`}
+                        <div
+                          className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${isActive
+                            ? "bg-white text-emerald-600 scale-110 shadow-lg border-emerald-500 ring-4 ring-emerald-100"
+                            : isCompleted
+                              ? "bg-emerald-500 border-emerald-500 text-white shadow-sm"
+                              : "bg-white border-gray-300 text-gray-400 hover:border-gray-400 hover:text-gray-600"
+                            }`}
                         >
                           {isCompleted ? (
                             <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -865,9 +899,8 @@ export default function Home() {
                           )}
                         </div>
                         {/* Desktop Step Title underneath node */}
-                        <span className={`hidden md:block absolute -bottom-7 whitespace-nowrap text-[11px] font-bold tracking-wide uppercase transition-all duration-200 ${
-                          isActive ? "text-emerald-600 font-extrabold" : "text-gray-400 group-hover:text-gray-600"
-                        }`}>
+                        <span className={`hidden md:block absolute -bottom-7 whitespace-nowrap text-[11px] font-bold tracking-wide uppercase transition-all duration-200 ${isActive ? "text-emerald-600 font-extrabold" : "text-gray-400 group-hover:text-gray-600"
+                          }`}>
                           {step.title.split(' ')[0]}
                         </span>
                       </button>
@@ -988,13 +1021,13 @@ export default function Home() {
                     {activeOnboardingStep === 2 && (
                       <div className="space-y-4 animate-fadeIn">
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Entrenamiento del Cerebro de la IA</h4>
-                        
+
                         <div className="bg-white p-4 rounded-xl border border-gray-200/80 shadow-sm relative">
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-[11px] font-bold text-emerald-600">Nivel de Precisión del Modelo</span>
                             <span className="text-xs font-extrabold text-emerald-500">98.6%</span>
                           </div>
-                          
+
                           {/* Progress bar */}
                           <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
                             <div className="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full w-[94%] animate-progress-loading" />
@@ -1014,7 +1047,7 @@ export default function Home() {
                     {activeOnboardingStep === 3 && (
                       <div className="space-y-3.5 animate-fadeIn">
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Simulador de Conversación de Venta</h4>
-                        
+
                         {/* Chatbox UI */}
                         <div className="bg-white rounded-xl border border-gray-200/80 shadow-md overflow-hidden max-w-sm mx-auto">
                           {/* Header of chat */}
@@ -1025,14 +1058,14 @@ export default function Home() {
                               <p className="text-[8px] text-emerald-200">En línea (Atendido por IA)</p>
                             </div>
                           </div>
-                          
+
                           {/* Messages area */}
                           <div className="p-3 bg-[#efeae2] space-y-2.5 min-h-[120px] flex flex-col justify-end">
                             {/* Client bubble */}
                             <div className="self-start bg-white p-2 rounded-lg rounded-tl-none shadow-sm max-w-[80%] text-[10.5px] text-gray-800 leading-normal">
                               Hola! Tienen la hamburguesa doble en combo y con envío a la Calle 70? Domicilio gratis?
                             </div>
-                            
+
                             {/* Bot bubble */}
                             <div className="self-end bg-[#dcf8c6] p-2 rounded-lg rounded-tr-none shadow-sm max-w-[80%] text-[10.5px] text-gray-800 leading-normal border-l-2 border-emerald-500">
                               ¡Hola! Sí, la tenemos disponible en combo por $18,900. La Calle 70 aplica para Domicilio Gratis por compras superiores a $15,000, ¡así que tu envío es 100% gratis! 🍔🛵 ¿Te gustaría que la agende ahora mismo?
@@ -1046,7 +1079,7 @@ export default function Home() {
                     {activeOnboardingStep === 4 && (
                       <div className="space-y-4 animate-fadeIn">
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Auditoría de Rendimiento</h4>
-                        
+
                         <div className="grid grid-cols-2 gap-3.5">
                           {[
                             { label: "Tasa de Acierto", val: "99.4%", desc: "Precisión de la IA", color: "text-emerald-500" },
@@ -1072,12 +1105,12 @@ export default function Home() {
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                           OPERACIÓN EN PRODUCCIÓN ACTIVA
                         </div>
-                        
+
                         <div className="w-20 h-20 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shadow-md relative mt-2">
                           <div className="absolute inset-0 rounded-full border border-emerald-400/20 animate-ping" />
                           <Rocket className="w-10 h-10 animate-bounce-poing 1.4s infinite" />
                         </div>
-                        
+
                         <div className="grid grid-cols-3 gap-3 w-full max-w-sm mt-2">
                           <div className="bg-white p-2 rounded-xl border border-gray-200/80 shadow-sm">
                             <p className="text-[9px] text-gray-400 font-bold uppercase">Chats Hoy</p>
@@ -1134,13 +1167,13 @@ export default function Home() {
             <p className="text-xs sm:text-sm text-gray-700 mb-6 max-w-xl mx-auto">
               Nuestro equipo de expertos está disponible para comenzar tu implementación hoy mismo
             </p>
-            <a 
+            <a
               href="https://api.whatsapp.com/send/?phone=573241729686&text=Hola%2C+estoy+interesado+en+sus+servicios+y+me+gustaría+recibir+más+información."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button 
+              <Button
                 className="text-white font-bold px-8 py-4 sm:py-5 rounded-2xl text-base sm:text-lg transition-all duration-300 shadow-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 hover:brightness-105 active:scale-95 shadow-emerald-500/25 hover:shadow-emerald-500/40"
                 style={{ animation: 'button-jump 2s infinite ease-in-out', fontWeight: 'bold' }}
               >
@@ -1158,7 +1191,7 @@ export default function Home() {
       </section>
 
       {/* Dashboard Section */}
-      <section id="panel" aria-label="Panel de Control e Inventario Web Intuitivo de Express IA" className="py-12 md:py-20 bg-white" style={{backgroundColor: '#FFFFFF'}}>
+      <section id="panel" aria-label="Panel de Control e Inventario Web Intuitivo de Express IA" className="py-12 md:py-20 bg-white" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <p className="text-sm font-bold text-gray-600 tracking-wider mb-3">GESTIÓN CENTRALIZADA</p>
@@ -1171,9 +1204,9 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center">
             <div className="relative rounded-xl sm:rounded-2xl border border-gray-200/80 shadow-xl sm:shadow-2xl w-full overflow-hidden">
-              <img 
-                src="/dashboard.png" 
-                alt="Panel de Control Web Express IA - Gestión de Inventario, Domicilios y Ventas en Tiempo Real" 
+              <img
+                src="/dashboard.png"
+                alt="Panel de Control Web Express IA - Gestión de Inventario, Domicilios y Ventas en Tiempo Real"
                 title="Panel de Administración Express IA"
                 width="1200"
                 height="675"
@@ -1212,15 +1245,15 @@ export default function Home() {
                 className="flex items-center gap-2 mb-4 cursor-pointer group w-fit"
                 aria-label="Ir al inicio"
               >
-                <img 
-                  src="/logo.png" 
-                  alt="Logo de Express IA en Pie de Página - Empleado Digital 24/7" 
+                <img
+                  src="/logo.png"
+                  alt="Logo de Express IA en Pie de Página - Empleado Digital 24/7"
                   title="Express IA Logo"
                   width="32"
                   height="32"
                   loading="lazy"
                   decoding="async"
-                  className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform" 
+                  className="w-8 h-8 rounded-lg object-cover group-hover:scale-105 transition-transform"
                 />
                 <span className="font-bold text-lg text-white group-hover:text-emerald-400 transition-colors">EXPRESS IA</span>
               </a>
@@ -1228,9 +1261,9 @@ export default function Home() {
               {/* Social Buttons */}
               <div className="flex items-center gap-3.5 mt-5">
                 {/* Instagram */}
-                <a 
-                  href="https://www.instagram.com/makingappsco/?hl=en" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/makingappsco/?hl=en"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-gray-800 hover:bg-gradient-to-tr hover:from-purple-600 hover:via-pink-500 hover:to-yellow-500 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/40 hover:border-transparent hover:-translate-y-1 hover:shadow-lg shadow-sm"
                   aria-label="Instagram"
@@ -1241,11 +1274,11 @@ export default function Home() {
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
                 </a>
-                
+
                 {/* TikTok */}
-                <a 
-                  href="https://www.tiktok.com/@makingappsco" 
-                  target="_blank" 
+                <a
+                  href="https://www.tiktok.com/@makingappsco"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-gray-800 hover:bg-black text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/40 hover:border-gray-900 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/25 shadow-sm"
                   aria-label="TikTok"
@@ -1256,9 +1289,9 @@ export default function Home() {
                 </a>
 
                 {/* LinkedIn */}
-                <a 
-                  href="https://www.linkedin.com/company/making-apps/posts/?feedView=all" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/company/making-apps/posts/?feedView=all"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-gray-800 hover:bg-[#0077b5] text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/40 hover:border-transparent hover:-translate-y-1 hover:shadow-lg shadow-sm"
                   aria-label="LinkedIn"
@@ -1271,9 +1304,9 @@ export default function Home() {
                 </a>
 
                 {/* Web */}
-                <a 
-                  href="https://makingapps.com.co/blogs.html" 
-                  target="_blank" 
+                <a
+                  href="https://makingapps.com.co/blogs.html"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-gray-800 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/40 hover:border-transparent hover:-translate-y-1 hover:shadow-lg shadow-sm"
                   aria-label="Website"
