@@ -610,7 +610,7 @@ export default function Home() {
                 features: ["Solicitud de domicilios", "Cálculo de tarifas", "Notificación a domiciliarios", "Aceptación de servicios", "Seguimiento del pedido"]
               },
               {
-                title: "Comercio",
+                title: "Farmacias y comercios",
                 icon: ShoppingCart,
                 gradientClass: "from-purple-400 to-pink-500",
                 buttonGradient: "from-purple-400 to-pink-500",
@@ -704,7 +704,7 @@ export default function Home() {
                       boxShadow: buttonShadows[i]
                     }}
                   >
-                    {business.title === 'Restaurantes' ? 'Tengo un restaurante' : business.title === 'Domicilios' ? 'Tengo una empresa de domicilios' : 'Tengo un comercio'}
+                    {business.title === 'Restaurantes' ? 'Tengo un restaurante' : business.title === 'Domicilios' ? 'Tengo una empresa de domicilios' : 'Tengo una farmacia o comercio'}
                   </Button>
                 </div>
               );
