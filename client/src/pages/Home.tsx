@@ -205,7 +205,7 @@ export default function Home() {
                 Nunca vuelvas a perder una venta por no responder un WhatsApp.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
-                <span className="text-emerald-600 font-bold">Express IA</span> responde clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
+                <span className="text-emerald-600 font-bold">Express IA</span> responde automáticamente a tus clientes, recibe pedidos, agenda servicios y automatiza tu operación las 24 horas del día.
               </p>
 
               {/* Clean & Seamless Business Badges Row */}
